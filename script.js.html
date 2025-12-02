@@ -1,0 +1,181 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><script>/* script.js -- Assistenku common scripts
+   - mobile nav
+   - dark mode
+   - lock/unlock lintas-halaman (layanan <-> karir)
+   - form basic behavior
+*/
+
+(() => {
+  // Mobile nav toggle
+  const menu = document.getElementById('menuIcon');
+  const nav = document.getElementById('mainNav');
+  if (menu && nav) {
+    menu.addEventListener('click', () => nav.classList.toggle('open'));
+  }
+
+  // Dark mode toggle
+  document.querySelectorAll('.dark-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      // persist preference
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('assistenku_dark', '1');
+      } else {
+        localStorage.removeItem('assistenku_dark');
+      }
+    });
+  });
+  if (localStorage.getItem('assistenku_dark')) {
+    document.documentElement.classList.add('dark');
+  }
+
+  // ===== Lock / Unlock system (cross-page) =====
+  // Key in localStorage holds which page currently "open" { open: "layanan" } or null
+  const LOCK_KEY = 'assistenku_doc_open_page';
+
+  // helper
+  function setOpenPage(page) {
+    if (!page) {
+      localStorage.removeItem(LOCK_KEY);
+    } else {
+      localStorage.setItem(LOCK_KEY, page);
+    }
+    // dispatch event so other tabs can react immediately
+    window.dispatchEvent(new Event('storage'));
+  }
+
+  function getOpenPage() {
+    return localStorage.getItem(LOCK_KEY); // returns page id or null
+  }
+
+  // Initialize buttons & links
+  const page = document.body.getAttribute('data-page') || '';
+
+  const btnBiaya = document.getElementById('btn-biaya');
+  const linkBiaya = document.getElementById('doc-biaya');
+
+  const btnGaji = document.getElementById('btn-gaji');
+  const linkGaji = document.getElementById('doc-gaji');
+
+  // utility to apply UI based on lock state
+  function applyLocks() {
+    const open = getOpenPage();
+
+    // If other page is open, lock this page's doc (unless this page is the open one)
+    if (btnBiaya && linkBiaya) {
+      if (open && open !== 'layanan') {
+        // locked
+        btnBiaya.classList.remove('unlocked');
+        linkBiaya.classList.add('locked');
+        btnBiaya.textContent = '🔒 Kunci -- Biaya Layanan';
+      } else if (open === 'layanan') {
+        // unlocked
+        btnBiaya.classList.add('unlocked');
+        linkBiaya.classList.remove('locked');
+        btnBiaya.textContent = '🔓 Unlock -- Biaya Layanan';
+      } else {
+        // default locked
+        btnBiaya.classList.remove('unlocked');
+        linkBiaya.classList.add('locked');
+        btnBiaya.textContent = '🔒 Kunci -- Biaya Layanan';
+      }
+    }
+
+    if (btnGaji && linkGaji) {
+      if (open && open !== 'karir') {
+        btnGaji.classList.remove('unlocked');
+        linkGaji.classList.add('locked');
+        btnGaji.textContent = '🔒 Kunci -- Sistem Gaji';
+      } else if (open === 'karir') {
+        btnGaji.classList.add('unlocked');
+        linkGaji.classList.remove('locked');
+        btnGaji.textContent = '🔓 Unlock -- Sistem Gaji';
+      } else {
+        btnGaji.classList.remove('unlocked');
+        linkGaji.classList.add('locked');
+        btnGaji.textContent = '🔒 Kunci -- Sistem Gaji';
+      }
+    }
+  }
+
+  // Attach click handlers for lock buttons
+  if (btnBiaya) {
+    btnBiaya.addEventListener('click', function (e) {
+      // toggle: if unlocked -> lock (remove open), else set open to layanan
+      const currentlyOpen = getOpenPage();
+      if (currentlyOpen === 'layanan') {
+        setOpenPage(null);
+      } else {
+        setOpenPage('layanan');
+      }
+      applyLocks();
+    });
+  }
+
+  if (btnGaji) {
+    btnGaji.addEventListener('click', function (e) {
+      const currentlyOpen = getOpenPage();
+      if (currentlyOpen === 'karir') {
+        setOpenPage(null);
+      } else {
+        setOpenPage('karir');
+      }
+      applyLocks();
+    });
+  }
+
+  // When user clicks the link to open doc, we MUST set openPage to this page so other page locks immediately.
+  if (linkBiaya) {
+    linkBiaya.addEventListener('click', function (e) {
+      // If it's locked, prevent; otherwise set open and allow navigation
+      const open = getOpenPage();
+      if (open && open !== 'layanan') {
+        // blocked - don't follow
+        e.preventDefault();
+        alert('Dokumen saat ini sedang dibuka di halaman lain. Tunggu sampai tersedia.');
+        return;
+      }
+      // mark as opened by this page (so other page locks)
+      setOpenPage('layanan');
+      applyLocks();
+      // allow link to open (usually opens drive in new tab)
+    });
+  }
+
+  if (linkGaji) {
+    linkGaji.addEventListener('click', function (e) {
+      const open = getOpenPage();
+      if (open && open !== 'karir') {
+        e.preventDefault();
+        alert('Dokumen saat ini sedang dibuka di halaman lain. Tunggu sampai tersedia.');
+        return;
+      }
+      setOpenPage('karir');
+      applyLocks();
+    });
+  }
+
+  // Listen to storage events (fires when other tabs/windows update localStorage)
+  window.addEventListener('storage', applyLocks);
+  // Also re-apply on focus (in case user switched tab)
+  window.addEventListener('focus', applyLocks);
+
+  // init UI
+  applyLocks();
+
+  // Simple contact form: prevent real submit (demo only)
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // rudimentary spam protection
+      if (sessionStorage.getItem('formSubmitted')) {
+        alert('Form sudah dikirim. Tunggu beberapa saat.');
+        return;
+      }
+      sessionStorage.setItem('formSubmitted', '1');
+      alert('Terima kasih -- pesan Anda telah dikirim (demo).');
+      form.reset();
+    });
+  }
+})();</script>

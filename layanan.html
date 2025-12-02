@@ -1,0 +1,116 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+  ">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assistenku -- Layanan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="layanan">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <div class="logo-text">ASSISTENKU</div>
+      </div>
+
+      <div class="controls">
+        <button class="dark-toggle">🌙</button>
+        <button id="menuIcon" class="menu-icon">☰</button>
+      </div>
+    </div>
+
+    <nav id="mainNav" class="main-nav">
+      <a href="index.html">Beranda</a>
+      <a href="profil.html">Profil</a>
+      <a href="layanan.html" class="active">Layanan</a>
+      <a href="karir.html">Karir</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h1>Layanan Kami</h1>
+      <p class="lead">Beragam layanan tenaga profesional tersedia untuk memenuhi kebutuhan harian, perawatan, dan dukungan rumah tangga.</p>
+    </section>
+
+    <section class="services-grid">
+      <article class="service-card">
+        <h3>Asisten Rumah Tangga (ART)</h3>
+        <p>
+          Jobdesk: membersihkan rumah, mencuci, menyetrika, menata, menyiapkan makanan sederhana, mengelola stok kebutuhan rumah tangga.
+          Kualifikasi: rapi, jujur, teliti, kemampuan komunikasi dasar.
+        </p>
+        <p><strong>Harga contoh:</strong> Paket harian (8 jam) mulai Rp150.000 -- tergantung lokasi & tugas tambahan.</p>
+      </article>
+
+      <article class="service-card">
+        <h3>Baby Sitter</h3>
+        <p>
+          Jobdesk: merawat bayi/anak, memberi makan, mengatur jadwal tidur, stimulasi perkembangan, kebersihan, dan komunikasi rutin dengan orang tua.
+          Kualifikasi: sabar, pengalaman minimal 1 tahun, referensi.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <h3>Caregiver / Perawat Lansia</h3>
+        <p>
+          Jobdesk: membantu mobilisasi, mengingatkan obat, membantu mandi, menyiapkan makanan khusus, observasi kondisi, laporan harian ke keluarga.
+          Kualifikasi: penuh empati, pelatihan dasar perawatan lansia direkomendasikan.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <h3>Sopir Pribadi</h3>
+        <p>
+          Jobdesk: mengemudi aman, melakukan perawatan ringan kendaraan, memahami rute, etika berkendara, menjaga privasi klien.
+          Kualifikasi: SIM A, rekam jejak aman, pengalaman minimal 2 tahun.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <h3>Cleaning Service & Petugas Kebersihan</h3>
+        <p>
+          Jobdesk: pembersihan area, sanitasi, pengelolaan sampah, pelaporan kebutuhan perawatan, dan pemeliharaan kebersihan rutin.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <h3>Tukang Kebun & Tukang Pertukangan</h3>
+        <p>
+          Jobdesk: perawatan taman, pemangkasan, perbaikan ringan, instalasi sederhana, dan pekerjaan outdoor sesuai permintaan.
+        </p>
+      </article>
+    </section>
+
+    <section class="doc-section">
+      <h2>Akses Dokumen & Biaya</h2>
+      <p>Dokumen biaya layanan dapat dilihat melalui tombol di bawah. Saat Anda membuka dokumen ini, akses dokumen sistem gaji pada halaman Karir akan otomatis terkunci supaya tidak ada dua halaman yang membuka dokumen bersamaan.</p>
+
+      <div class="doc-controls">
+        <!-- LOCK/UNLOCK Button (default locked - merah) -->
+        <button class="lock-btn" id="btn-biaya" data-target="doc-biaya">🔒 Kunci -- Biaya Layanan</button>
+
+        <!-- Link dokumen (disabled saat terkunci) -->
+        <a id="doc-biaya" class="doc-link" href="https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view?usp=drivesdk" target="_blank" rel="noopener">
+          Lihat Dokumen Biaya Layanan (Google Drive)
+        </a>
+      </div>
+      <p class="muted">Catatan: ukuran & detil biaya tertera pada dokumen.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>© 2025 Assistenku</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
