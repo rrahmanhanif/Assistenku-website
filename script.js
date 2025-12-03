@@ -57,7 +57,7 @@ if (lockBtn) {
   const unlocked = localStorage.getItem("unlock_status");
 
   if (unlocked === "true") {
-    unlock(false);
+    unlock(false); // pastikan UI benar saat reload
   } else {
     lock();
   }
@@ -83,11 +83,8 @@ if (btnBiayaLayanan) {
     // kunci silang → mark layanan dibuka
     localStorage.setItem("opened_layanan", "true");
 
-    // langsung kunci tombol gaji
+    // kunci tombol gaji
     disableBtn(btnSistemGaji);
-
-    // kunci footer juga
-    lock();
   });
 }
 
@@ -104,11 +101,8 @@ if (btnSistemGaji) {
     // kunci silang → mark karir dibuka
     localStorage.setItem("opened_karir", "true");
 
-    // langsung kunci tombol biaya layanan
+    // kunci tombol biaya layanan
     disableBtn(btnBiayaLayanan);
-
-    // kunci footer juga
-    lock();
   });
 }
 
@@ -171,7 +165,7 @@ async function md5(str) {
 
 
 /* ================================
-   PASSWORD VALIDATION (FINAL FIX)
+   PASSWORD VALIDATION (FINAL)
 ================================ */
 async function validatePassword() {
   const val = document.getElementById("inputPass").value.trim();
@@ -179,17 +173,15 @@ async function validatePassword() {
 
   if (hashed === correctHash) {
 
-    // buka footer
+    // buka footer dan simpan status
     unlock(false);
     localStorage.setItem("unlock_status", "true");
 
-    // ================================
-    //   RESET SISTEM KUNCI SILANG 
-    // ================================
+    // reset kunci silang
     localStorage.removeItem("opened_layanan");
     localStorage.removeItem("opened_karir");
 
-    // aktifkan kembali tombol island
+    // aktifkan tombol island kembali
     enableBtn(btnBiayaLayanan);
     enableBtn(btnSistemGaji);
 
@@ -201,6 +193,7 @@ async function validatePassword() {
   }
 }
 
+
 /* ================================
    UNLOCK FUNCTION
 ================================ */
@@ -209,7 +202,6 @@ function unlock() {
   lockBtn.classList.remove("locked");
   lockBtn.classList.add("unlocked");
 
-  // enable both island buttons kembali
   enableBtn(btnBiayaLayanan);
   enableBtn(btnSistemGaji);
 }
@@ -232,9 +224,6 @@ function lock() {
   const openedLayanan = localStorage.getItem("opened_layanan") === "true";
   const openedKarir = localStorage.getItem("opened_karir") === "true";
 
-  // Jika layanan pernah dibuka → sistem gaji terkunci
   if (openedLayanan) disableBtn(btnSistemGaji);
-
-  // Jika gaji pernah dibuka → biaya layanan terkunci
   if (openedKarir) disableBtn(btnBiayaLayanan);
 })();
