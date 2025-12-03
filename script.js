@@ -1,230 +1,288 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* ========================================================
+   GLOBAL RESET & BASE
+======================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter","Segoe UI",Arial,sans-serif;
+}
 
-  /* ================================
-     HAMBURGER MENU
-  ================================ */
-  const menuIcon = document.getElementById("menuIcon");
-  const mobileMenu = document.getElementById("mobileMenu");
+html { scroll-behavior: smooth; }
 
-  if (menuIcon) {
-    menuIcon.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
-    });
+body {
+  background: #f5f7fb;
+  color: #1e1e1e;
+  line-height: 1.75;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+a, button { transition: 0.25s ease; }
+
+/* ========================================================
+   NAVBAR — PREMIUM AI STARTUP STYLE
+======================================================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.70);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  z-index: 9999;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo { width: 120px; user-select: none; }
+
+/* Desktop nav */
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav ul li a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  padding: 6px 0;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #0d6efd;
+  border-radius: 4px;
+  transition: 0.25s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  left: 0;
+  width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.active { color: #0d6efd; }
+
+/* Mobile menu */
+#menuIcon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#mobileMenu {
+  display: none;
+  flex-direction: column;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  padding: 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#mobileMenu a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  padding: 12px 0;
+}
+
+/* ========================================================
+   HERO
+======================================================== */
+.hero {
+  max-width: 900px;
+  margin: 150px auto 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#0d6efd,#0b53c9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  margin-top: 14px;
+  font-size: 17px;
+  color: #444;
+}
+
+/* ========================================================
+   SECTIONS — JUSTIFY FINAL
+======================================================== */
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 22px;
+  text-align: justify;
+}
+
+section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0d6efd;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+section p {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+/* ========================================================
+   CARD GRID (GLASSMORPHIC PREMIUM)
+======================================================== */
+.card-grid {
+  display: grid;
+  gap: 24px;
+  padding-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+}
+
+.card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+}
+
+.card h3 { font-size: 20px; margin-bottom: 8px; }
+
+.card ul { margin-left: 20px; }
+.card ul li { margin-bottom: 6px; }
+
+.founder-img,
+.legal-img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 12px 0;
+}
+
+/* ========================================================
+   BUTTONS — ISLAND + LOCK
+======================================================== */
+
+/* ISLAND BUTTON */
+.island-btn {
+  display: inline-block;
+  padding: 13px 24px;
+  background: #fff;
+  border: 1px solid #d6ddea;
+  border-radius: 50px;
+  font-weight: 600;
+  color: #0d6efd;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transform: translateY(0);
+}
+
+.island-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.island-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* LOCK BUTTON */
+.lock-button {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.locked { background: #e14d4d; }
+.unlocked { background: #28c76f; }
+
+/* ========================================================
+   FLOATING BLUR FOOTER
+======================================================== */
+footer {
+  margin-top: 60px;
+  padding: 26px 18px;
+  text-align: center;
+  font-size: 14px;
+  background: rgba(250,250,255,0.55);
+  backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(255,255,255,0.6);
+}
+
+/* ========================================================
+   DARK MODE (Automatic)
+======================================================== */
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background: #13151a;
+    color: #e6e6e6;
   }
 
-
-  /* ================================
-     CONSTANT LINKS
-  ================================ */
-  const layananLink = "https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view?usp=drivesdk";
-  const gajiLink = "https://drive.google.com/file/d/1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD/view?usp=drivesdk";
-  const formulirLink = "https://drive.google.com/file/d/1tIxfDILacdYDjt6wg9VViPkugj31tvXJ/view?usp=drivesdk";
-
-
-  /* ================================
-     BUTTON ELEMENTS
-  ================================ */
-  const lockBtn = document.getElementById("lockBtn");
-  const btnBiayaLayanan = document.getElementById("btnBiayaLayanan");
-  const btnUnduhFormulir = document.getElementById("btnUnduhFormulir");
-  const btnSistemGaji = document.getElementById("btnSistemGaji");
-
-
-  /* ================================
-     DISABLE / ENABLE BUTTON
-  ================================ */
-  function disableBtn(btn) {
-    if (!btn) return;
-    btn.style.opacity = "0.5";
-    btn.style.pointerEvents = "none";
+  header {
+    background: rgba(22,22,24,0.75);
+    border-bottom-color: rgba(255,255,255,0.1);
   }
 
-  function enableBtn(btn) {
-    if (!btn) return;
-    btn.style.opacity = "1";
-    btn.style.pointerEvents = "auto";
+  nav ul li a { color: #dcdcdc; }
+  nav ul li a:hover,
+  nav ul li a.active { color: #4d8cff; }
+
+  #mobileMenu { background: rgba(20,20,24,0.88); }
+  .card {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.12);
   }
 
+  .island-btn {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.2);
+    color: #5fa2ff;
+  }
 
-  /* ================================
-     PASSWORD (MD5 HASH)
-  ================================ */
-  const correctHash = "0f23ae0ee0fa9a1c81efc8d43f22c25d"; // "Hanif@123"
+  footer { background: rgba(25,25,30,0.65); }
+}
 
-
-  /* ================================
-     INITIAL LOCK STATUS
-  ================================ */
-  if (lockBtn) {
-    const unlocked = localStorage.getItem("unlock_status");
-
-    if (unlocked === "true") {
-      unlock(false);
-    } else {
-      lock();
+/* ========================================================
+   RESPONSIVE
+======================================================== */
+@media (max-width: 860px) {
+  nav ul { display: none; }
+  #menuIcon { display: block; }
+  #mobileMenu.active { display: flex; }
+  .hero h1 { font-size: 30px; }
     }
-
-    lockBtn.addEventListener("click", () => {
-      if (lockBtn.classList.contains("locked")) {
-        showPasswordPopup();
-      } else {
-        lock();
-        localStorage.setItem("unlock_status", "false");
-      }
-    });
-  }
-
-
-  /* ================================
-     ISLAND BUTTONS
-  ================================ */
-  if (btnBiayaLayanan) {
-    btnBiayaLayanan.addEventListener("click", () => {
-      window.open(layananLink, "_blank");
-
-      localStorage.setItem("opened_layanan", "true");
-      disableBtn(btnSistemGaji);
-    });
-  }
-
-  if (btnUnduhFormulir) {
-    btnUnduhFormulir.addEventListener("click", () => {
-      window.open(formulirLink, "_blank");
-    });
-  }
-
-  if (btnSistemGaji) {
-    btnSistemGaji.addEventListener("click", () => {
-      window.open(gajiLink, "_blank");
-
-      localStorage.setItem("opened_karir", "true");
-      disableBtn(btnBiayaLayanan);
-    });
-  }
-
-
-  /* ================================
-     PASSWORD POPUP
-  ================================ */
-  function showPasswordPopup() {
-    const overlay = document.createElement("div");
-    overlay.id = "popupOverlay";
-    overlay.style.position = "fixed";
-    overlay.style.inset = "0";
-    overlay.style.background = "rgba(0,0,0,0.5)";
-    overlay.style.backdropFilter = "blur(8px)";
-    overlay.style.display = "flex";
-    overlay.style.alignItems = "center";
-    overlay.style.justifyContent = "center";
-    overlay.style.zIndex = "9999";
-
-    overlay.innerHTML = `
-      <div style="
-        width: 92%;
-        max-width: 380px;
-        padding: 25px;
-        background: #fff;
-        border-radius: 14px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.20);
-        text-align:center;
-      ">
-        <h3 style="margin-bottom: 10px; color:#0d6efd;">Masukkan Password</h3>
-        <p style="font-size:14px; color:#333;">Halaman ini memerlukan akses khusus.</p>
-
-        <input type="password" id="inputPass" placeholder="Password"
-          style="width:100%; padding:12px; margin-top:15px; border-radius:10px; border:1px solid #ccc;">
-
-        <div style="margin-top:20px; display:flex; justify-content:flex-end; gap:12px;">
-          <button id="cancelBtn" style="padding:10px 16px; background:#ccc; border:none; border-radius:8px; cursor:pointer;">Batal</button>
-          <button id="okBtn" style="padding:10px 16px; background:#0d6efd; color:#fff; border:none; border-radius:8px; cursor:pointer;">Buka</button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(overlay);
-
-    document.getElementById("cancelBtn").onclick = () => overlay.remove();
-    document.getElementById("okBtn").onclick = validatePassword;
-  }
-
-
-  /* ================================
-     MD5 FUNCTION
-  ================================ */
-  async function md5(str) {
-    const buffer = new TextEncoder().encode(str);
-    const digest = await crypto.subtle.digest("MD5", buffer);
-    return Array.from(new Uint8Array(digest))
-      .map(b => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
-
-
-  /* ================================
-     PASSWORD VALIDATION (FINAL)
-  ================================ */
-  async function validatePassword() {
-    const val = document.getElementById("inputPass").value.trim();
-    const hashed = await md5(val);
-
-    if (hashed === correctHash) {
-
-      unlock(false);
-      localStorage.setItem("unlock_status", "true");
-
-      // bersihkan lock silang
-      localStorage.removeItem("opened_layanan");
-      localStorage.removeItem("opened_karir");
-
-      enableBtn(btnBiayaLayanan);
-      enableBtn(btnSistemGaji);
-
-      document.getElementById("popupOverlay").remove();
-
-      // !!! FIX PALING PENTING → NETRALISIR TOTAL !!!
-      setTimeout(() => {
-        location.reload();
-      }, 200);
-
-    } else {
-      alert("Password salah.");
-    }
-  }
-
-
-  /* ================================
-     UNLOCK FUNCTION
-  ================================ */
-  function unlock() {
-    lockBtn.textContent = "🔓 Akses Dibuka";
-    lockBtn.classList.remove("locked");
-    lockBtn.classList.add("unlocked");
-
-    enableBtn(btnBiayaLayanan);
-    enableBtn(btnSistemGaji);
-  }
-
-
-  /* ================================
-     LOCK FUNCTION
-  ================================ */
-  function lock() {
-    lockBtn.textContent = "🔒 Akses Terkunci";
-    lockBtn.classList.add("locked");
-    lockBtn.classList.remove("unlocked");
-  }
-
-
-  /* ================================
-     SISTEM KUNCI SILANG (LOAD AWAL)
-  ================================ */
-  (function kunciSilangAwal() {
-    const openedLayanan = localStorage.getItem("opened_layanan") === "true";
-    const openedKarir = localStorage.getItem("opened_karir") === "true";
-
-    if (openedLayanan) disableBtn(btnSistemGaji);
-    if (openedKarir) disableBtn(btnBiayaLayanan);
-  })();
-
-
-}); // END DOMContentLoaded
