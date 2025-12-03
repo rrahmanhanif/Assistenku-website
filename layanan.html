@@ -1,94 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layanan | Assistenku</title>
   <link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assistenku — Layanan</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="layanan">
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <img src="logo.png" alt="Assistenku Logo" class="logo-img" />
-        <div class="brand-text">
-          <div class="logo-text">ASSISTENKU</div>
-        </div>
-      </div>
+<body>
 
-      <div class="controls">
-        <button class="dark-toggle">🌙</button>
-        <button id="menuIcon" class="menu-icon">☰</button>
-      </div>
+<header>
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Logo Assistenku">
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="layanan.html" class="active" id="navLayanan">Layanan</a></li>
+        <li><a href="karir.html" id="navKarir">Karir</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <div id="menuIcon">☰</div>
+  </div>
+
+  <div id="mobileMenu">
+    <a href="index.html">Beranda</a>
+    <a href="profil.html">Profil</a>
+    <a href="layanan.html" id="navLayanan">Layanan</a>
+    <a href="karir.html" id="navKarir">Karir</a>
+    <a href="kontak.html">Kontak</a>
+  </div>
+</header>
+
+<section style="padding-top:130px;">
+  <h2>Layanan Assistenku</h2>
+  <p>
+    Kami menyediakan berbagai jenis layanan yang dapat disesuaikan dengan kebutuhan keluarga
+    dan operasional bisnis. Semua tenaga kerja melalui proses rekrutmen, wawancara, dan pelatihan.
+  </p>
+</section>
+
+<section>
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>Asisten Rumah Tangga</h3>
+      <p>ART terlatih untuk membersihkan rumah, memasak, mencuci, dan pekerjaan umum lainnya.</p>
     </div>
 
-    <nav id="mainNav" class="main-nav">
-      <a href="index.html">Beranda</a>
-      <a href="profil.html">Profil</a>
-      <a href="layanan.html" class="active">Layanan</a>
-      <a href="karir.html">Karir</a>
-      <a href="kontak.html">Kontak</a>
-    </nav>
-  </header>
+    <div class="card">
+      <h3>Babysitter & Perawat Lansia</h3>
+      <p>Perawat ramah, sabar, dan profesional untuk bayi, balita, hingga lansia.</p>
+    </div>
 
-  <main class="container">
-    <section class="section page-header">
-      <h1>Daftar Layanan</h1>
-      <p class="lead">Layanan lengkap kami untuk rumah tangga, perawatan, dan pendukung profesional.</p>
-    </section>
+    <div class="card">
+      <h3>Sopir Pribadi</h3>
+      <p>Driver profesional yang memahami rute, etika berkendara, dan keamanan.</p>
+    </div>
 
-    <section class="section services-grid">
-      <article class="service-card">
-        <h3>Asisten Rumah Tangga (ART)</h3>
-        <p>Jobdesk: membersihkan, mencuci, menyetrika, menata, menyiapkan makanan sederhana, mengelola stok kebutuhan rumah tangga.</p>
-        <p>Kualifikasi: rapi, jujur, teliti. Contoh harga: paket harian 8 jam mulai Rp150.000 (tergantung lokasi).</p>
-      </article>
+    <div class="card">
+      <h3>Petugas Kebersihan</h3>
+      <p>Pembersihan harian, mingguan, atau bulanan untuk rumah dan kantor.</p>
+    </div>
 
-      <article class="service-card">
-        <h3>Baby Sitter</h3>
-        <p>Jobdesk: perawatan bayi/anak, stimulasi perkembangan, pemantauan kesehatan dasar, komunikasi rutin dengan orang tua.</p>
-        <p>Kualifikasi: sabar, referensi, pengalaman minimal 1 tahun.</p>
-      </article>
+    <div class="card">
+      <h3>Tukang Kebun</h3>
+      <p>Merawat taman, tanaman hias, dan kebutuhan perkebunan kecil.</p>
+    </div>
 
-      <article class="service-card">
-        <h3>Caregiver / Perawat Lansia</h3>
-        <p>Jobdesk: membantu mobilisasi, pengingat obat, bantuan mandi, pengamatan kondisi, laporan rutin.</p>
-        <p>Kualifikasi: empati tinggi, pelatihan dasar perawatan direkomendasikan.</p>
-      </article>
+  </div>
+</section>
 
-      <article class="service-card">
-        <h3>Sopir Pribadi</h3>
-        <p>Jobdesk: mengemudi aman, perawatan ringan kendaraan, memahami rute, etika berkendara.</p>
-        <p>Kualifikasi: SIM A, pengalaman, rapi & sopan.</p>
-      </article>
+<section>
+  <h2>Biaya Layanan</h2>
+  <p>Untuk melihat detail biaya layanan terbaru, klik tombol di bawah:</p>
 
-      <article class="service-card">
-        <h3>Cleaning Service & Tukang</h3>
-        <p>Cleaning service, tukang kebun, dan tukang pertukangan ringan berdasarkan permintaan klien.</p>
-      </article>
-    </section>
+  <a class="btn-primary" href="https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view?usp=drivesdk" target="_blank">
+    Akses Dokumen Biaya Layanan
+  </a>
+</section>
 
-    <section class="section doc-section">
-      <h2>Dokumen Biaya & Penjelasan</h2>
-      <p>Untuk melihat rincian biaya layanan, klik tombol akses dokumen di bawah. Jika dokumen ini dibuka, akses dokumen Sistem Gaji di halaman Karir otomatis akan dikunci (satu dokumen dibuka pada satu waktu).</p>
+<footer>
+  © 2025 Assistenku
+</footer>
 
-      <div class="doc-controls">
-        <!-- Lock button (merah default) -->
-        <button class="lock-btn" id="btn-biaya" data-target="doc-biaya">🔒 Kunci — Biaya Layanan</button>
-
-        <!-- Link (will be locked/unlocked by JS). target_blank so Drive opens in new tab -->
-        <a id="doc-biaya" class="doc-link locked" href="https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view?usp=drivesdk" target="_blank" rel="noopener">Lihat Dokumen Biaya Layanan (Google Drive)</a>
-      </div>
-      <p class="muted">Catatan: dokumen membuka Google Drive di tab baru.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Assistenku</p></div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
