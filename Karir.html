@@ -1,87 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karir | Assistenku</title>
   <link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assistenku — Karir</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="karir">
-  <header class="site-header floating">
-    <div class="container header-inner">
-      <div class="brand">
-        <img src="logo.png" alt="Assistenku Logo" class="logo-img" />
-        <div class="brand-text">
-          <div class="logo-text">ASSISTENKU</div>
-        </div>
-      </div>
+<body>
 
-      <div class="controls">
-        <button class="dark-toggle">🌙</button>
-        <button id="menuIcon" class="menu-icon">☰</button>
-      </div>
+<header>
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Logo Assistenku">
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="layanan.html" id="navLayanan">Layanan</a></li>
+        <li><a href="karir.html" class="active" id="navKarir">Karir</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <div id="menuIcon">☰</div>
+  </div>
+
+  <div id="mobileMenu">
+    <a href="index.html">Beranda</a>
+    <a href="profil.html">Profil</a>
+    <a href="layanan.html" id="navLayanan">Layanan</a>
+    <a href="karir.html" id="navKarir">Karir</a>
+    <a href="kontak.html">Kontak</a>
+  </div>
+</header>
+
+<section style="padding-top:130px;">
+  <h2>Karir di Assistenku</h2>
+  <p>
+    Assistenku membuka peluang kerja bagi kandidat berkualitas yang ingin berkembang di dunia
+    layanan asistensi. Kami menyediakan pelatihan, pembinaan, dan penempatan kerja yang stabil.
+  </p>
+</section>
+
+<section>
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>Asisten Rumah Tangga</h3>
+      <p>
+        Jobdesk: bersih-bersih, memasak, mencuci, merapikan rumah, dan tugas operasional lainnya.
+      </p>
     </div>
 
-    <nav id="mainNav" class="main-nav">
-      <a href="index.html">Beranda</a>
-      <a href="profil.html">Profil</a>
-      <a href="layanan.html">Layanan</a>
-      <a href="karir.html" class="active">Karir</a>
-      <a href="kontak.html">Kontak</a>
-    </nav>
-  </header>
+    <div class="card">
+      <h3>Babysitter</h3>
+      <p>
+        Mengasuh bayi dan balita, membuat susu, memandikan, menjaga jadwal tidur, dan keamanan anak.
+      </p>
+    </div>
 
-  <main class="container">
-    <section class="section page-header">
-      <h1>Karir</h1>
-      <p class="lead">Bergabung menjadi tenaga profesional kami. Kami membuka berbagai posisi setiap saat.</p>
-    </section>
+    <div class="card">
+      <h3>Perawat Lansia</h3>
+      <p>
+        Mengawasi kesehatan, memberi obat, memandikan, mendampingi aktivitas lansia.
+      </p>
+    </div>
 
-    <section class="section jobs">
-      <article class="job">
-        <h3>Asisten Rumah Tangga (ART)</h3>
-        <p>Deskripsi: menyapu, mengepel, mencuci, menyetrika, menata rumah. Kriteria: jujur, komunikatif, bertanggung jawab.</p>
-      </article>
+    <div class="card">
+      <h3>Sopir Pribadi</h3>
+      <p>
+        Mengantar jemput, menjaga kebersihan mobil, dan memastikan keselamatan perjalanan.
+      </p>
+    </div>
 
-      <article class="job">
-        <h3>Baby Sitter</h3>
-        <p>Deskripsi: merawat bayi/anak, stimulasi, keamanan, komunikasi dengan orang tua. Kriteria: sabar, pengalaman minimal 1 tahun.</p>
-      </article>
+    <div class="card">
+      <h3>Petugas Kebersihan</h3>
+      <p>
+        Membersihkan area rumah/kantor, pembersihan harian atau general cleaning.
+      </p>
+    </div>
 
-      <article class="job">
-        <h3>Caregiver / Perawat Lansia</h3>
-        <p>Deskripsi: bantuan mobilisasi, pengingat obat, perawatan dasar, laporan kondisi. Kriteria: empati & pelatihan dasar.</p>
-      </article>
+  </div>
+</section>
 
-      <article class="job">
-        <h3>Sopir Pribadi</h3>
-        <p>Deskripsi: aman berkendara, etika, pengelolaan kendaraan. Kriteria: SIM A, pengalaman minimal 2 tahun.</p>
-      </article>
-    </section>
+<section>
+  <h2>Sistem Gaji & Penempatan</h2>
+  <p>Klik tombol berikut untuk melihat detail sistem gaji:</p>
 
-    <section class="section doc-section">
-      <h2>Sistem Gaji & Dokumentasi</h2>
-      <p>Untuk melihat detail sistem gaji dan simulasi perhitungan, gunakan tombol di bawah. Jika dokumen Sistem Gaji dibuka, dokumen Biaya Layanan di halaman Layanan otomatis akan terkunci.</p>
+  <a class="btn-primary" href="https://drive.google.com/file/d/1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD/view?usp=drivesdk" target="_blank">
+    Akses Dokumen Sistem Gaji
+  </a>
+</section>
 
-      <div class="doc-controls">
-        <button class="lock-btn secondary" id="btn-gaji" data-target="doc-gaji">🔒 Kunci — Sistem Gaji</button>
-        <a id="doc-gaji" class="doc-link locked" href="https://drive.google.com/file/d/1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD/view?usp=drivesdk" target="_blank" rel="noopener">Lihat Dokumen Sistem Gaji (Google Drive)</a>
-      </div>
-      <p class="muted">Catatan: dokumen berisi struktur gaji, tunjangan, dan simulasi perhitungan.</p>
-    </section>
+<footer>
+  © 2025 Assistenku
+</footer>
 
-    <section class="section apply">
-      <h3>Ingin Melamar?</h3>
-      <p>Kirim CV ke <a href="mailto:karirassistenku@gmail.com">karirassistenku@gmail.com</a>. Cantumkan posisi yang dilamar, pengalaman, dan kontak.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Assistenku</p></div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
