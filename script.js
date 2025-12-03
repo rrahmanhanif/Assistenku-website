@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const unlocked = localStorage.getItem("unlock_status");
 
     if (unlocked === "true") {
-      unlock(false); // pastikan UI benar saat reload
+      unlock(false);
     } else {
       lock();
     }
@@ -76,16 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ================================
-     ISLAND BUTTONS (SESUAI SKENARIO)
+     ISLAND BUTTONS
   ================================ */
   if (btnBiayaLayanan) {
     btnBiayaLayanan.addEventListener("click", () => {
       window.open(layananLink, "_blank");
 
-      // kunci silang → mark layanan dibuka  
       localStorage.setItem("opened_layanan", "true");
-
-      // kunci tombol gaji  
       disableBtn(btnSistemGaji);
     });
   }
@@ -100,10 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSistemGaji.addEventListener("click", () => {
       window.open(gajiLink, "_blank");
 
-      // kunci silang → mark karir dibuka  
       localStorage.setItem("opened_karir", "true");
-
-      // kunci tombol biaya layanan  
       disableBtn(btnBiayaLayanan);
     });
   }
@@ -175,20 +169,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (hashed === correctHash) {
 
-      // buka footer dan simpan status  
       unlock(false);
       localStorage.setItem("unlock_status", "true");
 
-      // reset kunci silang  
+      // bersihkan lock silang
       localStorage.removeItem("opened_layanan");
       localStorage.removeItem("opened_karir");
 
-      // aktifkan tombol island kembali  
       enableBtn(btnBiayaLayanan);
       enableBtn(btnSistemGaji);
 
-      // tutup popup  
       document.getElementById("popupOverlay").remove();
+
+      // !!! FIX PALING PENTING → NETRALISIR TOTAL !!!
+      setTimeout(() => {
+        location.reload();
+      }, 200);
 
     } else {
       alert("Password salah.");
@@ -220,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ================================
-     SISTEM KUNCI SILANG (PAGE LOAD)
+     SISTEM KUNCI SILANG (LOAD AWAL)
   ================================ */
   (function kunciSilangAwal() {
     const openedLayanan = localStorage.getItem("opened_layanan") === "true";
