@@ -171,21 +171,35 @@ async function md5(str) {
 
 
 /* ================================
-   PASSWORD VALIDATION
+   PASSWORD VALIDATION (FINAL FIX)
 ================================ */
 async function validatePassword() {
   const val = document.getElementById("inputPass").value.trim();
   const hashed = await md5(val);
 
   if (hashed === correctHash) {
+
+    // buka footer
     unlock(false);
     localStorage.setItem("unlock_status", "true");
+
+    // ================================
+    //   RESET SISTEM KUNCI SILANG 
+    // ================================
+    localStorage.removeItem("opened_layanan");
+    localStorage.removeItem("opened_karir");
+
+    // aktifkan kembali tombol island
+    enableBtn(btnBiayaLayanan);
+    enableBtn(btnSistemGaji);
+
+    // tutup popup
     document.getElementById("popupOverlay").remove();
+
   } else {
     alert("Password salah.");
   }
 }
-
 
 /* ================================
    UNLOCK FUNCTION
