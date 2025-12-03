@@ -2,10 +2,10 @@
   "version": 2,
 
   "builds": [
-    { "src": "**/*.html", "use": "@vercel/static" },
-    { "src": "**/*.css", "use": "@vercel/static" },
-    { "src": "**/*.js", "use": "@vercel/static" },
-    { "src": "**/*.{png,jpg,jpeg,svg,webp}", "use": "@vercel/static" }
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.css", "use": "@vercel/static" },
+    { "src": "*.js", "use": "@vercel/static" },
+    { "src": "*.{png,jpg,jpeg,svg,webp}", "use": "@vercel/static" }
   ],
 
   "routes": [
@@ -15,7 +15,7 @@
     },
 
     {
-      "src": "/([^\\.]+)$",
+      "src": "/([^/]+)$",
       "dest": "/$1.html"
     },
 
@@ -28,15 +28,9 @@
     },
 
     {
-      "src": "/404",
-      "dest": "/404.html"
-    },
-
-    {
       "src": "/(.*)",
       "headers": {
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "Cache-Control": "public, max-age=31536000, immutable"
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "dest": "/$1"
     }
