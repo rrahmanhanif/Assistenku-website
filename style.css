@@ -1,345 +1,332 @@
-/* ===========================
-   RESET & GLOBAL
-=========================== */
+/* =========================================================
+   ASSISTENKU ULTRA DESIGN SYSTEM — LEVEL MENTOK
+   by ChatGPT
+========================================================= */
+
+/* ========================
+   0. ROOT DESIGN TOKENS
+======================== */
+:root {
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-text: #1c1c1e;
+  --color-subtext: #6b6b6e;
+  --color-primary: #0a6bff;
+  --color-primary-dark: #0050d8;
+
+  --bg-light: #f5f7fb;
+  --bg-white: #ffffff;
+  --bg-glass: rgba(255,255,255,0.72);
+  --bg-glass-strong: rgba(255,255,255,0.86);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+
+  --shadow-1: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-2: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-3: 0 18px 40px rgba(0,0,0,0.12);
+
+  --transition-fast: 0.2s;
+  --transition-medium: 0.35s;
+}
+
+/* ========================
+   1. BASE RESET
+======================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #fafafa;
-  color: #333;
-  line-height: 1.6;
+  font-family: var(--font-main);
+  background: var(--bg-light);
+  color: var(--color-text);
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeIn 0.7s forwards ease-out;
 }
 
-/* Global section wrapper */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+img { user-select: none; pointer-events: none; }
+
 section {
-  padding: 60px 20px;
-  max-width: 960px;
+  padding: 90px 20px;
+  max-width: 1180px;
   margin: auto;
 }
 
-h1, h2, h3 {
-  color: #222;
-  margin-bottom: 15px;
-}
-
-p {
-  margin-bottom: 12px;
-  font-size: 16px;
-}
 
 
-
-/* ===========================
-   NAVIGATION BAR
-=========================== */
+/* =========================================================
+   2. NAVBAR — ULTRA
+========================================================= */
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 34px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 30px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 99;
+
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  box-shadow: var(--shadow-1);
+  z-index: 200;
+  transition: var(--transition-medium);
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
+}
+
+.logo {
+  height: 48px;
 }
 
 .navbar ul {
   display: flex;
-  gap: 25px;
+  gap: 34px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 16px;
+  transition: var(--transition-fast);
 }
 
+.navbar a:hover,
 .navbar a.active {
-  color: #0077ff;
+  color: var(--color-primary);
 }
 
-.logo {
-  height: 42px;
-}
-
-
-/* Mobile icon */
 #menuIcon {
   display: none;
-  font-size: 28px;
+  font-size: 34px;
   cursor: pointer;
 }
 
 
 
-/* ===========================
-   MOBILE MENU
-=========================== */
+/* =========================================================
+   3. MOBILE NAV ULTRA
+========================================================= */
 #mobileMenu {
   display: none;
   flex-direction: column;
-  gap: 15px;
-  background: #fff;
-  padding: 20px;
-  border-top: 1px solid #ccc;
-}
-
-#mobileMenu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  gap: 20px;
+  background: var(--bg-glass-strong);
+  padding: 25px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-2);
 }
 
 #mobileMenu.show {
   display: flex;
 }
 
+#mobileMenu a {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
 
 
-/* ===========================
-   HERO SECTION
-=========================== */
+
+/* =========================================================
+   4. HERO SECTION — ULTRA
+========================================================= */
 .hero {
-  padding: 150px 20px 80px;
   text-align: center;
-  background: #f1f7ff;
+  padding: 180px 20px 120px;
+  background: linear-gradient(135deg, #eaf2ff, #f9fbff);
 }
 
 .hero h1 {
-  font-size: 32px;
-  color: #005ec4;
-  margin-bottom: 20px;
+  font-size: 46px;
+  font-weight: 800;
+  color: #0a4bad;
 }
 
 .hero p {
-  max-width: 800px;
+  max-width: 760px;
   margin: auto;
-  color: #444;
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 19px;
+  opacity: 0.9;
+  margin-top: 12px;
 }
 
+
+
+/* BUTTON ULTRA */
 .btn-primary {
   display: inline-block;
-  background: #0077ff;
-  color: white;
-  padding: 12px 22px;
-  border-radius: 10px;
+  background: var(--color-primary);
+  padding: 15px 36px;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 35px;
   text-decoration: none;
-  margin-top: 25px;
-  font-size: 16px;
+  box-shadow: 0 8px 26px rgba(0,119,255,0.3);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .btn-primary:hover {
-  background: #0063d6;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,119,255,0.4);
 }
 
 
 
-/* ===========================
-   GRID & CARD
-=========================== */
+/* =========================================================
+   5. CARD ULTRA
+========================================================= */
 .card-grid {
   display: grid;
-  gap: 25px;
-  margin-top: 20px;
+  gap: 32px;
+  margin-top: 30px;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 720px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .card {
-  background: #fff;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  background: var(--bg-white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-medium);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-3);
 }
 
 .card h3 {
-  margin-bottom: 12px;
-  color: #005ec4;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  margin-bottom: 14px;
+  color: var(--color-primary);
 }
 
 
 
-/* ===========================
-   FLOATING WHATSAPP BUTTON
-=========================== */
+/* =========================================================
+   6. FOOTER ULTRA
+========================================================= */
+footer {
+  background: var(--bg-white);
+  text-align: center;
+  padding: 35px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  color: var(--color-subtext);
+}
+
+
+
+/* =========================================================
+   7. WHATSAPP FLOATING ULTRA
+========================================================= */
 .wa-floating img {
-  width: 60px;
+  width: 66px;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
 }
 
 .wa-floating {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 10000;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
 }
 
 
 
-/* ===========================
-   FOOTER
-=========================== */
-footer {
-  text-align: center;
-  padding: 25px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  margin-top: 30px;
-  color: #555;
-}
-
-
-
-/* ===========================
-   LOCK BUTTON
-=========================== */
+/* =========================================================
+   8. PASSWORD LOCK SYSTEM — ULTRA
+========================================================= */
 .lock-button {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  padding: 14px 22px;
+  bottom: 28px;
+  right: 28px;
+  padding: 16px 26px;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
-  transition: 0.25s;
+  font-weight: 600;
   z-index: 9999;
+  transition: var(--transition-fast);
 }
 
 .locked {
-  background: #d9534f;
-  color: white;
-  box-shadow: 0px 4px 12px rgba(217, 83, 79, 0.4);
-}
-
-.locked:hover {
-  background: #c9302c;
+  background: #f14646;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(241,70,70,0.35);
 }
 
 .unlocked {
-  background: #5cb85c;
-  color: white;
-  box-shadow: 0px 4px 12px rgba(92,184,92,0.4);
-}
-
-.unlocked:hover {
-  background: #449d44;
+  background: #4caf55;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(76,175,80,0.35);
 }
 
 
-
-/* ===========================
-   PASSWORD POPUP
-=========================== */
+/* POPUP ULTRA */
 #popupOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.45);
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 99999;
-  backdrop-filter: blur(3px);
 }
 
 .popup-box {
-  width: 90%;
-  max-width: 360px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
-}
-
-.popup-box h3 {
-  margin-bottom: 10px;
+  width: 92%;
+  max-width: 380px;
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(18px);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-3);
 }
 
 .popup-box input {
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 14px;
+  border-radius: var(--radius-md);
   border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.popup-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.popup-actions button {
-  padding: 10px 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-  font-size: 15px;
-}
-
-#cancelPopup {
-  background: #ccc;
-  color: #333;
-}
-
-#confirmPass {
-  background: #0077ff;
-  color: white;
+  margin-top: 18px;
 }
 
 
-
-/* ===========================
-   RESPONSIVE FIXES
-=========================== */
+/* =========================================================
+   9. RESPONSIVE TUNING ULTRA
+========================================================= */
 @media (max-width: 768px) {
+  #menuIcon { display: block; }
+  nav ul { display: none; }
 
-  /* Tampilkan hamburger */
-  #menuIcon {
-    display: block;
-  }
-
-  /* Sembunyikan menu desktop */
-  nav ul {
-    display: none;
-  }
-
-  /* Logo lebih kecil */
-  .logo {
-    height: 38px;
-  }
-
-  /* Hero text */
-  .hero h1 {
-    font-size: 26px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  section {
-    padding: 45px 18px;
-  }
+  .hero h1 { font-size: 32px; }
+  section { padding: 70px 18px; }
    }
