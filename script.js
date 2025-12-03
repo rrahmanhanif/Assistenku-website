@@ -1,104 +1,5 @@
 // =======================
-// SISTEM LOCK / UNLOCK
-// =======================
-
-document.addEventListener("DOMContentLoaded", () => {
-  const currentPage = window.location.pathname;
-
-  const lockBtn = document.createElement("button");
-  lockBtn.id = "lockButton";
-  lockBtn.style.position = "fixed";
-  lockBtn.style.bottom = "20px";
-  lockBtn.style.right = "20px";
-  lockBtn.style.padding = "12px 18px";
-  lockBtn.style.borderRadius = "10px";
-  lockBtn.style.border = "none";
-  lockBtn.style.color = "white";
-  lockBtn.style.fontSize = "16px";
-  lockBtn.style.cursor = "pointer";
-  lockBtn.style.zIndex = "9999";
-  document.body.appendChild(lockBtn);
-
-  // ==========================
-  //  UPDATE STATUS (UI)
-  // ==========================
-  function updateButton() {
-    const unlocked = localStorage.getItem("akses_unlock") === "true";
-
-    if (unlocked) {
-      lockBtn.textContent = "UNLOCKED ✓";
-      lockBtn.style.backgroundColor = "#22c55e"; // hijau
-    } else {
-      lockBtn.textContent = "LOCKED ✗";
-      lockBtn.style.backgroundColor = "#ef4444"; // merah
-    }
-  }
-
-  updateButton();
-
-  // ==========================
-  //  EVENT KLIK LOCK BUTTON
-  // ==========================
-  lockBtn.addEventListener("click", () => {
-    const unlocked = localStorage.getItem("akses_unlock") === "true";
-
-    // Jika masih terkunci → minta password
-    if (!unlocked) {
-      const input = prompt("Masukkan Password untuk Unlock:");
-
-      if (input === "Hanif@123") {
-        localStorage.setItem("akses_unlock", "true");
-        alert("Akses berhasil dibuka.");
-        updateButton();
-      } else {
-        alert("Password salah!");
-      }
-      return;
-    }
-
-    // Jika sedang unlock → kunci kembali
-    if (unlocked) {
-      const konfirmasi = confirm("Kunci kembali akses?");
-      if (konfirmasi) {
-        localStorage.removeItem("akses_unlock");
-        alert("Akses telah dikunci kembali.");
-        updateButton();
-      }
-    }
-  });
-
-  // ==========================
-  // PROTEKSI LINK GDRIVE
-  // ==========================
-
-  function protectLink(selector) {
-    const link = document.querySelector(selector);
-    if (!link) return;
-
-    link.addEventListener("click", (e) => {
-      const unlocked = localStorage.getItem("akses_unlock") === "true";
-
-      if (!unlocked) {
-        e.preventDefault();
-        alert("Akses dikunci. Silakan tekan tombol LOCK/UNLOCK dan masukkan password.");
-      }
-    });
-  }
-
-  // Proteksi link KARIR
-  if (currentPage.includes("karir")) {
-    protectLink(`a[href*="1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD"]`);
-  }
-
-  // Proteksi link LAYANAN
-  if (currentPage.includes("layanan")) {
-    protectLink(`a[href*="1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW"]`);
-  }
-});
-
-
-// =======================
-// MOBILE MENU
+// MOBILE NAVIGATION
 // =======================
 const menuIcon = document.getElementById("menuIcon");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -108,3 +9,136 @@ if (menuIcon && mobileMenu) {
     mobileMenu.classList.toggle("show");
   });
 }
+
+
+
+// =======================
+// LOCK / UNLOCK SYSTEM
+// =======================
+
+// Halaman yang membutuhkan kunci
+const lockedPages = ["layanan.html", "karir.html"];
+
+// Cek halaman saat ini
+const currentPage = window.location.pathname.split("/").pop();
+
+// Jika halaman termasuk yang dikunci → tampilkan tombol
+if (lockedPages.includes(currentPage)) {
+  insertLockButton();
+}
+
+function insertLockButton() {
+  const lockBtn = document.createElement("button");
+  lockBtn.id = "lockBtn";
+  lockBtn.className = "lock-button locked";
+  lockBtn.innerHTML = "🔒 Akses Terkunci";
+  document.body.appendChild(lockBtn);
+
+  lockBtn.addEventListener("click", () => {
+    showPasswordPopup();
+  });
+}
+
+
+
+// =======================
+// POPUP PASSWORD
+// =======================
+
+function showPasswordPopup() {
+  // Jika sudah ada popup → hapus dulu
+  const existing = document.getElementById("popupOverlay");
+  if (existing) existing.remove();
+
+  const overlay = document.createElement("div");
+  overlay.id = "popupOverlay";
+
+  overlay.innerHTML = `
+    <div class="popup-box">
+      <h3>Masukkan Password</h3>
+      <p>Halaman ini dilindungi. Masukkan password untuk membuka akses.</p>
+
+      <input type="password" id="userPassword" placeholder="Password">
+
+      <div class="popup-actions">
+        <button id="cancelPopup">Batal</button>
+        <button id="confirmPass">Buka</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById("cancelPopup").onclick = () => overlay.remove();
+
+  document.getElementById("confirmPass").onclick = () => {
+    validatePassword();
+  };
+}
+
+
+
+// =======================
+// HASH VERIFICATION
+// =======================
+
+// Hash password yang benar (contoh: "assistenku2025")
+const correctHash = "b3a793bcee664f645dd5bb58d60f89c8"; // MD5
+
+function md5(str) {
+  return CryptoJS.MD5(str).toString();
+}
+
+function validatePassword() {
+  const pass = document.getElementById("userPassword").value.trim();
+  const overlay = document.getElementById("popupOverlay");
+
+  if (md5(pass) === correctHash) {
+    unlockSuccess();
+    if (overlay) overlay.remove();
+  } else {
+    alert("Password salah.");
+  }
+}
+
+
+
+// =======================
+// UNLOCK SUCCESS
+// =======================
+
+function unlockSuccess() {
+  const btn = document.getElementById("lockBtn");
+
+  btn.classList.remove("locked");
+  btn.classList.add("unlocked");
+  btn.innerHTML = "🔓 Akses Dibuka";
+
+  // Anda bisa ganti link sesuai halaman
+  if (currentPage === "layanan.html") {
+    window.location.href = "https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view"; 
+  }
+
+  if (currentPage === "karir.html") {
+    window.location.href = "https://drive.google.com/file/d/1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD/view";
+  }
+}
+
+
+
+// =======================
+// ANTI INSPECT ELEMENT
+// =======================
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("keydown", e => {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && e.key === "I") ||
+    (e.ctrlKey && e.shiftKey && e.key === "C") ||
+    (e.ctrlKey && e.shiftKey && e.key === "J") ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    e.preventDefault();
+  }
+});
