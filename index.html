@@ -1,95 +1,80 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beranda | Assistenku</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistenku – Layanan Profesional Indonesia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-  <div class="container navbar">
+  <div class="navbar">
     <img src="logo.png" class="logo" alt="Logo Assistenku">
 
-    <nav class="main-nav">
-      <a href="index.html">Beranda</a>
-      <a href="profil.html">Profil</a>
-      <a href="layanan.html">Layanan</a>
-      <a href="karir.html">Karir</a>
-      <a href="kontak.html">Kontak</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="layanan.html" id="navLayanan">Layanan</a></li>
+        <li><a href="karir.html" id="navKarir">Karir</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
     </nav>
 
-    <div class="menu-btn" id="menuBtn">
-      <img src="menu.png" alt="Menu">
-    </div>
+    <div id="menuIcon">☰</div>
+  </div>
+
+  <div id="mobileMenu">
+    <a href="index.html">Beranda</a>
+    <a href="profil.html">Profil</a>
+    <a href="layanan.html" id="navLayanan">Layanan</a>
+    <a href="karir.html" id="navKarir">Karir</a>
+    <a href="kontak.html">Kontak</a>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero">
-  <h1>Solusi Tenaga Kerja Profesional untuk Rumah & Bisnis Anda</h1>
-  <p>Assistenku menyediakan layanan asisten rumah tangga, baby sitter,
-  perawat lansia, sopir pribadi, kebersihan, serta layanan bantuan harian 
-  yang aman, terpercaya, dan profesional.</p>
-</section>
-
-<!-- Sambutan -->
-<section class="section">
-  <div class="container">
-    <h2>Sambutan Founder</h2>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Solusi Asisten Profesional <br> Untuk Keluarga & Bisnis Anda</h1>
     <p>
-      Assistenku hadir sebagai solusi modern bagi keluarga dan bisnis 
-      yang membutuhkan tenaga kerja harian maupun kontrak secara cepat 
-      dan profesional. Kami memulai perjalanan ini untuk membantu banyak 
-      orang mendapatkan layanan yang aman, tepercaya, dan terjangkau.
+      Assistenku hadir sebagai penyedia layanan asistensi terbaik di Indonesia.
+      Mulai dari asisten pribadi, pengasuhan bayi dan lansia, ART profesional,
+      hingga driver dan petugas kebersihan. Semua terlatih, tersertifikasi,
+      dan siap membantu Anda kapan pun dibutuhkan.
     </p>
-    <p>
-      Dengan pengalaman lebih dari 5 tahun dalam pengelolaan SDM, 
-      Assistenku berkomitmen untuk menjaga kepercayaan pelanggan 
-      melalui pelatihan, verifikasi, dan standar kualitas yang tinggi.
-    </p>
+    <a class="btn-primary" href="layanan.html">Lihat Layanan</a>
   </div>
-</section>
 
-<!-- Sejarah -->
-<section class="section">
-  <div class="container">
-    <h2>Sejarah Berdirinya Assistenku</h2>
-    <p>
-      Assistenku didirikan pada tahun 2020 dengan visi membantu masyarakat 
-      menemukan tenaga kerja rumah tangga dan profesional yang dapat diandalkan. 
-      Berawal dari layanan kecil, kini Assistenku berkembang menjadi platform 
-      layanan asisten pribadi yang membantu ratusan keluarga dan pelaku bisnis.
-    </p>
-  </div>
-</section>
+  <img src="hero.jpg" alt="Ilustrasi Asisten Profesional">
+</div>
 
-<!-- NIB -->
-<section class="section">
-  <div class="container">
-    <h2>Legalitas & Perizinan Usaha</h2>
-    <p>Berikut adalah dokumen legalitas usaha Assistenku:</p>
+<section>
+  <h2>Layanan Unggulan</h2>
 
-    <div class="cards">
-      <div class="card">
-        <h3>NIB Perusahaan</h3>
-        <img src="NIB1.png" alt="NIB 1" style="width:100%; border-radius:10px;">
-      </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Asisten Rumah Tangga</h3>
+      <p>Tenaga ART profesional, berpengalaman, dan memiliki etika kerja terbaik.</p>
+    </div>
 
-      <div class="card">
-        <h3>Dokumen Legalisasi</h3>
-        <img src="NIB2.png" alt="NIB 2" style="width:100%; border-radius:10px;">
-      </div>
+    <div class="card">
+      <h3>Pengasuh Bayi & Lansia</h3>
+      <p>Perawat terlatih untuk bayi baru lahir hingga lansia dengan kebutuhan khusus.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sopir & Kebersihan</h3>
+      <p>Driver pribadi, tukang kebun, dan petugas kebersihan yang siap membantu operasional.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Assistenku. Semua Hak Dilindungi.</p>
+  © 2025 Assistenku – PT Assistenku Indonesia
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
