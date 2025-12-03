@@ -1,77 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil | Assistenku</title>
   <link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assistenku — Profil</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="profil">
-  <header class="site-header floating">
-    <div class="container header-inner">
-      <div class="brand">
-        <img src="logo.png" alt="Assistenku Logo" class="logo-img" />
-        <div class="brand-text">
-          <div class="logo-text">ASSISTENKU</div>
-          <div class="tagline">Layanan Asisten Profesional</div>
-        </div>
-      </div>
+<body>
 
-      <div class="controls">
-        <button class="dark-toggle">🌙</button>
-        <button id="menuIcon" class="menu-icon">☰</button>
-      </div>
+<header>
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Logo Assistenku">
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html" class="active">Profil</a></li>
+        <li><a href="layanan.html" id="navLayanan">Layanan</a></li>
+        <li><a href="karir.html" id="navKarir">Karir</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <div id="menuIcon">☰</div>
+  </div>
+
+  <div id="mobileMenu">
+    <a href="index.html">Beranda</a>
+    <a href="profil.html">Profil</a>
+    <a href="layanan.html" id="navLayanan">Layanan</a>
+    <a href="karir.html" id="navKarir">Karir</a>
+    <a href="kontak.html">Kontak</a>
+  </div>
+</header>
+
+<section style="padding-top:130px;">
+  <h2>Profil Perusahaan</h2>
+  <p>
+    Assistenku adalah penyedia layanan asistensi profesional yang berdiri untuk membantu keluarga
+    dan perusahaan dalam memenuhi kebutuhan sumber daya manusia harian. Kami fokus pada kualitas,
+    keamanan, dan kenyamanan—menghadirkan tenaga kerja terlatih yang siap memberikan pelayanan terbaik.
+  </p>
+</section>
+
+<section>
+  <h2>Sejarah Singkat</h2>
+  <p>
+    Assistenku berawal dari kebutuhan masyarakat modern yang semakin kompleks. Meningkatnya kesibukan
+    kerja membuat keluarga dan bisnis membutuhkan tenaga profesional yang dapat dipercaya.  
+    Pada tahun 2023, Assistenku didirikan oleh individu dengan pengalaman operasional, HR, dan layanan publik.  
+    Sejak itu, kami menghadirkan layanan ART, babysitter, driver, kebersihan, dan asistensi bisnis skala kecil hingga besar.
+  </p>
+</section>
+
+<section>
+  <h2>Founder & Manajemen</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <img src="founder1.png" style="width:100%; border-radius:12px;" alt="">
+      <h3 style="margin-top:15px;">Abdurrahman Hanif</h3>
+      <p>Pendiri & Direktur Operasional</p>
+      <p>
+        Memiliki pengalaman bertahun-tahun di bidang asistensi, layanan publik,
+        dan manajemen operasional. Berfokus membangun ekosistem layanan profesional
+        yang mudah diakses dan aman untuk seluruh klien.
+      </p>
     </div>
 
-    <nav id="mainNav" class="main-nav">
-      <a href="index.html">Beranda</a>
-      <a href="profil.html" class="active">Profil</a>
-      <a href="layanan.html">Layanan</a>
-      <a href="karir.html">Karir</a>
-      <a href="kontak.html">Kontak</a>
-    </nav>
-  </header>
+    <div class="card">
+      <img src="founder2.png" style="width:100%; border-radius:12px;" alt="">
+      <h3 style="margin-top:15px;">Nama Founder Lain</h3>
+      <p>Co-Founder & HR Manager</p>
+      <p>
+        Ahli dalam perekrutan dan pelatihan tenaga kerja rumah tangga, pengasuh,
+        dan asistensi pribadi. Mengembangkan standar rekrutmen dan kualitas layanan
+        tingkat tinggi.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <main class="container">
-    <section class="section page-header">
-      <h1>Tentang Assistenku</h1>
-      <p class="lead">Profil perusahaan, sejarah, founder, dan dokumen legal.</p>
-    </section>
+<section>
+  <h2>Legalitas Perusahaan</h2>
 
-    <section class="section content">
-      <h2>Sejarah Perusahaan</h2>
-      <p>Assistenku dimulai sebagai layanan komunal yang menyediakan tenaga terlatih untuk kebutuhan rumah tangga.
-         Dengan fokus pada pelatihan soft-skill dan SOP pelayanan, kami berkembang menjadi platform yang melayani rumah tangga
-         dan institusi.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>NIB</h3>
+      <p>Nomor Induk Berusaha resmi sebagai perusahaan penyedia jasa tenaga kerja.</p>
+      <img src="nib1.png" style="width:100%;margin-top:12px;border-radius:12px;">
+    </div>
 
-      <h2>Founder & Team</h2>
-      <div class="founder-detail">
-        <img src="nib1.png" alt="Founder" class="founder-img" />
-        <div>
-          <h3>Nama Founder</h3>
-          <p>Berpengalaman dalam manajemen layanan & HR. Fokus pada pengembangan SDM dan layanan berkualitas.</p>
-          <p><strong>Kontak:</strong> founder@assistenku.com</p>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Legalitas Tambahan</h3>
+      <p>Sertifikat, dokumen izin, dan standar operasional terdaftar.</p>
+      <img src="nib2.png" style="width:100%;margin-top:12px;border-radius:12px;">
+    </div>
+  </div>
+</section>
 
-      <h2>Legal & NIB</h2>
-      <p>Dokumen legal tersedia: <em>nib1.png</em> dan <em>nib2.png</em>. Dokumen digital dan fisik tersimpan aman dan dapat ditunjukkan saat diperlukan.</p>
+<footer>
+  © 2025 Assistenku
+</footer>
 
-      <h2>Nilai & Komitmen</h2>
-      <ol>
-        <li>Etika kerja tinggi</li>
-        <li>Keamanan & privasi klien</li>
-        <li>Penjaminan kualitas layanan</li>
-      </ol>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Assistenku</p></div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
