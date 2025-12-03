@@ -1,5 +1,5 @@
 /* =========================================================
-   ASSISTENKU — SCRIPT FINAL
+   ASSISTENKU — SCRIPT FINAL SESUAI PERMINTAAN
 ========================================================= */
 
 /* =========================================================
@@ -13,7 +13,6 @@ if (menuIcon && mobileMenu) {
     mobileMenu.classList.toggle("show");
   });
 
-  // Tutup menu ketika klik link
   mobileMenu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("show");
@@ -47,25 +46,27 @@ window.addEventListener("scroll", () => {
    3. LOCK SYSTEM — HALAMAN TERKUNCI
 ========================================================= */
 
-// halaman yg dikunci
-const lockedPages = ["layanan.html", "karir.html"];
+// Menentukan halaman berdasarkan path
+const path = window.location.pathname;
 
-// nama file halaman
-const currentPage = window.location.pathname.split("/").pop();
+// Layanan = /layanan
+// Karir   = /karir
+let lockButtonId = null;
 
-if (lockedPages.includes(currentPage)) {
-  attachLockButton();
-}
+if (path === "/layanan") lockButtonId = "lockBtn";
+if (path === "/karir") lockButtonId = "lockKarirBtn";
 
-function attachLockButton() {
-  const btn = document.getElementById("lockBtn");
+if (lockButtonId) initLock(lockButtonId);
+
+function initLock(id) {
+  const btn = document.getElementById(id);
   if (!btn) return;
 
   btn.classList.add("locked");
   btn.innerHTML = "🔒 Akses Terkunci";
 
   btn.addEventListener("click", () => {
-    showPasswordPopup();
+    showPasswordPopup(id);
   });
 }
 
@@ -74,7 +75,7 @@ function attachLockButton() {
 /* =========================================================
    4. POPUP PASSWORD
 ========================================================= */
-function showPasswordPopup() {
+function showPasswordPopup(buttonId) {
   const old = document.getElementById("popupOverlay");
   if (old) old.remove();
 
@@ -98,7 +99,7 @@ function showPasswordPopup() {
   document.body.appendChild(overlay);
 
   document.getElementById("cancelPopup").onclick = () => overlay.remove();
-  document.getElementById("confirmPass").onclick = validatePassword;
+  document.getElementById("confirmPass").onclick = () => validatePassword(buttonId);
 }
 
 
@@ -115,7 +116,7 @@ async function md5(str) {
     .join("");
 }
 
-// Password = assistenku2025
+// Password: assistenku2025
 const correctHash = "b3a793bcee664f645dd5bb58d60f89c8";
 
 
@@ -123,12 +124,12 @@ const correctHash = "b3a793bcee664f645dd5bb58d60f89c8";
 /* =========================================================
    6. VALIDASI PASSWORD
 ========================================================= */
-async function validatePassword() {
+async function validatePassword(buttonId) {
   const input = document.getElementById("userPassword").value.trim();
   const hashed = await md5(input);
 
   if (hashed === correctHash) {
-    unlockAccess();
+    unlockAccess(buttonId);
     document.getElementById("popupOverlay").remove();
   } else {
     alert("Password salah.");
@@ -140,21 +141,21 @@ async function validatePassword() {
 /* =========================================================
    7. AKSI SETELAH PASSWORD BENAR
 ========================================================= */
-function unlockAccess() {
-  const btn = document.getElementById("lockBtn");
+function unlockAccess(buttonId) {
+  const btn = document.getElementById(buttonId);
   if (!btn) return;
 
   btn.classList.remove("locked");
   btn.classList.add("unlocked");
   btn.innerHTML = "🔓 Akses Dibuka";
 
-  // redirect sesuai halaman
-  if (currentPage === "layanan.html") {
+  // redirect halaman sesuai tombol
+  if (buttonId === "lockBtn") {
     window.location.href =
       "https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view?usp=drivesdk";
   }
 
-  if (currentPage === "karir.html") {
+  if (buttonId === "lockKarirBtn") {
     window.location.href =
       "https://drive.google.com/file/d/1UKaP7oSB11vBh2wI1u0qBCkwVF-YHEeD/view?usp=drivesdk";
   }
@@ -163,10 +164,9 @@ function unlockAccess() {
 
 
 /* =========================================================
-   8. ANTI INSPECT — SAFE MODE
+   8. ANTI INSPECT
 ========================================================= */
 document.addEventListener("contextmenu", e => e.preventDefault());
-
 document.addEventListener("keydown", e => {
   if (
     e.key === "F12" ||
