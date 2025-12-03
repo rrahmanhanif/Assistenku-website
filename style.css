@@ -1,397 +1,254 @@
-/* =========================================================
-   ASSISTENKU ULTRA DESIGN SYSTEM — FINAL UPGRADE
-   (Rata kiri-kanan, tombol jelas, navbar tegas)
-========================================================= */
-
-/* ========================
-   0. ROOT TOKENS
-======================== */
-:root {
-  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  --color-text: #1a1a1c;
-  --color-subtext: #6c6c70;
-  --color-primary: #0a6bff;
-  --color-primary-dark: #0050d8;
-
-  --bg-light: #f3f6fb;
-  --bg-white: #ffffff;
-  --bg-glass: rgba(255,255,255,0.72);
-
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-
-  --shadow-sm: 0 3px 10px rgba(0,0,0,0.06);
-  --shadow-md: 0 10px 24px rgba(0,0,0,0.09);
-  --shadow-lg: 0 18px 40px rgba(0,0,0,0.14);
-
-  --transition-fast: 0.2s;
-  --transition-mid: 0.35s;
-}
-
-/* ========================
-   1. BASE RESET
-======================== */
+/* =========================================
+   GLOBAL RESET
+========================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 body {
-  font-family: var(--font-main);
-  background: var(--bg-light);
-  color: var(--color-text);
+  background: #f7f9fc;
+  color: #222;
   line-height: 1.7;
-
-  text-align: justify;              /* ⭐ RATA KANAN-KIRI */
-  text-justify: inter-word;
-
-  opacity: 0;
-  animation: fadeInPage 0.7s forwards ease-out;
 }
 
-@keyframes fadeInPage {
-  to { opacity: 1; }
-}
-
-img {
-  user-select: none;
-  max-width: 100%;
-}
-
-section {
-  padding: 100px 22px;
-  max-width: 1180px;
-  margin: auto;
-}
-
-
-
-/* =========================================================
-   2. NAVBAR — ULTRA GLASS PREMIUM
-========================================================= */
-.navbar {
+/* =========================================
+   NAVBAR
+========================================= */
+header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 20px 40px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background: var(--bg-glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid rgba(0,0,0,0.12);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-
-  z-index: 200;
-  transition: var(--transition-mid);
+  background: #ffffffee;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 999;
 }
 
-.navbar.hide {
-  transform: translateY(-100%);
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-  height: 58px;
+  width: 110px;
+  object-fit: contain;
 }
 
-.navbar ul {
+nav ul {
   display: flex;
-  gap: 38px;
+  gap: 30px;
 }
 
-.navbar a {
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
   text-decoration: none;
-  color: var(--color-text);
-  font-weight: 700;
-  font-size: 17px;
-  transition: var(--transition-fast);
+  color: #1a1a1a;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
-.navbar a:hover,
-.navbar a.active {
-  color: var(--color-primary);
+nav ul li a:hover,
+nav ul li a.active {
+  color: #0d6efd;
 }
 
+/* HAMBURGER */
 #menuIcon {
   display: none;
-  font-size: 38px;
   cursor: pointer;
+  font-size: 30px;
 }
 
-
-
-/* =========================================================
-   3. MOBILE MENU — ULTRA PREMIUM
-========================================================= */
 #mobileMenu {
   display: none;
   flex-direction: column;
-  gap: 22px;
-
-  padding: 26px;
-  background: var(--bg-glass);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  border-top: 1px solid rgba(0,0,0,0.12);
-  box-shadow: var(--shadow-md);
-}
-
-#mobileMenu.show {
-  display: flex;
+  background: white;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 #mobileMenu a {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-text);
+  text-decoration: none;
+  color: #333;
+  padding: 10px 0;
+  font-weight: 500;
 }
 
-
-
-/* =========================================================
-   4. HERO SECTION — ELEGANT
-========================================================= */
+/* =========================================
+   HERO SECTION (INDEX)
+========================================= */
 .hero {
+  max-width: 900px;
+  margin: 140px auto 40px auto;
+  padding: 20px;
   text-align: center;
-  padding: 180px 20px 140px;
-  background: linear-gradient(145deg, #e9f1ff, #f9fbff);
 }
 
 .hero h1 {
-  font-size: 46px;
-  font-weight: 900;
-  color: #0a4bad;
-  margin-bottom: 14px;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #0d6efd;
 }
 
 .hero p {
-  max-width: 760px;
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+section {
+  max-width: 1100px;
   margin: auto;
-  font-size: 20px;
-  opacity: 0.92;
+  padding: 35px 20px;
 }
 
-
-
-/* =========================================================
-   5. BUTTONS — STRONG PREMIUM
-========================================================= */
-.btn-primary {
-  display: inline-block;
-  padding: 17px 40px;
-
-  background: var(--color-primary);
-  border-radius: var(--radius-md);
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-
-  box-shadow: 0 12px 28px rgba(0,119,255,0.32);
-  transition: var(--transition-mid);
-  margin-top: 32px;
-
-  text-align: center;
+section h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: #0d6efd;
 }
 
-.btn-primary:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 42px rgba(0,119,255,0.42);
+section p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
 }
 
+/* =========================================
+   CARD GRID
+========================================= */
 
-
-/* =========================================================
-   6. CARD SECTION — ULTRA PREMIUM
-========================================================= */
 .card-grid {
   display: grid;
-  gap: 36px;
-  margin-top: 36px;
-}
-
-@media (min-width: 720px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  gap: 20px;
+  padding-top: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
-  background: var(--bg-white);
-  padding: 34px;
-  border-radius: var(--radius-lg);
-
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(0,0,0,0.06);
-  transition: var(--transition-mid);
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0px 4px 12px #00000011;
+  transition: 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 18px #00000022;
 }
 
 .card h3 {
-  color: var(--color-primary);
-  margin-bottom: 14px;
-  font-weight: 800;
-  font-size: 22px;
-}
-
-
-
-/* =========================================================
-   7. FOOTER — PREMIUM CLEAN
-========================================================= */
-footer {
-  background: var(--bg-white);
-  text-align: center;
-  padding: 40px;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  color: var(--color-subtext);
-  margin-top: 70px;
-}
-
-
-
-/* =========================================================
-   8. LOCK BUTTON (STATIC FOOTER MODE)
-========================================================= */
-.lock-button {
-  margin-top: 22px;
-  padding: 16px 28px;
-
-  font-size: 17px;
-  font-weight: 700;
-
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: var(--transition-fast);
-
-  display: inline-block;
-}
-
-.locked {
-  background: #e74c3c;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(231,76,60,0.32);
-}
-
-.unlocked {
-  background: #2ecc71;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(46,204,113,0.32);
-}
-
-
-
-/* =========================================================
-   9. PASSWORD POPUP — LUXE
-========================================================= */
-#popupOverlay {
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(10px);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 99999;
-}
-
-.popup-box {
-  width: 92%;
-  max-width: 400px;
-
-  padding: 32px;
-  background: var(--bg-white);
-
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-}
-
-.popup-box input {
-  width: 100%;
-  padding: 15px;
-  border-radius: var(--radius-md);
-  border: 1px solid #ccc;
-  margin-top: 20px;
-}
-
-.popup-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.popup-actions button {
-  padding: 12px 18px;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-#cancelPopup {
-  background: #ccc;
+  font-size: 20px;
+  margin-bottom: 8px;
   color: #333;
 }
 
-#confirmPass {
-  background: var(--color-primary);
+.card p {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* List inside card */
+.card ul {
+  margin-left: 18px;
+  padding-bottom: 10px;
+}
+
+.card ul li {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Founder images, legal images */
+.founder-img,
+.legal-img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn-primary {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #0d6efd;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #0b5ed7;
+}
+
+/* LOCK BUTTON */
+.lock-button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.locked {
+  background: #d9534f;
   color: white;
 }
 
+.unlocked {
+  background: #28a745;
+  color: white;
+}
 
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+  margin-top: 40px;
+  background: #f0f3f8;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
 
-/* =========================================================
-   10. RESPONSIVE TUNING (REDMI NOTE 11 PERFECT)
-========================================================= */
-@media (max-width: 768px) {
-  #menuIcon {
-    display: block;
-  }
+/* =========================================
+   RESPONSIVE
+========================================= */
 
+@media (max-width: 860px) {
   nav ul {
     display: none;
   }
 
-  .hero h1 {
-    font-size: 34px;
+  #menuIcon {
+    display: block;
   }
 
-  .hero p {
-    font-size: 18px;
-  }
-
-  section {
-    padding: 70px 20px;
-  }
-
-  .card {
-    padding: 28px;
-  }
-
-  .navbar {
-    padding: 16px 24px;
-  }
-
-  body {
-    line-height: 1.8;
+  #mobileMenu.active {
+    display: flex;
   }
 }
