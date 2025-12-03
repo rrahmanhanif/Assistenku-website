@@ -1,21 +1,29 @@
 {
   "version": 2,
-  "cleanUrls": true,
 
   "builds": [
-    { "src": "**/*.html", "use": "@vercel/static" },
-    { "src": "**/*.css", "use": "@vercel/static" },
-    { "src": "**/*.js", "use": "@vercel/static" },
-    { "src": "**/*.{png,jpg,jpeg,gif,svg,webp}", "use": "@vercel/static" }
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "styles.css", "use": "@vercel/static" },
+    { "src": "script.js", "use": "@vercel/static" },
+    { "src": "*.{png,jpg,jpeg,svg,webp}", "use": "@vercel/static" }
   ],
 
-  "routes": [
-    { "src": "/profil", "dest": "/profil.html" },
-    { "src": "/layanan", "dest": "/layanan.html" },
-    { "src": "/karir", "dest": "/karir.html" },
-    { "src": "/kontak", "dest": "/kontak.html" },
-    { "src": "/index", "dest": "/index.html" },
+  "cleanUrls": true,
 
-    { "src": "/(.*)", "dest": "/$1" }
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/index",
+      "permanent": false
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" }
+      ]
+    }
   ]
 }
