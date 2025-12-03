@@ -1,32 +1,15 @@
 {
   "version": 2,
-
-  "builds": [
-    { "src": "**/*", "use": "@vercel/static" }
-  ],
-
-  "routes": [
-
-    { "src": "^/$", "dest": "/index.html" },
-
-    { "src": "^/profil$", "dest": "/profil.html" },
-    { "src": "^/layanan$", "dest": "/layanan.html" },
-    { "src": "^/karir$", "dest": "/karir.html" },
-    { "src": "^/kontak$", "dest": "/kontak.html" },
-
-    { "src": "^/profil/$", "dest": "/profil.html" },
-    { "src": "^/layanan/$", "dest": "/layanan.html" },
-    { "src": "^/karir/$", "dest": "/karir.html" },
-    { "src": "^/kontak/$", "dest": "/kontak.html" },
-
-    { "src": "^/404$", "dest": "/404.html" },
-
+  "cleanUrls": true,
+  "headers": [
     {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate"
+        }
+      ]
     }
   ]
 }
