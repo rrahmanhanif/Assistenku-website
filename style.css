@@ -13,8 +13,6 @@ body {
   color: #333;
 }
 
-
-
 /* ===========================
    NAVIGATION
 =========================== */
@@ -53,8 +51,6 @@ body {
   cursor: pointer;
 }
 
-
-
 /* ===========================
    MOBILE MENU
 =========================== */
@@ -71,8 +67,6 @@ body {
 #mobileMenu.show {
   display: flex;
 }
-
-
 
 /* ===========================
    LOCK BUTTON
@@ -110,8 +104,6 @@ body {
 .unlocked:hover {
   background: #449d44;
 }
-
-
 
 /* ===========================
    POPUP OVERLAY
@@ -185,8 +177,6 @@ body {
   color: white;
 }
 
-
-
 /* ===========================
    RESPONSIVE
 =========================== */
@@ -199,4 +189,4 @@ body {
   nav ul {
     display: none;
   }
-   }
+     }
