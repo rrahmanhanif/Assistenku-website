@@ -9,16 +9,19 @@
   ],
 
   "routes": [
+    // Redirect / → /index (alias beranda)
     {
       "src": "/",
       "dest": "/index.html"
     },
 
+    // Hilangkan .html dari URL
     {
       "src": "/([^/]+)$",
       "dest": "/$1.html"
     },
 
+    // Redirect semua .html → tanpa .html
     {
       "src": "/(.*)\\.html$",
       "status": 301,
@@ -27,10 +30,18 @@
       }
     },
 
+    // 404 custom
+    {
+      "src": "/404",
+      "dest": "/404.html"
+    },
+
+    // HTTPS + cache optimal
     {
       "src": "/(.*)",
       "headers": {
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Cache-Control": "public, max-age=31536000, immutable"
       },
       "dest": "/$1"
     }
