@@ -1,11 +1,6 @@
-/* =========================================================
-   ASSISTENKU ULTRA SCRIPT — By ChatGPT
-========================================================= */
-
-
-/* =========================================================
-   1. MOBILE MENU — ULTRA
-========================================================= */
+// ======================================
+// MOBILE NAVIGATION
+// ======================================
 const menuIcon = document.getElementById("menuIcon");
 const mobileMenu = document.getElementById("mobileMenu");
 
@@ -13,70 +8,40 @@ if (menuIcon && mobileMenu) {
   menuIcon.addEventListener("click", () => {
     mobileMenu.classList.toggle("show");
   });
-
-  // Tutup menu ketika klik link
-  mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("show");
-    });
-  });
 }
 
 
 
-/* =========================================================
-   2. NAVBAR AUTO-HIDE (PREMIUM)
-========================================================= */
-let lastScroll = 0;
-const navbar = document.querySelector(".navbar");
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll && currentScroll > 80) {
-    navbar.classList.add("hide"); // scroll turun
-  } else {
-    navbar.classList.remove("hide"); // scroll naik
-  }
-
-  lastScroll = currentScroll;
-});
-
-
-
-/* =========================================================
-   3. HALAMAN TERKUNCI (LOCK SYSTEM)
-========================================================= */
-
-// Halaman yang butuh password
+// ======================================
+// LOCK / UNLOCK SYSTEM (KHUSUS LAYANAN & KARIR)
+// ======================================
 const lockedPages = ["layanan.html", "karir.html"];
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-// Ambil nama file halaman
-const currentPage = window.location.pathname.split("/").pop();
-
-// Kalau halaman terkunci → tampilkan tombol lock
 if (lockedPages.includes(currentPage)) {
-  createLockButton();
+  addFooterLockButton();
 }
 
-function createLockButton() {
+function addFooterLockButton() {
+  const footer = document.querySelector("footer");
+
+  if (!footer) return;
+
   const btn = document.createElement("button");
   btn.id = "lockBtn";
-  btn.className = "lock-button locked";
-  btn.innerHTML = "🔒 Akses Terkunci";
+  btn.className = "lock-footer locked";
+  btn.innerHTML = "🔒 Akses File Dikunci";
 
-  document.body.appendChild(btn);
+  footer.appendChild(btn);
 
-  btn.addEventListener("click", () => {
-    showPasswordPopup();
-  });
+  btn.addEventListener("click", () => showPasswordPopup());
 }
 
 
 
-/* =========================================================
-   4. POPUP PASSWORD — ULTRA GLASS
-========================================================= */
+// ======================================
+// POPUP PASSWORD
+// ======================================
 function showPasswordPopup() {
   const old = document.getElementById("popupOverlay");
   if (old) old.remove();
@@ -87,71 +52,71 @@ function showPasswordPopup() {
   overlay.innerHTML = `
     <div class="popup-box">
       <h3>Masukkan Password</h3>
-      <p>Halaman ini dilindungi. Masukkan password untuk membuka dokumen.</p>
+      <p>Dokumen ini dilindungi. Masukkan password untuk membuka akses.</p>
 
-      <input type="password" id="userPassword" placeholder="Password">
+      <input type="password" id="inputPass" placeholder="Password" />
 
       <div class="popup-actions">
-        <button id="cancelPopup">Batal</button>
-        <button id="confirmPass">Buka</button>
+        <button id="btnCancel">Batal</button>
+        <button id="btnOpen">Buka</button>
       </div>
     </div>
   `;
 
   document.body.appendChild(overlay);
 
-  document.getElementById("cancelPopup").onclick = () => overlay.remove();
-  document.getElementById("confirmPass").onclick = validatePassword;
+  document.getElementById("btnCancel").onclick = () => overlay.remove();
+  document.getElementById("btnOpen").onclick = validatePassword;
 }
 
 
 
-/* =========================================================
-   5. MD5 HASH (NATIVE)
-========================================================= */
+// ======================================
+// MD5 HASH (TANPA LIBRARY)
+// ======================================
 async function md5(str) {
   const buffer = new TextEncoder().encode(str);
   const digest = await crypto.subtle.digest("MD5", buffer);
-
   return Array.from(new Uint8Array(digest))
     .map(b => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
-// PASSWORD = "assistenku2025"
+// password: assistenku2025
 const correctHash = "b3a793bcee664f645dd5bb58d60f89c8";
 
 
 
-/* =========================================================
-   6. VALIDASI PASSWORD
-========================================================= */
+// ======================================
+// VALIDASI PASSWORD
+// ======================================
 async function validatePassword() {
-  const input = document.getElementById("userPassword").value.trim();
-  const hashed = await md5(input);
+  const value = document.getElementById("inputPass").value.trim();
+  const hashed = await md5(value);
 
-  if (hashed === correctHash) {
-    unlockAccess();
-    document.getElementById("popupOverlay").remove();
-  } else {
+  if (hashed !== correctHash) {
     alert("Password salah.");
+    return;
   }
+
+  document.getElementById("popupOverlay").remove();
+  unlockAccess();
 }
 
 
 
-/* =========================================================
-   7. AKSI SETELAH TERBUKA
-========================================================= */
+// ======================================
+// AKSI SETELAH PASSWORD VALID
+// ======================================
 function unlockAccess() {
   const btn = document.getElementById("lockBtn");
-  if (!btn) return;
+  if (btn) {
+    btn.classList.remove("locked");
+    btn.classList.add("unlocked");
+    btn.innerHTML = "🔓 Akses Dibuka";
+  }
 
-  btn.classList.remove("locked");
-  btn.classList.add("unlocked");
-  btn.innerHTML = "🔓 Akses Dibuka";
-
-  // Redirect halaman sesuai file
+  // Redirect sesuai halaman
   if (currentPage === "layanan.html") {
     window.location.href =
       "https://drive.google.com/file/d/1Hwzol_d_aAM0OGxPR_un04nPyTUrR5gW/view";
@@ -165,9 +130,9 @@ function unlockAccess() {
 
 
 
-/* =========================================================
-   8. ANTI INSPECT — SAFE MODE
-========================================================= */
+// ======================================
+// ANTI INSPECT (AMAN DI PONSEL)
+// ======================================
 document.addEventListener("contextmenu", e => e.preventDefault());
 
 document.addEventListener("keydown", e => {
