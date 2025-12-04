@@ -1,8 +1,0 @@
-{
-  "nav": {
-    "hamburgerSelector": ".hamburger",
-    "mobileNavSelector": ".mobile-nav",
-    "lockBtnSelector": ".lock-btn",
-    "unlockBtnSelector": ".unlock-btn"
-  }
-}
