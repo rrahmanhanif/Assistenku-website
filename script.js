@@ -1,55 +1,167 @@
-// ========================================================
-// SAFE QUERY SELECTOR
-// ========================================================
-function $(selector) {
-  return document.querySelector(selector);
-}
+/* script.js -- Assistenku common scripts
+   - mobile nav
+   - dark mode toggle
+   - lock/unlock lintas-halaman (layanan <-> karir)
+   - simple contact form behavior
+*/
 
-// ========================================================
-// MOBILE NAVIGATION (HAMBURGER OPEN/CLOSE)
-// ========================================================
-const hamburger = $(".hamburger");
-const mobileNav = $(".mobile-nav");
+(() => {
+  // mobile nav toggle
+  const menu = document.getElementById('menuIcon');
+  const nav = document.getElementById('mainNav');
+  if (menu && nav) {
+    menu.addEventListener('click', () => nav.classList.toggle('open'));
+  }
 
-if (hamburger && mobileNav) {
-  hamburger.addEventListener("click", () => {
-    mobileNav.classList.toggle("show");
-    hamburger.classList.toggle("active");
-  });
-}
-
-// ========================================================
-// ISLAND BUTTON LINKS
-// ========================================================
-const islandButtons = document.querySelectorAll(".island-btn");
-
-if (islandButtons) {
-  islandButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const link = btn.getAttribute("data-link");
-      if (link) window.location.href = link;
+  // dark mode toggle
+  document.querySelectorAll('.dark-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('assistenku_dark','1');
+      } else {
+        localStorage.removeItem('assistenku_dark');
+      }
     });
   });
-}
+  if (localStorage.getItem('assistenku_dark')) {
+    document.documentElement.classList.add('dark');
+  }
 
-// ========================================================
-// LOCK / UNLOCK SYSTEM
-// ========================================================
-const lockBtn = $("#lock-btn");
-const unlockBtn = $("#unlock-btn");
-const lockScreen = $(".locked");
+  // ---------- LOCK / UNLOCK SYSTEM ----------
+  // One open page at a time. key holds page id string ('layanan' or 'karir') or null
+  const LOCK_KEY = 'assistenku_doc_open_page';
 
-function lockSite() {
-  if (lockScreen) lockScreen.classList.add("active");
-}
+  function setOpenPage(page) {
+    if (!page) {
+      localStorage.removeItem(LOCK_KEY);
+    } else {
+      localStorage.setItem(LOCK_KEY, page);
+    }
+    // notify other tabs
+    window.dispatchEvent(new Event('storage'));
+  }
+  function getOpenPage(){ return localStorage.getItem(LOCK_KEY); }
 
-function unlockSite() {
-  if (lockScreen) lockScreen.classList.remove("active");
-}
+  const page = document.body.getAttribute('data-page') || '';
 
-if (lockBtn) lockBtn.addEventListener("click", lockSite);
-if (unlockBtn) unlockBtn.addEventListener("click", unlockSite);
+  const btnBiaya = document.getElementById('btn-biaya');
+  const linkBiaya = document.getElementById('doc-biaya');
 
-// ========================================================
-// END OF SCRIPT
-// ========================================================
+  const btnGaji = document.getElementById('btn-gaji');
+  const linkGaji = document.getElementById('doc-gaji');
+
+  function applyLocks() {
+    const open = getOpenPage();
+
+    // Layanan doc UI
+    if (btnBiaya && linkBiaya) {
+      if (open && open !== 'layanan') {
+        btnBiaya.classList.remove('unlocked');
+        linkBiaya.classList.add('locked');
+        btnBiaya.textContent = '🔒 Kunci -- Biaya Layanan';
+      } else if (open === 'layanan') {
+        btnBiaya.classList.add('unlocked');
+        linkBiaya.classList.remove('locked');
+        btnBiaya.textContent = '🔓 Unlock -- Biaya Layanan';
+      } else {
+        btnBiaya.classList.remove('unlocked');
+        linkBiaya.classList.add('locked');
+        btnBiaya.textContent = '🔒 Kunci -- Biaya Layanan';
+      }
+    }
+
+    // Karir doc UI
+    if (btnGaji && linkGaji) {
+      if (open && open !== 'karir') {
+        btnGaji.classList.remove('unlocked');
+        linkGaji.classList.add('locked');
+        btnGaji.textContent = '🔒 Kunci -- Sistem Gaji';
+      } else if (open === 'karir') {
+        btnGaji.classList.add('unlocked');
+        linkGaji.classList.remove('locked');
+        btnGaji.textContent = '🔓 Unlock -- Sistem Gaji';
+      } else {
+        btnGaji.classList.remove('unlocked');
+        linkGaji.classList.add('locked');
+        btnGaji.textContent = '🔒 Kunci -- Sistem Gaji';
+      }
+    }
+  }
+
+  // toggle handlers
+  if (btnBiaya) {
+    btnBiaya.addEventListener('click', () => {
+      const current = getOpenPage();
+      if (current === 'layanan') {
+        setOpenPage(null);
+      } else {
+        setOpenPage('layanan');
+      }
+      applyLocks();
+    });
+  }
+
+  if (btnGaji) {
+    btnGaji.addEventListener('click', () => {
+      const current = getOpenPage();
+      if (current === 'karir') {
+        setOpenPage(null);
+      } else {
+        setOpenPage('karir');
+      }
+      applyLocks();
+    });
+  }
+
+  // clicking link: only allow if this page is not locked by other page
+  if (linkBiaya) {
+    linkBiaya.addEventListener('click', (e) => {
+      const open = getOpenPage();
+      if (open && open !== 'layanan') {
+        e.preventDefault();
+        alert('Dokumen sedang dibuka pada halaman lain. Tunggu sampai tersedia.');
+        return;
+      }
+      // mark as opened by this page so other page locks
+      setOpenPage('layanan');
+      applyLocks();
+      // allow other tab open (link uses target=_blank)
+    });
+  }
+
+  if (linkGaji) {
+    linkGaji.addEventListener('click', (e) => {
+      const open = getOpenPage();
+      if (open && open !== 'karir') {
+        e.preventDefault();
+        alert('Dokumen sedang dibuka pada halaman lain. Tunggu sampai tersedia.');
+        return;
+      }
+      setOpenPage('karir');
+      applyLocks();
+    });
+  }
+
+  // listen across tabs
+  window.addEventListener('storage', applyLocks);
+  window.addEventListener('focus', applyLocks);
+
+  // init
+  applyLocks();
+
+  // simple contact form (demo)
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (sessionStorage.getItem('formSubmitted')) {
+        alert('Form sudah dikirim. Tunggu beberapa saat.');
+        return;
+      }
+      sessionStorage.setItem('formSubmitted','1');
+      alert('Terima kasih -- pesan Anda telah dikirim (demo).');
+      form.reset();
+    });
+  }
+})();
