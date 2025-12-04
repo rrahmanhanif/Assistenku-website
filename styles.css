@@ -1,299 +1,257 @@
-/* ============================================================
-   GLOBAL RESET
-============================================================ */
+/* =========================================
+GLOBAL RESET
+========================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 body {
-  background: #f8f9fb;
-  color: #1a1a1a;
-  line-height: 1.75;
+  background: #f7f9fc;
+  color: #222;
+  line-height: 1.7;
   text-align: justify;
-  padding-top: 110px; /* compensate header fixed */
 }
 
-
-/* ============================================================
-   TOP HEADER
-============================================================ */
+/* =========================================
+TOP HEADER
+========================================= */
 .top-header {
   width: 100%;
-  text-align: center;
-  background: #0066ff;
+  background: #0d6efd;
   color: white;
+  text-align: center;
   padding: 6px 0;
   font-size: 14px;
+  font-weight: 500;
+}
+
+/* =========================================
+NAVBAR
+========================================= */
+header {
+  width: 100%;
+  background: #ffffffee;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e0e0e0;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
 }
 
-
-/* ============================================================
-   NAVBAR
-============================================================ */
 .navbar {
-  width: 100%;
-  height: 70px;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-
-  position: fixed;
-  top: 30px;
-  left: 0;
-  z-index: 998;
 }
 
 .logo {
-  height: 48px;
+  width: 110px;
   object-fit: contain;
 }
 
-.nav-links {
+/* Desktop nav */
+nav ul {
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
-.nav-links a {
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
   text-decoration: none;
-  font-size: 15px;
   color: #1a1a1a;
   font-weight: 500;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: #0066ff;
+nav ul li a:hover,
+nav ul li a.active {
+  color: #0d6efd;
 }
 
+/* =========================================
+HAMBURGER (Mobile Only)
+========================================= */
+#menuIcon {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  user-select: none;
+}
 
-/* ============================================================
-   HAMBURGER + MOBILE MENU
-============================================================ */
-.hamburger {
-  width: 35px;
-  height: 25px;
+/* Mobile Menu */
+#mobileMenu {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 100%;
-  height: 4px;
-  background: #1a1a1a;
-  border-radius: 5px;
-}
-
-#mobileMenu {
-  position: fixed;
-  top: 100px;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
   background: white;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  width: 100%;
   padding: 20px;
-  transition: 0.35s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  z-index: 997;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 #mobileMenu a {
   text-decoration: none;
-  color: #1a1a1a;
-  font-size: 16px;
+  color: #333;
+  padding: 12px 0;
   font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-#mobileMenu a:hover {
-  color: #0066ff;
+#mobileMenu a:last-child {
+  border-bottom: none;
 }
 
-.mobile-open {
-  right: 0 !important;
-}
-
-
-/* ============================================================
-   PAGE SECTION
-============================================================ */
-.page-section {
-  padding: 40px 20px;
-  max-width: 900px;
+/* =========================================
+PAGE SECTION BASE
+========================================= */
+section {
+  max-width: 1100px;
   margin: auto;
+  padding: 35px 20px;
 }
 
-.page-section h1 {
-  font-size: 34px;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #0f172a;
-}
-
-.page-section p {
-  margin-bottom: 18px;
-  color: #2a2a2a;
-}
-
-
-/* ============================================================
-   HEADINGS
-============================================================ */
-h1, h2, h3 {
-  color: #0f172a;
-  font-weight: 700;
+h1 {
+  font-size: 32px;
+  color: #0d6efd;
+  margin-bottom: 15px;
 }
 
 h2 {
-  text-align: center;
-  font-size: 28px;
-  margin: 40px 0 20px;
-}
-
-h3 {
-  font-size: 20px;
+  font-size: 26px;
+  color: #0d6efd;
   margin-bottom: 10px;
 }
 
-
-/* ============================================================
-   CARD GRID
-============================================================ */
+/* =========================================
+CARD GRID
+========================================= */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
-  padding: 0 20px;
-  max-width: 1100px;
-  margin: auto;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding-top: 10px;
 }
 
 .card {
   background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-  border: 1px solid #e5e7eb;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0px 4px 12px #00000011;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 18px #00000022;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .card p {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  color: #444;
 }
 
 .card ul {
-  margin: 10px 0 15px 18px;
+  margin-left: 18px;
+  padding-bottom: 10px;
 }
 
 .card ul li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  color: #333;
 }
 
-
-/* ============================================================
-   BUTTONS
-============================================================ */
-.btn-primary,
-.btn-secondary {
-  display: inline-block;
-  padding: 10px 18px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  margin-top: 8px;
+/* Founder / Legal images */
+.founder-img,
+.legal-img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 10px 0;
+  object-fit: cover;
 }
 
+/* =========================================
+BUTTONS
+========================================= */
 .btn-primary {
-  background: #0066ff;
+  display: inline-block;
+  padding: 12px 20px;
+  background: #0d6efd;
   color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .btn-primary:hover {
-  background: #0052cc;
+  background: #0b5ed7;
 }
 
+/* Secondary Button */
 .btn-secondary {
-  background: #e5e7eb;
-  color: #1a1a1a;
+  display: inline-block;
+  padding: 10px 18px;
+  background: #6c757d;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
 .btn-secondary:hover {
-  background: #d4d4d8;
+  background: #5a6268;
 }
 
-
-/* ============================================================
-   APPLY BOX
-============================================================ */
 .apply-box {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
-
-/* ============================================================
-   FOOTER
-============================================================ */
+/* =========================================
+FOOTER
+========================================= */
 footer {
+  margin-top: 40px;
+  background: #f0f3f8;
   text-align: center;
-  margin-top: 60px;
-  padding: 25px 0;
-  background: #f1f5f9;
+  padding: 20px;
   font-size: 14px;
-  border-top: 1px solid #e5e7eb;
 }
 
-
-/* ============================================================
-   RESPONSIVE (MOBILE)
-============================================================ */
-@media (max-width: 850px) {
-
-  .nav-links {
+/* =========================================
+RESPONSIVE RULES
+========================================= */
+@media (max-width: 860px) {
+  nav ul {
     display: none;
   }
 
-  .hamburger {
+  #menuIcon {
+    display: block;
+  }
+
+  #mobileMenu.active {
     display: flex;
   }
 
-  body {
-    padding-top: 120px;
+  .apply-box {
+    flex-direction: column;
   }
-
-  .top-header {
-    font-size: 13px;
-  }
-
-  .navbar {
-    height: 66px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-  }
+}
