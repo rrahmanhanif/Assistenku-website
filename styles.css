@@ -16,44 +16,47 @@ body {
 }
 
 /* =========================================
-HEADER + TAGLINE
+TOP TAGLINE
+========================================= */
+.top-header {
+  width: 100%;
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================================
+NAVBAR
 ========================================= */
 header {
-  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background: #ffffffee;
+  width: 100%;
+  background: #ffffffdd;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #e0e0e0;
   z-index: 999;
 }
 
-.top-header {
-  width: 100%;
-  text-align: center;
-  background: #0057ff;
-  color: white;
-  padding: 6px 0;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .navbar {
   max-width: 1200px;
   margin: auto;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
 }
 
 .logo {
-  width: 110px;
+  width: 115px;
   object-fit: contain;
 }
 
-/* NAVIGATION */
+/* Desktop navigation */
 nav ul {
   display: flex;
   gap: 30px;
@@ -72,16 +75,18 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-  color: #0057ff;
+  color: #0d6efd;
 }
 
-/* HAMBURGER */
+/* HAMBURGER button */
 #menuIcon {
   display: none;
   cursor: pointer;
   font-size: 30px;
+  user-select: none;
 }
 
+/* Mobile menu */
 #mobileMenu {
   display: none;
   flex-direction: column;
@@ -96,10 +101,11 @@ nav ul li a.active {
   color: #333;
   padding: 10px 0;
   font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 /* =========================================
-PAGE SECTIONS
+HERO SECTION
 ========================================= */
 section {
   max-width: 1100px;
@@ -107,19 +113,21 @@ section {
   padding: 35px 20px;
 }
 
-section h1, section h2 {
-  color: #0057ff;
-  text-align: left;
+section h1,
+section h2 {
+  text-align: center;
   margin-bottom: 15px;
+  color: #0d6efd;
 }
 
 section p {
-  color: #333;
   margin-bottom: 15px;
+  color: #333;
+  line-height: 1.8;
 }
 
 /* =========================================
-CARDS
+CARD GRID
 ========================================= */
 .card-grid {
   display: grid;
@@ -134,6 +142,7 @@ CARDS
   border-radius: 14px;
   box-shadow: 0px 4px 12px #00000011;
   transition: 0.2s;
+  text-align: justify;
 }
 
 .card:hover {
@@ -147,31 +156,91 @@ CARDS
   color: #333;
 }
 
+.card p {
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.card ul {
+  margin-left: 20px;
+  padding-bottom: 10px;
+}
+
+.card ul li {
+  margin-bottom: 6px;
+}
+
+/* Founder & Legal images */
+.founder-img,
+.legal-img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
 /* =========================================
 BUTTONS
 ========================================= */
-.btn-primary,
-.island-btn {
+.btn-primary {
   display: inline-block;
   padding: 12px 20px;
-  background: #0057ff;
+  background: #0d6efd;
   color: white;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.2s;
+  text-align: center;
 }
 
-.btn-primary:hover,
+.btn-primary:hover {
+  background: #0b5ed7;
+}
+
+/* Island buttons (PDF, Form, etc.) */
+.island-btn {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px #00000015;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
 .island-btn:hover {
-  background: #0044cc;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px #00000025;
+}
+
+/* LOCK BUTTON */
+.lock-button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.locked {
+  background: #d9534f;
+  color: white;
+}
+
+.unlocked {
+  background: #28a745;
+  color: white;
 }
 
 /* =========================================
 FOOTER
 ========================================= */
 footer {
-  margin-top: 40px;
+  margin-top: 20px;
   background: #f0f3f8;
   text-align: center;
   padding: 20px;
@@ -182,12 +251,15 @@ footer {
 RESPONSIVE
 ========================================= */
 @media (max-width: 860px) {
+
   nav ul {
     display: none;
   }
+
   #menuIcon {
     display: block;
   }
+
   #mobileMenu.active {
     display: flex;
   }
