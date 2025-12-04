@@ -1,5 +1,5 @@
 /* =============================
-   HAMBURGER MENU
+   HAMBURGER MENU (NAVIGASI)
 ============================= */
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -9,10 +9,7 @@ if (hamburger && navLinks) {
     navLinks.classList.toggle("active");
     hamburger.classList.toggle("active");
   });
-}
 
-/* Close menu when link clicked (mobile only) */
-if (navLinks) {
   navLinks.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
@@ -22,26 +19,7 @@ if (navLinks) {
 }
 
 /* =============================
-   LOCK / UNLOCK PAGE
-============================= */
-const lockBtn = document.querySelector("#lockBtn");
-const unlockBtn = document.querySelector("#unlockBtn");
-const lockScreen = document.querySelector(".lock-screen");
-
-if (lockBtn && unlockBtn && lockScreen) {
-  lockBtn.addEventListener("click", () => {
-    lockScreen.classList.add("show");
-    document.body.style.overflow = "hidden";
-  });
-
-  unlockBtn.addEventListener("click", () => {
-    lockScreen.classList.remove("show");
-    document.body.style.overflow = "auto";
-  });
-}
-
-/* =============================
-   SMOOTH SCROLL (safe mode)
+   SMOOTH SCROLL
 ============================= */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", e => {
