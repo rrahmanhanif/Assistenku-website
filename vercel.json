@@ -1,16 +1,9 @@
 {
-  "headers": [
-    {
-      "source": "/style.css",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    },
-    {
-      "source": "/script.js",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/profil", "destination": "/profil.html" },
+    { "source": "/layanan", "destination": "/layanan.html" },
+    { "source": "/karir", "destination": "/karir.html" },
+    { "source": "/kontak", "destination": "/kontak.html" }
   ]
 }
