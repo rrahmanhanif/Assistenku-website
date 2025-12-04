@@ -1,355 +1,133 @@
 /* ========================================================
-   GLOBAL RESET & BASE
+   GLOBAL RESET
 ======================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter","Segoe UI",Arial,sans-serif;
+  font-family: "Inter", Arial, sans-serif;
 }
-
-html { scroll-behavior: smooth; }
 
 body {
   background: #f5f7fb;
   color: #1e1e1e;
-  line-height: 1.75;
-  transition: background 0.35s ease, color 0.35s ease;
+  line-height: 1.6;
 }
 
-a, button { transition: 0.25s ease; }
-
 /* ========================================================
-   NAVBAR — FIXED GLASS
+   NAVBAR BASIC RESPONSIVE (TANPA HAMBURGER)
 ======================================================== */
 header {
-  position: fixed;
-  top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.4);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-  z-index: 9999;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
 }
 
 .navbar {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
-  padding: 14px 22px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
-.logo {
-  width: 120px;
-  user-select: none;
-}
-
-
-/* ========================================================
-   DESKTOP NAV
-======================================================== */
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-nav ul li a {
-  position: relative;
+.navbar .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1b5cff;
   text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #1e1e1e;
   font-weight: 500;
-  color: #333;
-  padding: 6px 0;
+  transition: 0.2s;
 }
 
-/* Premium underline */
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -3px;
-  width: 0%;
-  height: 2px;
-  background: #0d6efd;
-  transition: 0.25s ease;
-  border-radius: 4px;
+.nav-links a:hover {
+  color: #1b5cff;
 }
 
-nav ul li a:hover::after,
-nav ul li a.active::after {
-  left: 0;
-  width: 100%;
+/* Smartphone: menu jadi horizontal scroll */
+@media (max-width: 520px) {
+  .nav-links {
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 16px;
+    padding-bottom: 4px;
+  }
 }
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #0d6efd;
-}
-
 
 /* ========================================================
-   HAMBURGER MENU (FINAL, NO CONFLICT)
+   MOBILE NAV (UNTUK JAGA-JAGA KALAU DIPAKAI)
 ======================================================== */
 .hamburger {
-  width: 35px;
-  height: 28px;
-  display: none; /* default desktop */
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 20000 !important;
+  display: none;
 }
 
-.hamburger span {
-  width: 100%;
-  height: 4px;
-  background: #1a1a1a;
-  border-radius: 4px;
-  transition: 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(12px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-12px) rotate(-45deg);
-}
-
-
-/* ========================================================
-   MOBILE NAV — SLIDE RIGHT
-======================================================== */
 .mobile-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background: white;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-  transition: 0.35s ease;
-  padding: 40px 20px;
-  z-index: 25000 !important;
+  display: none;
 }
-
-.mobile-nav a {
-  display: block;
-  padding: 14px 0;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  color: #222;
-}
-
-.mobile-nav.active {
-  right: 0;
-}
-
 
 /* ========================================================
-   REMOVE OLD MOBILE SYSTEM (NO MORE CONFLICT)
-======================================================== */
-#menuIcon,
-#mobileMenu {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-
-/* ========================================================
-   LOCK UNLOCK
-======================================================== */
-.lock-btn,
-.unlock-btn {
-  padding: 10px 18px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.lock-btn:active,
-.unlock-btn:active {
-  transform: scale(0.95);
-}
-
-.locked-screen {
-  overflow: hidden;
-}
-
-
-/* ========================================================
-   PAGE CONTENT
-======================================================== */
-.page-content {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px 20px 20px;
-  text-align: justify;
-  line-height: 1.72;
-  color: inherit;
-}
-
-@media (max-width: 600px) {
-  .page-content {
-    padding: 0 18px 22px 18px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .page-content {
-    color: #e2e2e2;
-  }
-}
-
-
-/* ========================================================
-   HERO
-======================================================== */
-.hero {
-  max-width: 900px;
-  margin: 150px auto 40px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 36px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #0d6efd, #0b53c9);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.hero p {
-  margin-top: 14px;
-  font-size: 17px;
-  color: #444;
-}
-
-
-/* ========================================================
-   SECTIONS
-======================================================== */
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 22px;
-}
-
-section h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0d6efd;
-}
-
-section p {
-  font-size: 16px;
-}
-
-
-/* ========================================================
-   CARDS
-======================================================== */
-.card-grid {
-  display: grid;
-  gap: 24px;
-  padding-top: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.card {
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(16px);
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.45);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  transition: 0.25s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
-}
-
-
-/* ========================================================
-   BUTTONS
+   ISLAND BUTTON
 ======================================================== */
 .island-btn {
-  display: inline-block;
-  padding: 13px 24px;
-  background: #ffffff;
-  border: 1px solid #d6ddea;
-  border-radius: 50px;
-  font-weight: 600;
-  color: #0d6efd;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  background: white;
+  border: 1px solid #d7d7d7;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .island-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  background: #eef3ff;
 }
 
-
 /* ========================================================
-   FOOTER
+   LOCK / UNLOCK SCREEN
 ======================================================== */
-footer {
-  margin-top: 60px;
-  padding: 26px 18px;
+.locked {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  color: white;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-size: 14px;
-  background: rgba(250,250,255,0.55);
-  backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(255,255,255,0.6);
 }
 
-
-/* ========================================================
-   DARK MODE
-======================================================== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #13151a;
-    color: #e6e6e6;
-  }
-
-  header {
-    background: rgba(22,22,24,0.75);
-    border-bottom-color: rgba(255,255,255,0.09);
-  }
-
-  nav ul li a {
-    color: #dcdcdc;
-  }
-
-  .mobile-nav {
-    background: rgba(20,20,24,0.88);
-  }
+.locked.active {
+  display: flex;
 }
 
+#unlock-btn {
+  margin-top: 18px;
+  background: white;
+  color: #1e1e1e;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+}
 
 /* ========================================================
-   RESPONSIVE
+   CONTENT WRAPPER
 ======================================================== */
-@media (max-width: 860px) {
-  nav ul { display: none !important; }
-  .hamburger { display: flex !important; }
-  }
+main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
