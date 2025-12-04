@@ -1,19 +1,15 @@
-/* =============================
-   HAMBURGER MENU (NAVIGASI)
-============================= */
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
+/* HAMBURGER MENU */
+const menuIcon = document.getElementById("menuIcon");
+const mobileMenu = document.getElementById("mobileMenu");
 
-if (hamburger && navLinks) {
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    hamburger.classList.toggle("active");
+if (menuIcon && mobileMenu) {
+  menuIcon.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active");
   });
 
-  navLinks.querySelectorAll("a").forEach(link => {
+  mobileMenu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      hamburger.classList.remove("active");
+      mobileMenu.classList.remove("active");
     });
   });
 }
