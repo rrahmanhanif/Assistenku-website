@@ -21,24 +21,21 @@ header {
   width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #e4e4e4;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-  color: #0057ff;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
 }
 
-/* Prevent layout jump */
-header, .nav-links a {
-  min-height: 24px;
+.logo {
+  width: 120px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -67,7 +64,6 @@ header, .nav-links a {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  z-index: 1100;
 }
 
 .hamburger span {
@@ -81,9 +77,11 @@ header, .nav-links a {
 .hamburger.active span:nth-child(1) {
   transform: translateY(10px) rotate(45deg);
 }
+
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
   transform: translateY(-10px) rotate(-45deg);
 }
@@ -109,39 +107,10 @@ header, .nav-links a {
     border-bottom: 1px solid #e4e4e4;
     transform: translateX(100%);
     transition: 0.3s;
-    z-index: 1050;
+    z-index: 2000;
   }
 
   .nav-links.active {
     transform: translateX(0);
   }
-}
-
-/* ================================
-   LOCK SCREEN
-================================ */
-.lock-screen {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  color: white;
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.lock-screen.show {
-  display: flex;
-}
-
-.lock-screen button {
-  margin-top: 15px;
-  padding: 10px 18px;
-  border: none;
-  background: #0057ff;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
 }
