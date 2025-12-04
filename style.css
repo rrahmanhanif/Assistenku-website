@@ -1,116 +1,4 @@
-/* HAMBURGER */
-.hamburger {
-  width: 35px;
-  height: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.hamburger span {
-  width: 100%;
-  height: 4px;
-  background: #1a1a1a;
-  border-radius: 4px;
-  transition: 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(12px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-12px) rotate(-45deg);
-}
-
-/* MOBILE NAV */
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background: white;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-  transition: 0.35s ease;
-  padding: 40px 20px;
-}
-
-.mobile-nav.active {
-  right: 0;
-}
-
-/* LOCK UNLOCK */
-.lock-btn,
-.unlock-btn {
-  padding: 10px 18px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.lock-btn:active,
-.unlock-btn:active {
-  transform: scale(0.95);
-}
-
-.locked-screen {
-  overflow: hidden;
-}
-
 /* ========================================================
-   PREMIUM PAGE CONTENT JUSTIFY (FINAL)
-======================================================== */
-.page-content {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px 20px 20px;
-  text-align: justify;
-  line-height: 1.72;
-  color: inherit;
-}
-
-/* Agar teks tidak terlalu mepet di mobile */
-@media (max-width: 600px) {
-  .page-content {
-    padding: 0 18px 22px 18px;
-  }
-}
-
-/* Perbaikan justify agar tetap halus di dark mode */
-@media (prefers-color-scheme: dark) {
-  .page-content {
-    color: #e2e2e2;
-  }
-}
-
-
-
-
-
-/* ========================================================
-   NAVBAR — AI SaaS STYLE
-======================================================== */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.4);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-  z-index: 9999;
-}/* ========================================================
    GLOBAL RESET & BASE
 ======================================================== */
 * {
@@ -131,6 +19,20 @@ body {
 
 a, button { transition: 0.25s ease; }
 
+/* ========================================================
+   NAVBAR — FIXED GLASS
+======================================================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  z-index: 9999;
+}
+
 .navbar {
   max-width: 1200px;
   margin: auto;
@@ -145,7 +47,10 @@ a, button { transition: 0.25s ease; }
   user-select: none;
 }
 
-/* Desktop navigation */
+
+/* ========================================================
+   DESKTOP NAV
+======================================================== */
 nav ul {
   display: flex;
   gap: 30px;
@@ -160,7 +65,7 @@ nav ul li a {
   padding: 6px 0;
 }
 
-/* Premium underline animation */
+/* Premium underline */
 nav ul li a::after {
   content: "";
   position: absolute;
@@ -184,32 +89,135 @@ nav ul li a.active {
   color: #0d6efd;
 }
 
-/* Mobile */
-#menuIcon {
-  display: none;
-  cursor: pointer;
-  font-size: 30px;
-}
 
-#mobileMenu {
-  display: none;
+/* ========================================================
+   HAMBURGER MENU (FINAL, NO CONFLICT)
+======================================================== */
+.hamburger {
+  width: 35px;
+  height: 28px;
+  display: none; /* default desktop */
   flex-direction: column;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  padding: 18px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 20000 !important;
 }
 
-#mobileMenu a {
-  text-decoration: none;
-  font-weight: 500;
-  color: #333;
-  padding: 12px 0;
+.hamburger span {
+  width: 100%;
+  height: 4px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
 }
 
 
 /* ========================================================
-   HERO SECTION
+   MOBILE NAV — SLIDE RIGHT
+======================================================== */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: white;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+  transition: 0.35s ease;
+  padding: 40px 20px;
+  z-index: 25000 !important;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+
+/* ========================================================
+   REMOVE OLD MOBILE SYSTEM (NO MORE CONFLICT)
+======================================================== */
+#menuIcon,
+#mobileMenu {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ========================================================
+   LOCK UNLOCK
+======================================================== */
+.lock-btn,
+.unlock-btn {
+  padding: 10px 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.lock-btn:active,
+.unlock-btn:active {
+  transform: scale(0.95);
+}
+
+.locked-screen {
+  overflow: hidden;
+}
+
+
+/* ========================================================
+   PAGE CONTENT
+======================================================== */
+.page-content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px 20px 20px;
+  text-align: justify;
+  line-height: 1.72;
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  .page-content {
+    padding: 0 18px 22px 18px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .page-content {
+    color: #e2e2e2;
+  }
+}
+
+
+/* ========================================================
+   HERO
 ======================================================== */
 .hero {
   max-width: 900px;
@@ -254,7 +262,7 @@ section p {
 
 
 /* ========================================================
-   GLASSMORPHIC CARD GRID
+   CARDS
 ======================================================== */
 .card-grid {
   display: grid;
@@ -278,32 +286,10 @@ section p {
   box-shadow: 0 12px 32px rgba(0,0,0,0.16);
 }
 
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.card ul {
-  margin-left: 20px;
-}
-
-.card ul li {
-  margin-bottom: 6px;
-}
-
-.founder-img,
-.legal-img {
-  width: 100%;
-  border-radius: 14px;
-  margin: 12px 0;
-}
-
 
 /* ========================================================
    BUTTONS
 ======================================================== */
-
-/* Island button (floating) */
 .island-btn {
   display: inline-block;
   padding: 13px 24px;
@@ -314,7 +300,6 @@ section p {
   color: #0d6efd;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   transition: 0.3s;
-  transform: translateY(0);
 }
 
 .island-btn:hover {
@@ -322,42 +307,15 @@ section p {
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
 }
 
-.island-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Lock button */
-.lock-button {
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.locked {
-  background: #e14d4d;
-}
-
-.unlocked {
-  background: #28c76f;
-}
-
 
 /* ========================================================
-   FLOATING BLUR FOOTER
+   FOOTER
 ======================================================== */
 footer {
   margin-top: 60px;
   padding: 26px 18px;
   text-align: center;
   font-size: 14px;
-
   background: rgba(250,250,255,0.55);
   backdrop-filter: blur(18px);
   border-top: 1px solid rgba(255,255,255,0.6);
@@ -365,7 +323,7 @@ footer {
 
 
 /* ========================================================
-   DARK MODE (Automatic)
+   DARK MODE
 ======================================================== */
 @media (prefers-color-scheme: dark) {
   body {
@@ -382,28 +340,8 @@ footer {
     color: #dcdcdc;
   }
 
-  nav ul li a:hover,
-  nav ul li a.active {
-    color: #4d8cff;
-  }
-
-  #mobileMenu {
+  .mobile-nav {
     background: rgba(20,20,24,0.88);
-  }
-
-  .card {
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(255,255,255,0.12);
-  }
-
-  .island-btn {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.2);
-    color: #5fa2ff;
-  }
-
-  footer {
-    background: rgba(25,25,30,0.65);
   }
 }
 
@@ -412,9 +350,6 @@ footer {
    RESPONSIVE
 ======================================================== */
 @media (max-width: 860px) {
-  nav ul { display: none; }
-  #menuIcon { display: block; }
-  #mobileMenu.active { display: flex; }
-
-  .hero h1 { font-size: 30px; }
-}
+  nav ul { display: none !important; }
+  .hamburger { display: flex !important; }
+  }
