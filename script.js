@@ -1,6 +1,6 @@
-// =============================
-// HAMBURGER MENU
-// =============================
+/* =============================
+   HAMBURGER MENU
+============================= */
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
@@ -11,47 +11,47 @@ if (hamburger && navLinks) {
   });
 }
 
-// =============================
-// LOCK / UNLOCK PAGE (opsional)
-// =============================
+/* Close menu when link clicked (mobile only) */
+if (navLinks) {
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      hamburger.classList.remove("active");
+    });
+  });
+}
+
+/* =============================
+   LOCK / UNLOCK PAGE
+============================= */
 const lockBtn = document.querySelector("#lockBtn");
 const unlockBtn = document.querySelector("#unlockBtn");
 const lockScreen = document.querySelector(".lock-screen");
 
 if (lockBtn && unlockBtn && lockScreen) {
-  lockBtn.onclick = () => {
+  lockBtn.addEventListener("click", () => {
     lockScreen.classList.add("show");
     document.body.style.overflow = "hidden";
-  };
+  });
 
-  unlockBtn.onclick = () => {
+  unlockBtn.addEventListener("click", () => {
     lockScreen.classList.remove("show");
     document.body.style.overflow = "auto";
-  };
+  });
 }
 
-// =============================
-// SMOOTH SCROLL (opsional)
-// =============================
+/* =============================
+   SMOOTH SCROLL (safe mode)
+============================= */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener("click", function (e) {
-    const target = document.querySelector(this.getAttribute("href"));
+  link.addEventListener("click", e => {
+    const target = document.querySelector(link.getAttribute("href"));
     if (target) {
       e.preventDefault();
       window.scrollTo({
         top: target.offsetTop - 70,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
-  });
-});
-
-// =============================
-// AUTO CLOSE NAV ON LINK CLICK
-// =============================
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    hamburger.classList.remove("active");
   });
 });
