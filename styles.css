@@ -247,3 +247,16 @@ footer {
     font-size: 26px;
   }
   }
+
+/* =========================================================
+   LOKER CARD IMAGE (ISOLATED - SAFE)
+========================================================= */
+.card .card-image {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  display: block;
+}
+
