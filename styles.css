@@ -128,41 +128,33 @@ p {
   margin-bottom: 15px;
 }
 
-/* =========================================================
-   CARD GRID
-========================================================= */
+/* ===============================
+   CARD GRID – HALAMAN KARIR
+================================ */
+
 .card-grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  padding-top: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
 }
 
+/* Card breathing space */
 .card {
-  background: white;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0px 4px 12px #00000011;
-  transition: 0.25s;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 6px 18px #00000022;
-}
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .card-grid {
+    gap: 20px;
+  }
 
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.card ul {
-  margin-left: 18px;
-  padding-bottom: 10px;
-}
-
-.card ul li {
-  margin-bottom: 6px;
+  .card {
+    padding: 18px;
+  }
 }
 
 /* =========================================================
