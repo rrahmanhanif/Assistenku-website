@@ -280,3 +280,38 @@ footer {
   display: block;
   object-fit: cover;
 }
+/* ===============================
+   COMPANY PROFILE CTA
+================================= */
+.kompro-cta {
+  margin-top: 60px;
+  padding: 60px 20px;
+  background: #f5f8ff;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+}
+
+.kompro-cta h2 {
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.kompro-desc {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.kompro-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.kompro-note {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #6b7280;
+}
