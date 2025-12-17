@@ -56,6 +56,68 @@
       color: #555;
       margin-top: 15px;
     }
+    .apply-section {
+  background: #0b3a63;
+  color: #fff;
+  padding: 40px 30px;
+  margin-top: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.apply-section h2 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.apply-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+}
+
+.apply-list li {
+  margin-bottom: 8px;
+}
+
+.apply-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.apply-actions a {
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  min-width: 180px;
+}
+
+.btn-email {
+  background: #ffffff;
+  color: #0b3a63;
+}
+
+.btn-wa {
+  background: #25d366;
+  color: #fff;
+}
+
+.btn-email:hover {
+  background: #e6e6e6;
+}
+
+.btn-wa:hover {
+  background: #1ebe5d;
+}
+
+.apply-note {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
   </style>
 </head>
 <body>
@@ -134,6 +196,33 @@
     Catatan: Gaji menyesuaikan tugas dan jam kerja. Tidak ada biaya pendaftaran.
   </p>
 
+<!-- Cara Melamar -->
+<section class="apply-section">
+  <h2>Cara Melamar</h2>
+
+  <ul class="apply-list">
+    <li>CV singkat (boleh ditulis di WhatsApp)</li>
+    <li>Pengalaman kerja (jika ada)</li>
+  </ul>
+
+  <div class="apply-actions">
+    <a class="btn-email"
+       href="mailto:karirassistenku@gmail.com?subject=Lamaran%20ART%20-%20Nama">
+      Lamar via Email
+    </a>
+
+    <a class="btn-wa" target="_blank"
+       href="https://wa.me/628989760020?text=Saya%20ingin%20melamar%20sebagai%20ART">
+      Lamar via WhatsApp
+    </a>
+  </div>
+
+  <p class="apply-note">
+    Subjek / Pesan:<br>
+    <strong>ART – Nama Lengkap</strong>
+  </p>
+</section>
+  
 </div>
 
 </body>
