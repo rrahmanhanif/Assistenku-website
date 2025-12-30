@@ -1,7 +1,6 @@
 /* =============================
    MOBILE MENU
 ============================= */
-
 const menuIcon = document.getElementById("menuIcon");
 const mobileMenu = document.getElementById("mobileMenu");
 
@@ -11,7 +10,7 @@ if (menuIcon && mobileMenu) {
   });
 
   // Auto close after clicking link
-  mobileMenu.querySelectorAll("a").forEach(link => {
+  mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
     });
@@ -21,14 +20,17 @@ if (menuIcon && mobileMenu) {
 /* =============================
    SMOOTH SCROLL
 ============================= */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
-    const target = document.querySelector(link.getAttribute("href"));
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       window.scrollTo({
         top: target.offsetTop - 120,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   });
@@ -39,94 +41,55 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 ============================= */
 function openPDF(id, file) {
   const el = document.getElementById(id);
-  if (el) {
-    el.onclick = () => window.open(file, "_blank");
-  }
+  if (el) el.onclick = () => window.open(file, "_blank");
 }
 
 openPDF("btnBiayaLayanan", "/penawaran.pdf");
 openPDF("btnUnduhFormulir", "/formulir.pdf");
+
 /* =============================
-   PWA: SERVICE WORKER + INSTALL
+   PWA: SERVICE WORKER + INSTALL (SINGLE SOURCE OF TRUTH)
+   - Tanpa panduan
+   - Tanpa deklarasi ganda
+   - Aman jika tombol tidak ada
 ============================= */
 
+// Register Service Worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").catch(console.warn);
   });
 }
 
+// Install prompt (Chrome Android)
 let deferredPrompt = null;
 
+// Tangkap event install (kalau browser mengizinkan)
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
 
+  // Jika Anda mau tombol hanya muncul saat eligible, set default tombol display:none di HTML/CSS
   const btn = document.getElementById("installAppBtn");
-  if (btn) btn.style.display = "inline-block";
+  if (btn) {
+    btn.style.display = "inline-block";
+    // optional: btn.textContent = "Install App";
+  }
 });
 
-window.installAssistenku = async function () {
+// Klik tombol install
+document.addEventListener("click", async (e) => {
+  const target = e.target;
+  if (!target || target.id !== "installAppBtn") return;
+
+  // Jika belum eligible, tidak ada prompt (wajar)
   if (!deferredPrompt) return;
+
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
   deferredPrompt = null;
 
+  // Optional: sembunyikan tombol setelah install prompt dipakai
   const btn = document.getElementById("installAppBtn");
   if (btn) btn.style.display = "none";
-};
-
-/* =============================
-   PWA: STANDBY INSTALL (MODE A)
-============================= */
-
-let deferredPrompt = null;
-
-function isStandaloneMode() {
-  return window.matchMedia("(display-mode: standalone)").matches
-    || window.navigator.standalone === true;
-}
-
-function openInstallHelp() {
-  const modal = document.getElementById("installHelpModal");
-  if (modal) modal.style.display = "block";
-}
-
-function closeInstallHelp() {
-  const modal = document.getElementById("installHelpModal");
-  if (modal) modal.style.display = "none";
-}
-
-// Tangkap event install dari browser (kalau Chrome mengizinkan)
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-
-  // Optional: ubah label tombol biar lebih jelas saat eligible
-  const btn = document.getElementById("installAppBtn");
-  if (btn) btn.textContent = "Install App";
-});
-
-// Klik tombol Install: prompt jika tersedia, kalau tidak tampilkan panduan
-document.addEventListener("click", async (e) => {
-  if (e.target && e.target.id === "installAppBtn") {
-    if (isStandaloneMode()) return; // sudah terpasang
-
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      return;
-    }
-
-    openInstallHelp();
-  }
-
-  if (e.target && e.target.id === "closeInstallHelp") {
-    closeInstallHelp();
-  }
-
-  if (e.target && e.target.id === "installHelpModal") {
-    closeInstallHelp();
-  }
 });
