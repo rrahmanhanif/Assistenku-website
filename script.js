@@ -48,7 +48,7 @@ openPDF("btnBiayaLayanan", "/penawaran.pdf");
 openPDF("btnUnduhFormulir", "/formulir.pdf");
 
 /* =============================
-   PWA: ANDROID ONLY (BUTTON ONLY)
+   PWA: ANDROID ONLY (STANDBY, NO GUIDE)
 ============================= */
 
 // Register Service Worker
@@ -60,26 +60,20 @@ if ("serviceWorker" in navigator) {
 
 let deferredPrompt = null;
 
-// Tampilkan tombol hanya saat eligible
+// Simpan prompt saat eligible
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
-
-  const btn = document.getElementById("pwaInstallBtn");
-  if (btn) btn.style.display = "inline-block";
 });
 
-// Klik tombol install
+// Klik tombol: hanya bekerja jika eligible
 document.addEventListener("click", async (e) => {
   const t = e.target;
   if (!t || t.id !== "pwaInstallBtn") return;
-  if (!deferredPrompt) return; // normal kalau belum eligible
+
+  if (!deferredPrompt) return;
 
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
   deferredPrompt = null;
-
-  // Optional: sembunyikan tombol setelah dipakai
-  const btn = document.getElementById("pwaInstallBtn");
-  if (btn) btn.style.display = "none";
 });
