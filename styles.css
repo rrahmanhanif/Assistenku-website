@@ -323,3 +323,66 @@ footer {
   font-size: 14px;
   color: #6b7280;
 }
+
+/* =============================
+   PWA INSTALL BANNER (GLOBAL)
+============================= */
+.pwa-install{
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 16px;
+  z-index: 9999;
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pwa-install__left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.pwa-install__icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.pwa-install__title{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pwa-install__subtitle{
+  font-size: 12px;
+  opacity: .8;
+}
+
+.pwa-install__btn{
+  background: transparent;
+  color: #7cb7ff;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+@keyframes pwaSlideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.pwa-install.is-show{
+  animation: pwaSlideUp .22s ease-out;
+}
