@@ -49,10 +49,9 @@ openPDF("btnUnduhFormulir", "/formulir.pdf");
 
 /* =============================
    PWA: SERVICE WORKER + ANDROID INSTALL + iOS HINT
-   - Single source of truth (no duplicates)
-   - Uses:
-     - Android button: #pwaInstallBtn
-     - iOS hint: #iosInstallHint
+   Uses:
+   - Android button: #pwaInstallBtn
+   - iOS hint: #iosInstallHint
 ============================= */
 
 // Register Service Worker
@@ -62,14 +61,11 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-/* -----------------------------
-   Platform detection
------------------------------ */
+// Platform detection
 function isIOS() {
   return /iphone|ipad|ipod/i.test(navigator.userAgent);
 }
 
-// Detect "standalone" (installed PWA)
 function isStandaloneMode() {
   return (
     window.matchMedia("(display-mode: standalone)").matches ||
@@ -77,52 +73,46 @@ function isStandaloneMode() {
   );
 }
 
-/* -----------------------------
-   Android install prompt
------------------------------ */
+// ANDROID install
 let deferredPrompt = null;
 
-// Show Android install button only when eligible and not iOS
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
 
+  // Tampilkan tombol Android hanya di non-iOS
   if (!isIOS()) {
     const btn = document.getElementById("pwaInstallBtn");
     if (btn) btn.style.display = "inline-block";
   }
 });
 
-// Click handler for Android install button
 document.addEventListener("click", async (e) => {
   const t = e.target;
   if (!t || t.id !== "pwaInstallBtn") return;
 
-  // If already installed / standalone, do nothing
+  // Jika sudah installed, tidak perlu apa-apa
   if (isStandaloneMode()) return;
 
-  // If not eligible yet, do nothing (normal)
+  // Jika belum eligible, tidak ada prompt (normal)
   if (!deferredPrompt) return;
 
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
   deferredPrompt = null;
 
-  // Optional: hide button after prompt used
+  // Optional: sembunyikan tombol setelah dipakai
   const btn = document.getElementById("pwaInstallBtn");
   if (btn) btn.style.display = "none";
 });
 
-/* -----------------------------
-   iOS hint
------------------------------ */
+// iOS hint
 document.addEventListener("DOMContentLoaded", () => {
-  // iOS: show hint only if not installed yet
   if (isIOS() && !isStandaloneMode()) {
     const iosHint = document.getElementById("iosInstallHint");
     if (iosHint) iosHint.style.display = "block";
 
-    // Ensure Android button hidden on iOS
+    // Pastikan tombol Android tetap tersembunyi di iOS
     const btn = document.getElementById("pwaInstallBtn");
     if (btn) btn.style.display = "none";
   }
