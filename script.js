@@ -75,3 +75,64 @@ window.installAssistenku = async function () {
   const btn = document.getElementById("installAppBtn");
   if (btn) btn.style.display = "none";
 };
+
+/* =============================
+   PWA GLOBAL INSTALL POPUP
+============================= */
+
+// Register Service Worker (sekali, berlaku semua halaman)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(console.warn);
+  });
+}
+
+let deferredPrompt = null;
+
+function isStandaloneMode() {
+  return window.matchMedia("(display-mode: standalone)").matches
+    || window.navigator.standalone === true;
+}
+
+function canShowInstallBanner() {
+  if (isStandaloneMode()) return false;
+  try {
+    if (localStorage.getItem("pwa_install_dismissed") === "1") return false;
+  } catch {}
+  return true;
+}
+
+function showInstallBanner() {
+  if (!canShowInstallBanner()) return;
+  const banner = document.getElementById("pwaInstallBanner");
+  if (!banner) return;
+  banner.style.display = "flex";
+  banner.classList.add("is-show");
+}
+
+function hideInstallBanner(persist = false) {
+  const banner = document.getElementById("pwaInstallBanner");
+  if (!banner) return;
+  banner.style.display = "none";
+  if (persist) {
+    try { localStorage.setItem("pwa_install_dismissed", "1"); } catch {}
+  }
+}
+
+// Tangkap event install dari browser
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  showInstallBanner();
+});
+
+// Klik tombol Install
+document.addEventListener("click", async (e) => {
+  if (e.target && e.target.id === "pwaInstallBtn") {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    hideInstallBanner(true);
+  }
+});
