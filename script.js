@@ -93,3 +93,37 @@ document.addEventListener("click", async (e) => {
   const btn = document.getElementById("installAppBtn");
   if (btn) btn.style.display = "none";
 });
+
+/* =============================
+   iOS SAFARI: ADD TO HOME SCREEN HELPER
+============================= */
+
+function isIOS() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent);
+}
+
+function isSafari() {
+  // Safari iOS (exclude Chrome/Firefox/Edge iOS)
+  return /^((?!chrome|crios|fxios|edgios|android).)*safari/i.test(
+    navigator.userAgent
+  );
+}
+
+function isInStandaloneIOS() {
+  return window.navigator.standalone === true;
+}
+
+function showIOSInstallHint() {
+  const el = document.getElementById("iosInstallHint");
+  if (el) el.style.display = "block";
+}
+
+// Tampilkan instruksi hanya jika:
+// - iOS
+// - Safari
+// - BELUM standalone
+document.addEventListener("DOMContentLoaded", () => {
+  if (isIOS() && isSafari() && !isInStandaloneIOS()) {
+    showIOSInstallHint();
+  }
+});
