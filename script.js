@@ -46,3 +46,32 @@ function openPDF(id, file) {
 
 openPDF("btnBiayaLayanan", "/penawaran.pdf");
 openPDF("btnUnduhFormulir", "/formulir.pdf");
+/* =============================
+   PWA: SERVICE WORKER + INSTALL
+============================= */
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(console.warn);
+  });
+}
+
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const btn = document.getElementById("installAppBtn");
+  if (btn) btn.style.display = "inline-block";
+});
+
+window.installAssistenku = async function () {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+
+  const btn = document.getElementById("installAppBtn");
+  if (btn) btn.style.display = "none";
+};
