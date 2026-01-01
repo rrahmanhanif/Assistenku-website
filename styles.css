@@ -201,6 +201,16 @@ p {
   background: #0b5ed7;
   color: #fff;
 }
+.btn-tertiary{
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #0B5ED7;
+  text-decoration:none;
+  font-weight:600;
+}
 
 
 /* =========================================================
