@@ -1,0 +1,144 @@
+/* =========================================================
+   s06.css — S06 Konstruksi
+   Nuansa: oranye konstruksi • project/portfolio • UMKM-friendly
+========================================================= */
+
+:root{
+  --accent:#ef6c00;
+  --accent-2:#e65100;
+  --accent-soft: rgba(239,108,0,.11);
+}
+
+/* Hero project */
+.hero-project{
+  background:linear-gradient(135deg,#fff,var(--accent-soft));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-project::after{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;
+  right:-220px; top:-240px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(239,108,0,.24), transparent 60%);
+  pointer-events:none;
+}
+
+.hero-project h1{
+  margin:0 0 10px;
+  font-weight:900;
+  letter-spacing:-.6px;
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.15;
+}
+.hero-project p{margin:0;color:var(--muted)}
+
+/* “Portfolio cards” */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.p-card{
+  background:linear-gradient(180deg,#fff,rgba(239,108,0,.03));
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.p-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.p-card h3{margin:0 0 6px;font-size:15px}
+.p-card p{margin:0;color:var(--muted);font-size:13px}
+.p-meta{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-top:10px;
+}
+.pill{
+  font-size:12px;
+  font-weight:850;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--accent-soft);
+  border:1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  color:#1f2937;
+}
+
+/* Paket */
+.pack-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.pack{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+
+.pack h3{margin:0 0 6px;font-size:15px}
+.pack .price{
+  font-weight:950;
+  font-size:18px;
+  color:var(--accent);
+  margin-top:6px;
+}
+.pack p{margin:8px 0 0;color:var(--muted);font-size:13px}
+
+/* Timeline */
+.timeline{
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin-top:10px;
+}
+.t-item{margin-bottom:14px}
+.t-item h4{margin:0 0 4px;font-size:14px}
+.t-item p{margin:0;color:var(--muted);font-size:13px}
+
+/* Estimasi box */
+.est{
+  background:rgba(17,24,39,.94);
+  color:#fff;
+  border-radius:18px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,.10);
+}
+.est p{margin:6px 0 0;color:rgba(255,255,255,.78)}
+.est .btn-outline{
+  border-color:rgba(255,255,255,.26);
+  color:#fff;
+}
+.est .btn-outline:hover{background:rgba(255,255,255,.08)}
+
+/* Buttons sektor */
+.btn-primary{background:var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+
+/* Responsive */
+@media(max-width:980px){
+  .portfolio{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .portfolio{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:1fr}
+}
