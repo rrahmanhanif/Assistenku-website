@@ -1,216 +1,93 @@
 /* =========================================================
    GLOBAL RESET
 ========================================================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Inter",Arial,sans-serif;
-}
-
-body{
-  background:#f7f9fc;
-  color:#1f1f1f;
-  line-height:1.7;
-  text-align:justify;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",Arial,sans-serif;}
+body{background:#f7f9fc;color:#1f1f1f;line-height:1.7;text-align:justify;}
 
 /* =========================================================
    TOP HEADER
 ========================================================= */
-.top-header{
-  width:100%;
-  background:#0d6efd;
-  color:#fff;
-  padding:8px 0;
-  text-align:center;
-  font-size:14px;
-  font-weight:500;
-}
+.top-header{width:100%;background:#0d6efd;color:#fff;padding:8px 0;text-align:center;font-size:14px;font-weight:500;}
 
 /* =========================================================
    NAVBAR
 ========================================================= */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:#ffffffee;
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid #e5e5e5;
-  z-index:999;
-}
+header{position:fixed;top:0;width:100%;background:#ffffffee;backdrop-filter:blur(8px);border-bottom:1px solid #e5e5e5;z-index:999;}
+.navbar{max-width:1200px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;}
+.logo{width:110px;object-fit:contain;}
 
-.navbar{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  width:110px;
-  object-fit:contain;
-}
-
-nav ul{
-  display:flex;
-  gap:30px;
-}
-
+nav ul{display:flex;gap:30px;}
 nav ul li{list-style:none;}
-
-nav ul li a{
-  text-decoration:none;
-  color:#1f1f1f;
-  font-weight:500;
-  transition:.2s;
-}
-
-nav ul li a:hover,
-nav ul li a.active{
-  color:#0d6efd;
-}
+nav ul li a{text-decoration:none;color:#1f1f1f;font-weight:500;transition:.2s;}
+nav ul li a:hover,nav ul li a.active{color:#0d6efd;}
 
 /* MOBILE MENU */
-#menuIcon{
-  display:none;
-  cursor:pointer;
-  font-size:30px;
-}
-
-#mobileMenu{
-  display:none;
-  flex-direction:column;
-  background:#fff;
-  width:100%;
-  padding:20px;
-  border-bottom:1px solid #e5e5e5;
-}
-
-#mobileMenu a{
-  text-decoration:none;
-  color:#222;
-  padding:12px 0;
-  font-weight:500;
-  border-bottom:1px solid #f0f0f0;
-}
+#menuIcon{display:none;cursor:pointer;font-size:30px;}
+#mobileMenu{display:none;flex-direction:column;background:#fff;width:100%;padding:20px;border-bottom:1px solid #e5e5e5;}
+#mobileMenu a{text-decoration:none;color:#222;padding:12px 0;font-weight:500;border-bottom:1px solid #f0f0f0;}
 
 /* =========================================================
    PAGE STRUCTURE
 ========================================================= */
-section{
-  max-width:1100px;
-  margin:auto;
-  padding:35px 20px;
-}
-
-h1{
-  font-size:32px;
-  margin-bottom:20px;
-  color:#0d6efd;
-  text-align:center;
-}
-
-h2{
-  font-size:26px;
-  margin:25px 0 12px;
-  color:#0d6efd;
-}
-
-p{
-  font-size:16px;
-  margin-bottom:15px;
-}
+section{max-width:1100px;margin:auto;padding:35px 20px;}
+h1{font-size:32px;margin-bottom:20px;color:#0d6efd;text-align:center;}
+h2{font-size:26px;margin:25px 0 12px;color:#0d6efd;}
+p{font-size:16px;margin-bottom:15px;}
 
 /* =========================================================
-   CARD
+   CARD + GRID
 ========================================================= */
-.card{
-  padding:20px;
-  border-radius:12px;
-  background:#fff;
-  margin-bottom:30px;
-}
+.card{padding:20px;border-radius:12px;background:#fff;margin-bottom:30px;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:24px;}
+
+/* area tombol dalam card */
+.apply-box{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
 
 /* =========================================================
-   IMAGE (FIX – TIDAK TERPOTONG)
+   IMAGE (DUA POLA: img.card-image dan div.card-image > img)
 ========================================================= */
-.card-image{
-  width:100%;
-  height:auto;
-  object-fit:contain; /* PENTING: tidak crop */
-  border-radius:12px;
-  margin-bottom:12px;
-  display:block;
-}
+/* wrapper jika card-image adalah DIV (karir) */
+.card-image{width:100%;border-radius:12px;margin-bottom:12px;}
 
-.founder-img,
-.legal-img{
-  width:100%;
-  border-radius:12px;
-  margin:10px 0;
-  object-fit:contain;
-}
+/* jika card-image adalah IMG langsung (layanan) */
+img.card-image{width:100%;height:auto;display:block;object-fit:contain;border-radius:12px;margin-bottom:12px;}
+
+/* jika card-image adalah DIV yang berisi IMG (karir) – default utuh */
+.card-image > img{width:100%;height:auto;display:block;object-fit:contain;border-radius:12px;}
+
+/* gambar lain */
+.founder-img,.legal-img{width:100%;border-radius:12px;margin:10px 0;object-fit:contain;display:block;}
 
 /* =========================================================
    BUTTONS
 ========================================================= */
-.btn-primary,
-.btn-secondary,
-.btn-tertiary{
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:600;
-  transition:.2s;
-  margin-top:10px;
+.btn-primary,.btn-secondary,.btn-tertiary,.btn-outline{
+  display:inline-block;padding:12px 20px;border-radius:12px;
+  text-decoration:none;font-weight:600;transition:.2s;margin-top:10px;
 }
 
 /* Primary */
-.btn-primary{
-  background:#0d6efd;
-  color:#fff;
-}
+.btn-primary{background:#0d6efd;color:#fff;}
 .btn-primary:hover{background:#0b5ed7;}
 
 /* Secondary */
-.btn-secondary{
-  background:#6c757d;
-  color:#fff;
-}
+.btn-secondary{background:#6c757d;color:#fff;}
 .btn-secondary:hover{background:#5a6268;}
 
-/* Outline */
-.btn-tertiary{
-  background:transparent;
-  color:#0d6efd;
-  border:1px solid #0d6efd;
-}
-.btn-tertiary:hover{
-  background:#0b5ed7;
-  border-color:#0b5ed7;
-  color:#fff;
-}
+/* Outline (blue border) */
+.btn-outline{background:transparent;color:#0b5ed7;border:2px solid #0b5ed7;}
+.btn-outline:hover{background:#0b5ed7;color:#fff;}
 
-.center-btn{
-  text-align:center;
-  margin:20px 0;
-}
+/* Tertiary (thin outline) */
+.btn-tertiary{background:transparent;color:#0d6efd;border:1px solid #0d6efd;}
+.btn-tertiary:hover{background:#0b5ed7;border-color:#0b5ed7;color:#fff;}
+
+.center-btn{text-align:center;margin:20px 0;}
 
 /* =========================================================
    FOOTER
 ========================================================= */
-footer{
-  margin-top:40px;
-  background:#f0f3f8;
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-}
+footer{margin-top:40px;background:#f0f3f8;text-align:center;padding:20px;font-size:14px;}
 
 /* =========================================================
    RESPONSIVE
@@ -221,74 +98,32 @@ footer{
   #mobileMenu.active{display:flex;}
   h1{font-size:26px;}
 }
-
 @media(max-width:600px){
+  .card-grid{gap:20px;}
   .card{padding:18px;}
 }
 
 /* =========================================================
    PWA INSTALL BANNER
 ========================================================= */
-.pwa-install{
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:16px;
-  z-index:9999;
-  background:#1f1f1f;
-  color:#fff;
-  border-radius:14px;
-  padding:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
+.pwa-install{position:fixed;left:12px;right:12px;bottom:16px;z-index:9999;background:#1f1f1f;color:#fff;border-radius:14px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.pwa-install__left{display:flex;align-items:center;gap:12px;}
+.pwa-install__icon{width:44px;height:44px;border-radius:12px;background:#fff;}
+.pwa-install__title{font-size:16px;font-weight:700;}
+.pwa-install__subtitle{font-size:12px;opacity:.8;}
+.pwa-install__btn{background:transparent;color:#7cb7ff;border:none;font-weight:700;font-size:16px;padding:8px;cursor:pointer;}
 
-.pwa-install__left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.pwa-install__icon{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  background:#fff;
-}
-
-.pwa-install__title{
-  font-size:16px;
-  font-weight:700;
-}
-
-.pwa-install__subtitle{
-  font-size:12px;
-  opacity:.8;
-}
-
-.pwa-install__btn{
-  background:transparent;
-  color:#7cb7ff;
-  border:none;
-  font-weight:700;
-  font-size:16px;
-  padding:8px;
-  cursor:pointer;
-}
-/* ===============================
-   KHUSUS HALAMAN KARIR
-=============================== */
+/* =========================================================
+   KHUSUS HALAMAN KARIR (rapi seragam + crop aman)
+========================================================= */
 .karir-page .card-image{
-  height:220px;        /* tinggi seragam */
+  height:220px;
   overflow:hidden;
+  border-radius:12px;
 }
-
-.karir-page .card-image img{
+.karir-page .card-image > img{
   width:100%;
   height:100%;
-  object-fit:cover;   /* rapi, boleh crop */
+  object-fit:cover;
   display:block;
-}
+   }
