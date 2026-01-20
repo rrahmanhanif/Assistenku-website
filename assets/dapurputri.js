@@ -4,8 +4,7 @@
   if (el) el.textContent = String(new Date().getFullYear());
 })();
 
-// SCROLL BOOST: saat user scroll, kurangi beban repaint sementara.
-// Menggunakan event passive + timeout kecil agar ringan.
+// Scroll boost (Redmi Note 11 friendly)
 (() => {
   let t = null;
   const root = document.documentElement;
@@ -13,7 +12,7 @@
   const onScroll = () => {
     root.classList.add("is-scrolling");
     if (t) clearTimeout(t);
-    t = setTimeout(() => root.classList.remove("is-scrolling"), 140);
+    t = setTimeout(() => root.classList.remove("is-scrolling"), 160);
   };
 
   window.addEventListener("scroll", onScroll, { passive: true });
