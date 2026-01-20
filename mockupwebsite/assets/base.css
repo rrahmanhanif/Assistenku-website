@@ -235,3 +235,128 @@ img{max-width:100%;display:block}
   .btn{width:100%}
   .topbar-actions{width:100%}
 }
+
+/* =========================================================
+   SECTOR CARDS (untuk index.html)
+   Nuansa warna S01–S17 tampil di kartu + badge
+========================================================= */
+
+/* 17 warna sektor (dipakai khusus kartu index) */
+:root{
+  --s01:#2e7d32;
+  --s02:#546e7a;
+  --s03:#1565c0;
+  --s04:#f9a825;
+  --s05:#00897b;
+  --s06:#ef6c00;
+  --s07:#c62828;
+  --s08:#283593;
+  --s09:#ff8f00;
+  --s10:#6a1b9a;
+  --s11:#1b5e20;
+  --s12:#6d4c41;
+  --s13:#00838f;
+  --s14:#0d47a1;
+  --s15:#1976d2;
+  --s16:#ad1457;
+  --s17:#455a64;
+}
+
+/* Grid kartu sektor */
+.sector-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+/* Kartu sektor */
+.sector-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 16px 14px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.sector-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(20,24,31,.10);
+  border-color:rgba(20,24,31,.16);
+}
+
+/* Accent strip kiri */
+.sector-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:rgba(13,110,253,.22);
+}
+
+/* Glow lembut kanan bawah */
+.sector-card::after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  right:-140px;
+  bottom:-160px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(13,110,253,.16), transparent 60%);
+  pointer-events:none;
+}
+
+.sector-code{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:26px;
+  padding:0 10px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:12px;
+  color:#fff;
+  letter-spacing:.2px;
+}
+
+.sector-card h3{
+  margin:10px 0 6px;
+  font-size:15px;
+  letter-spacing:-.2px;
+}
+
+.sector-desc{
+  margin:0;
+  font-size:12.5px;
+  color:var(--muted);
+}
+
+/* WARNA PER SEKTOR */
+.s01 .sector-code{background:var(--s01)} .s01::before{background:var(--s01)} .s01::after{background:radial-gradient(circle at 30% 30%, rgba(46,125,50,.18), transparent 60%)}
+.s02 .sector-code{background:var(--s02)} .s02::before{background:var(--s02)} .s02::after{background:radial-gradient(circle at 30% 30%, rgba(84,110,122,.18), transparent 60%)}
+.s03 .sector-code{background:var(--s03)} .s03::before{background:var(--s03)} .s03::after{background:radial-gradient(circle at 30% 30%, rgba(21,101,192,.18), transparent 60%)}
+.s04 .sector-code{background:var(--s04)} .s04::before{background:var(--s04)} .s04::after{background:radial-gradient(circle at 30% 30%, rgba(249,168,37,.20), transparent 60%)}
+.s05 .sector-code{background:var(--s05)} .s05::before{background:var(--s05)} .s05::after{background:radial-gradient(circle at 30% 30%, rgba(0,137,123,.18), transparent 60%)}
+.s06 .sector-code{background:var(--s06)} .s06::before{background:var(--s06)} .s06::after{background:radial-gradient(circle at 30% 30%, rgba(239,108,0,.20), transparent 60%)}
+.s07 .sector-code{background:var(--s07)} .s07::before{background:var(--s07)} .s07::after{background:radial-gradient(circle at 30% 30%, rgba(198,40,40,.18), transparent 60%)}
+.s08 .sector-code{background:var(--s08)} .s08::before{background:var(--s08)} .s08::after{background:radial-gradient(circle at 30% 30%, rgba(40,53,147,.18), transparent 60%)}
+.s09 .sector-code{background:var(--s09)} .s09::before{background:var(--s09)} .s09::after{background:radial-gradient(circle at 30% 30%, rgba(255,143,0,.20), transparent 60%)}
+.s10 .sector-code{background:var(--s10)} .s10::before{background:var(--s10)} .s10::after{background:radial-gradient(circle at 30% 30%, rgba(106,27,154,.18), transparent 60%)}
+.s11 .sector-code{background:var(--s11)} .s11::before{background:var(--s11)} .s11::after{background:radial-gradient(circle at 30% 30%, rgba(27,94,32,.18), transparent 60%)}
+.s12 .sector-code{background:var(--s12)} .s12::before{background:var(--s12)} .s12::after{background:radial-gradient(circle at 30% 30%, rgba(109,76,65,.18), transparent 60%)}
+.s13 .sector-code{background:var(--s13)} .s13::before{background:var(--s13)} .s13::after{background:radial-gradient(circle at 30% 30%, rgba(0,131,143,.18), transparent 60%)}
+.s14 .sector-code{background:var(--s14)} .s14::before{background:var(--s14)} .s14::after{background:radial-gradient(circle at 30% 30%, rgba(13,71,161,.18), transparent 60%)}
+.s15 .sector-code{background:var(--s15)} .s15::before{background:var(--s15)} .s15::after{background:radial-gradient(circle at 30% 30%, rgba(25,118,210,.18), transparent 60%)}
+.s16 .sector-code{background:var(--s16)} .s16::before{background:var(--s16)} .s16::after{background:radial-gradient(circle at 30% 30%, rgba(173,20,87,.18), transparent 60%)}
+.s17 .sector-code{background:var(--s17)} .s17::before{background:var(--s17)} .s17::after{background:radial-gradient(circle at 30% 30%, rgba(69,90,100,.18), transparent 60%)}
+
+/* Responsive grid sektor */
+@media(max-width:980px){
+  .sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .sector-grid{grid-template-columns:1fr}
+}
