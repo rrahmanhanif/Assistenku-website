@@ -1,0 +1,195 @@
+/* =========================================================
+   s16.css — S16 Kesehatan & Sosial
+   Nuansa: teal/medical • protokol • jadwal • compliance
+========================================================= */
+
+:root{
+  --accent:#0284c7;      /* medical blue */
+  --accent-2:#0369a1;
+  --accent-soft: rgba(2,132,199,.11);
+}
+
+/* Hero medical */
+.hero-med{
+  background:linear-gradient(135deg,#fff,var(--accent-soft));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-med::after{
+  content:"";
+  position:absolute;
+  width:440px;height:440px;
+  right:-280px; top:-300px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(2,132,199,.20), transparent 60%);
+  pointer-events:none;
+}
+
+.hero-med h1{
+  margin:0 0 10px;
+  font-weight:900;
+  letter-spacing:-.6px;
+  font-size:clamp(22px,3vw,40px);
+  line-height:1.15;
+}
+.hero-med p{margin:0;color:var(--muted)}
+
+/* Compliance / disclaimer */
+.disclaimer{
+  margin-top:14px;
+  background:rgba(17,24,39,.94);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:14px;
+}
+.disclaimer strong{font-size:13px}
+.disclaimer p{margin:6px 0 0;color:rgba(255,255,255,.78);font-size:12.5px}
+
+.med-badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.med-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+}
+.med-badge i{
+  width:9px;height:9px;border-radius:999px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+/* Services */
+.med-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.med-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.med-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.med-card h3{margin:0 0 6px;font-size:15px}
+.med-card p{margin:0;color:var(--muted);font-size:13px}
+
+/* Schedule + protocol */
+.med-two{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:12px;
+}
+
+.box{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+.box h3{margin:0 0 8px;font-size:15px}
+.box p{margin:0;color:var(--muted);font-size:13px}
+
+/* Schedule table */
+.table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  margin-top:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+}
+.table th, .table td{
+  text-align:left;
+  padding:10px 12px;
+  font-size:12.5px;
+  border-bottom:1px solid var(--line);
+}
+.table th{
+  background:rgba(2,132,199,.06);
+  color:#0f172a;
+  font-weight:900;
+}
+.table tr:last-child td{border-bottom:0}
+
+/* Protocol list */
+.proto{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.proto .item{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+}
+.proto .item strong{display:block;font-size:13px}
+.proto .item span{display:block;margin-top:4px;color:var(--muted);font-size:12.5px}
+
+/* Appointment form (visual) */
+.appt{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.appt label{
+  font-size:12px;
+  color:rgba(20,24,31,.7);
+  font-weight:850;
+}
+.appt input, .appt select, .appt textarea{
+  width:100%;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:10px 12px;
+  font-size:14px;
+  outline:none;
+}
+.appt textarea{min-height:92px;resize:vertical}
+
+/* Buttons */
+.btn-primary{background:var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+
+/* Responsive */
+@media(max-width:980px){
+  .med-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .med-two{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .med-grid{grid-template-columns:1fr}
+}
