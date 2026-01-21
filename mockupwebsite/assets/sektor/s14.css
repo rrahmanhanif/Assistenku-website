@@ -1,0 +1,191 @@
+/* =========================================================
+   s14.css — S14 Administrasi Pemerintahan
+   Nuansa: deep blue/gray • formal • official
+========================================================= */
+
+:root{
+  --accent:#1e3a8a;      /* deep blue */
+  --accent-2:#172554;
+  --accent-soft: rgba(30,58,138,.10);
+}
+
+/* Header notice bar */
+.gov-banner{
+  background:rgba(17,24,39,.96);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:14px 16px;
+  margin:18px 0 0;
+}
+.gov-banner strong{font-size:13px}
+.gov-banner p{margin:6px 0 0;color:rgba(255,255,255,.78);font-size:12.5px}
+
+/* Hero official */
+.hero-gov{
+  background:linear-gradient(135deg,#fff,var(--accent-soft));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.hero-gov::after{
+  content:"";
+  position:absolute;
+  width:460px;height:460px;
+  right:-300px; top:-320px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(30,58,138,.18), transparent 62%);
+  pointer-events:none;
+}
+
+.hero-gov h1{
+  margin:0 0 10px;
+  font-weight:900;
+  letter-spacing:-.5px;
+  font-size:clamp(22px,3vw,40px);
+  line-height:1.15;
+}
+.hero-gov p{margin:0;color:var(--muted)}
+
+/* Service tiles */
+.gov-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.gov-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.gov-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.gov-card h3{margin:0 0 6px;font-size:15px}
+.gov-card p{margin:0;color:var(--muted);font-size:13px}
+
+.gov-card .meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.gov-card .tag{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  background:rgba(30,58,138,.08);
+  border:1px solid rgba(30,58,138,.18);
+  color:#1f2937;
+}
+
+/* Announcement + quick links */
+.two-col{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:12px;
+}
+
+.panel{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+
+.panel h3{margin:0 0 8px;font-size:15px}
+.panel p{margin:0;color:var(--muted);font-size:13px}
+
+.ann{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.ann a{
+  text-decoration:none;
+  color:inherit;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  display:block;
+}
+.ann a:hover{border-color:rgba(30,58,138,.35)}
+.ann strong{display:block;font-size:13px}
+.ann span{display:block;margin-top:4px;color:var(--muted);font-size:12.5px}
+
+.links{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.links a{
+  text-decoration:none;
+  color:#0f172a;
+  font-weight:850;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.links a:hover{border-color:rgba(30,58,138,.35)}
+.links a i{
+  width:9px;height:9px;border-radius:999px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+/* Transparency */
+.trans{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+
+.tbox{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:14px;
+}
+.tbox strong{display:block;color:var(--accent);font-size:15px}
+.tbox span{display:block;margin-top:4px;color:var(--muted);font-size:12.5px}
+
+/* Buttons sector */
+.btn-primary{background:var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+
+/* Responsive */
+@media(max-width:980px){
+  .gov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two-col{grid-template-columns:1fr}
+  .trans{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .gov-grid{grid-template-columns:1fr}
+  .trans{grid-template-columns:1fr}
+}
