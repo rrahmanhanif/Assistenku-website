@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Mockup Website UMKM per Sektor Ekonomi | Assistenku</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pilih mockup website UMKM berdasarkan 17 sektor ekonomi Indonesia. Tampilan rapi, profesional, siap disesuaikan.">
+  <meta name="description" content="Pilih mockup website berdasarkan 17 sektor ekonomi Indonesia. Tampilan rapi, profesional, siap disesuaikan.">
 
   <link rel="stylesheet" href="/mockupwebsite/assets/base.css">
 </head>
@@ -13,19 +13,19 @@
 <header class="topbar">
   <div class="container topbar-inner">
     <div class="brand">
-  <a class="brand-link" href="/" aria-label="Beranda Assistenku">
-    <img class="brand-logo" src="/logo.png" alt="Logo Assistenku" loading="lazy">
-    <div class="brand-text">
-      <strong>Assistenku</strong>
-      <span>PT Assistenku Solusi Indonesia • Penawaran Mockup Website • 17 Sektor</span>
-    </div>
-  </a>
+      <a class="brand-link" href="/" aria-label="Beranda Assistenku">
+        <img class="brand-logo" src="/logo.png" alt="Logo Assistenku" loading="lazy">
+        <div class="brand-text">
+          <strong>Assistenku</strong>
+          <span>PT Assistenku Solusi Indonesia • Penawaran Mockup Website • 17 Sektor</span>
+        </div>
+      </a>
     </div>
 
     <div class="topbar-actions">
       <a class="btn btn-ghost" href="/">Beranda</a>
       <a class="btn btn-primary" target="_blank" rel="noopener"
-         href="https://wa.me/628989760020?text=Halo%20Assistenku,%20saya%20ingin%20memilih%20mockup%20website%20UMKM%20berdasarkan%20sektor%20ekonomi.%20Mohon%20info%20paket%20dan%20prosesnya.">
+         href="https://wa.me/628989760020?text=Halo%20Assistenku,%20saya%20ingin%20memilih%20mockup%20website%20berdasarkan%20sektor%20ekonomi.%20Mohon%20info%20paket%20dan%20prosesnya.">
         Konsultasi WhatsApp
       </a>
     </div>
@@ -36,7 +36,7 @@
 
   <section class="hero">
     <div class="hero-copy">
-      <h1>Pilih Mockup Website UMKM<br>berdasarkan 17 Sektor Ekonomi</h1>
+      <h1>Pilih Mockup Website<br>berdasarkan 17 Sektor Ekonomi</h1>
       <p>
         Ini halaman penawaran pilihan tampilan. Setelah Anda pilih sektor, kami sesuaikan konten,
         warna, dan kebutuhan fitur sesuai bisnis Anda.
@@ -57,18 +57,37 @@
     <aside class="hero-panel">
       <div class="panel-card">
         <h2>Cari sektor</h2>
-        <input id="sectorSearch" class="input" type="search" placeholder="Ketik: perdagangan, pendidikan, kuliner…" autocomplete="off">
+        <input id="sectorSearch" class="input" type="search"
+               placeholder="Ketik: perdagangan, pendidikan, kuliner…" autocomplete="off">
         <p class="hint">Filter otomatis saat Anda mengetik.</p>
       </div>
 
       <div class="panel-card">
-        <h2>Alur cepat</h2>
-        <ol>
-          <li>Pilih sektor</li>
-          <li>Lihat contoh halaman sektor</li>
-          <li>Chat untuk penyesuaian</li>
-          <li>Produksi + revisi + rilis</li>
-        </ol>
+        <h2>Filter kategori</h2>
+
+        <label class="filter-label" for="categorySelect">Pilih kategori yang mudah dipahami</label>
+        <select id="categorySelect" class="select">
+          <option value="">Semua sektor (S01–S17)</option>
+          <option value="umkm">UMKM-friendly</option>
+          <option value="pro">Lebih sering Profesional/Regulasi tinggi</option>
+          <option value="kuliner">Kuliner</option>
+          <option value="toko">Toko/Retail</option>
+          <option value="jasa">Jasa</option>
+          <option value="logistik">Logistik/Transport</option>
+          <option value="teknologi">Teknologi/Digital</option>
+          <option value="keuangan">Keuangan/Asuransi</option>
+          <option value="properti">Properti/Real Estat</option>
+          <option value="pemerintah">Pemerintahan</option>
+          <option value="kesehatan">Kesehatan</option>
+          <option value="edukasi">Edukasi/Kursus</option>
+          <option value="energi">Energi/Utilitas</option>
+        </select>
+
+        <button class="btn btn-ghost" type="button" id="resetFilters" style="margin-top:10px;">
+          Reset
+        </button>
+
+        <p class="hint" id="filterSummary" style="margin-top:10px;"></p>
       </div>
     </aside>
   </section>
@@ -80,6 +99,7 @@
     </div>
 
     <div class="sector-grid" id="sectorGrid">
+
       <a href="./pages/pertanian.html" class="sector-card s01" data-sector="S01" data-title="Pertanian, Kehutanan & Perikanan">
         <span class="sector-code">S01</span><h3>Pertanian, Kehutanan & Perikanan</h3><p class="sector-desc">Budidaya dan produk turunannya.</p>
       </a>
@@ -147,6 +167,7 @@
       <a href="./pages/jasa-lainnya.html" class="sector-card s17" data-sector="S17" data-title="Jasa Lainnya">
         <span class="sector-code">S17</span><h3>Jasa Lainnya</h3><p class="sector-desc">Salon, laundry, event, dll.</p>
       </a>
+
     </div>
   </section>
 
@@ -155,8 +176,8 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div>
-  <strong>Assistenku</strong>
-  <p class="muted">PT Assistenku Solusi Indonesia • Penawaran mockup website per sektor ekonomi.</p>
+      <strong>Assistenku</strong>
+      <p class="muted">PT Assistenku Solusi Indonesia • Penawaran mockup website per sektor ekonomi.</p>
     </div>
     <div class="footer-links">
       <a class="link" href="/">Beranda</a>
@@ -172,4 +193,3 @@
 <script src="/mockupwebsite/mockupwebsite.js" defer></script>
 </body>
 </html>
-
