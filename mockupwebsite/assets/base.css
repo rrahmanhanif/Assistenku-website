@@ -360,3 +360,108 @@ img{max-width:100%;display:block}
 @media(max-width:560px){
   .sector-grid{grid-template-columns:1fr}
 }
+
+/* =========================================================
+   ASSISTENKU BRAND OVERRIDES (Blue/White)
+========================================================= */
+:root{
+  --accent:#0d6efd;          /* Assistenku blue */
+  --accent-2:#0b5ed7;        /* darker blue */
+  --accent-soft: rgba(13,110,253,.12);
+
+  --bg:#f7f9fc;              /* clean light */
+  --card: rgba(13,110,253,.06);
+  --line: rgba(15,23,42,.10);
+  --text: #0f172a;
+  --muted: rgba(15,23,42,.68);
+
+  --radius: 22px;
+  --shadow: 0 14px 40px rgba(2, 6, 23, .08);
+}
+
+/* Body background */
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Topbar: white glass */
+.topbar{
+  background: rgba(255,255,255,.82);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+/* Brand link wrapper */
+.brand-link{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+
+/* Logo */
+.brand-logo{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  object-fit:contain;
+  background:#fff;
+  border:1px solid rgba(13,110,253,.20);
+  box-shadow: 0 8px 18px rgba(13,110,253,.12);
+}
+
+/* Brand mark (fallback) */
+.brand-mark{
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border: 1px solid rgba(13,110,253,.25);
+}
+
+/* Buttons adopt Assistenku */
+.btn-primary{
+  background: var(--accent);
+  border-color: transparent;
+}
+.btn-primary:hover{
+  background: var(--accent-2);
+}
+
+.btn-secondary{
+  background: rgba(13,110,253,.12);
+  border: 1px solid rgba(13,110,253,.22);
+  color: var(--text);
+}
+.btn-secondary:hover{
+  background: rgba(13,110,253,.16);
+}
+
+.btn-outline{
+  border: 1px solid rgba(13,110,253,.30);
+  color: var(--accent-2);
+  background: transparent;
+}
+.btn-outline:hover{
+  background: rgba(13,110,253,.08);
+}
+
+.btn-ghost{
+  background: transparent;
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover{
+  background: rgba(13,110,253,.06);
+}
+
+/* Links in footer */
+.footer{
+  background: rgba(255,255,255,.72);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+.footer .link, .footer a{
+  color: rgba(15,23,42,.78);
+}
+.footer .link:hover, .footer a:hover{
+  color: var(--accent-2);
+}
