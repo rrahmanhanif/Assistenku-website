@@ -1,0 +1,196 @@
+/* =========================================================
+   s13.css — S13 Jasa Perusahaan
+   Nuansa: charcoal/violet • B2B • case study • SLA
+========================================================= */
+
+:root{
+  --accent:#6d28d9;      /* violet */
+  --accent-2:#4c1d95;
+  --accent-soft: rgba(109,40,217,.11);
+}
+
+/* Hero B2B */
+.hero-b2b{
+  background:linear-gradient(135deg,#fff,var(--accent-soft));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-b2b::after{
+  content:"";
+  position:absolute;
+  width:440px;height:440px;
+  right:-280px; top:-300px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(109,40,217,.22), transparent 60%);
+  pointer-events:none;
+}
+
+.hero-b2b h1{
+  margin:0 0 10px;
+  font-weight:900;
+  letter-spacing:-.6px;
+  font-size:clamp(22px,3vw,40px);
+  line-height:1.15;
+}
+.hero-b2b p{margin:0;color:var(--muted)}
+
+/* Pillars */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+
+.pillar{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:14px;
+}
+
+.pillar strong{
+  display:block;
+  font-size:13px;
+  color:#0f172a;
+}
+.pillar span{
+  display:block;
+  margin-top:6px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+
+/* Service cards */
+.b2b-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.b2b-card{
+  background:linear-gradient(180deg,#fff,rgba(109,40,217,.03));
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.b2b-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.b2b-card h3{margin:0 0 6px;font-size:15px}
+.b2b-card p{margin:0;color:var(--muted);font-size:13px}
+
+/* Case studies */
+.cases{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+
+.case{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.case::after{
+  content:"";
+  position:absolute;
+  left:-120px; bottom:-140px;
+  width:260px;height:260px;border-radius:999px;
+  background:radial-gradient(circle at 65% 65%, rgba(109,40,217,.18), transparent 60%);
+  pointer-events:none;
+}
+
+.case strong{display:block;font-size:14px}
+.case span{display:block;margin-top:6px;color:var(--muted);font-size:13px}
+
+.case .kpi{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.case .tag{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  background:var(--accent-soft);
+  border:1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  color:#1f2937;
+}
+
+/* SLA block */
+.sla{
+  background:rgba(17,24,39,.94);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+}
+
+.sla::after{
+  content:"";
+  position:absolute;
+  right:-220px; bottom:-240px;
+  width:380px;height:380px;border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(109,40,217,.24), transparent 60%);
+  pointer-events:none;
+}
+
+.sla p{margin:6px 0 0;color:rgba(255,255,255,.78)}
+.sla-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.sla-box{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  padding:14px;
+}
+.sla-box strong{display:block;font-size:13px}
+.sla-box span{display:block;margin-top:6px;font-size:12.5px;color:rgba(255,255,255,.78)}
+
+/* Buttons sektor */
+.btn-primary{background:var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+.btn-outline{border-color: color-mix(in srgb, var(--accent) 35%, var(--line))}
+
+/* Responsive */
+@media(max-width:980px){
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .b2b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cases{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sla-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .pillars{grid-template-columns:1fr}
+  .b2b-grid{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+}
