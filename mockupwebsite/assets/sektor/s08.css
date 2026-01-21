@@ -1,0 +1,193 @@
+/* =========================================================
+   s08.css — S08 Transportasi & Pergudangan
+   Nuansa: indigo • logistics • SLA / coverage
+========================================================= */
+
+:root{
+  --accent:#283593;
+  --accent-2:#1a237e;
+  --accent-soft: rgba(40,53,147,.11);
+}
+
+/* Hero logistics */
+.hero-logistics{
+  background:linear-gradient(135deg,#fff,var(--accent-soft));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-logistics::after{
+  content:"";
+  position:absolute;
+  width:380px;height:380px;
+  left:-240px; bottom:-260px;
+  border-radius:999px;
+  background:radial-gradient(circle at 65% 65%, rgba(40,53,147,.22), transparent 60%);
+  pointer-events:none;
+}
+
+.hero-logistics h1{
+  margin:0 0 10px;
+  font-weight:900;
+  letter-spacing:-.6px;
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.15;
+}
+.hero-logistics p{margin:0;color:var(--muted)}
+
+/* KPI / SLA boxes */
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+
+.kpi{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:14px;
+}
+
+.kpi strong{
+  display:block;
+  font-size:18px;
+  color:var(--accent);
+}
+.kpi span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Service grid */
+.logi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.logi-card{
+  background:linear-gradient(180deg,#fff,rgba(40,53,147,.03));
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(20,24,31,.06);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.logi-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.logi-card h3{margin:0 0 6px;font-size:15px}
+.logi-card p{margin:0;color:var(--muted);font-size:13px}
+
+/* Coverage / Area */
+.coverage{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:12px;
+}
+
+.cover-map{
+  background:linear-gradient(135deg,#111827, rgba(17,24,39,.92));
+  color:#fff;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+}
+
+.cover-map::after{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;
+  right:-240px; top:-220px;
+  border-radius:999px;
+  background:radial-gradient(circle at 35% 35%, rgba(40,53,147,.28), transparent 60%);
+  pointer-events:none;
+}
+
+.cover-map p{margin:6px 0 0;color:rgba(255,255,255,.78)}
+.routes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+
+.route{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  padding:12px;
+  font-size:12.5px;
+  color:rgba(255,255,255,.88);
+}
+
+/* Fleet / Warehouse card */
+.fleet{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+
+.fleet h3{margin:0 0 8px;font-size:15px}
+.fleet .chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.fleet .chip{
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  background:var(--accent-soft);
+  border:1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  color:#1f2937;
+}
+
+/* Process timeline */
+.timeline{
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin-top:10px;
+}
+.t-item{margin-bottom:14px}
+.t-item h4{margin:0 0 4px;font-size:14px}
+.t-item p{margin:0;color:var(--muted);font-size:13px}
+
+/* Buttons sektor */
+.btn-primary{background:var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+
+/* Responsive */
+@media(max-width:980px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .coverage{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .kpis{grid-template-columns:1fr}
+  .logi-grid{grid-template-columns:1fr}
+  .routes{grid-template-columns:1fr}
+}
