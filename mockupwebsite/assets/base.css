@@ -362,106 +362,151 @@ img{max-width:100%;display:block}
 }
 
 /* =========================================================
-   ASSISTENKU BRAND OVERRIDES (Blue/White)
+   ASSISTENKU BRAND OVERRIDES (Blue/White) — SAFE (NO GLOBAL DAMAGE)
+   Catatan: Jangan ubah --card global. Branding fokus ke topbar/footer/button saja.
 ========================================================= */
+
 :root{
-  --accent:#0d6efd;          /* Assistenku blue */
-  --accent-2:#0b5ed7;        /* darker blue */
-  --accent-soft: rgba(13,110,253,.12);
-
-  --bg:#f7f9fc;              /* clean light */
-  --card: rgba(13,110,253,.06);
-  --line: rgba(15,23,42,.10);
-  --text: #0f172a;
-  --muted: rgba(15,23,42,.68);
-
-  --radius: 22px;
-  --shadow: 0 14px 40px rgba(2, 6, 23, .08);
+  --accent:#0d6efd;
+  --accent-2:#0b5ed7;
+  --accent-soft: rgba(13,110,253,.10);
 }
 
-/* Body background */
-body{
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* Topbar: white glass */
+/* Topbar: rapih dan compact */
 .topbar{
-  background: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.88);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
 }
 
-/* Brand link wrapper */
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  flex-wrap:nowrap;         /* penting: jangan wrap */
+}
+
+/* Brand wrapper */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
 .brand-link{
   display:flex;
-  gap:12px;
   align-items:center;
+  gap:10px;
+  min-width:0;
   text-decoration:none;
   color:inherit;
 }
 
-/* Logo */
+/* Logo: kecil, tidak bikin layout meledak */
 .brand-logo{
-  width:42px;
-  height:42px;
-  border-radius:12px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
   object-fit:contain;
   background:#fff;
-  border:1px solid rgba(13,110,253,.20);
-  box-shadow: 0 8px 18px rgba(13,110,253,.12);
+  border:1px solid rgba(13,110,253,.18);
+  box-shadow:none;
 }
 
-/* Brand mark (fallback) */
+/* fallback mark kalau logo tidak ada */
 .brand-mark{
+  width:34px;
+  height:34px;
+  border-radius:10px;
   background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  border: 1px solid rgba(13,110,253,.25);
+  border:1px solid rgba(13,110,253,.22);
+  box-shadow:none;
 }
 
-/* Buttons adopt Assistenku */
+/* teks jangan dorong tombol */
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+  min-width:0;
+}
+
+.brand-text strong{
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:-.2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:52vw;
+}
+
+.brand-text span{
+  font-size:11.5px;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:52vw;
+}
+
+/* Actions: jangan wrap, jangan full width */
+.topbar-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+  width:auto;
+  flex-shrink:0;
+}
+
+/* Button branding (tanpa ubah sektor) */
 .btn-primary{
   background: var(--accent);
-  border-color: transparent;
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 10px 20px rgba(13,110,253,.18);
 }
-.btn-primary:hover{
-  background: var(--accent-2);
-}
+.btn-primary:hover{background:var(--accent-2); filter:none}
 
 .btn-secondary{
-  background: rgba(13,110,253,.12);
+  background: rgba(13,110,253,.10);
   border: 1px solid rgba(13,110,253,.22);
-  color: var(--text);
+  color: rgba(15,23,42,.92);
 }
-.btn-secondary:hover{
-  background: rgba(13,110,253,.16);
-}
+.btn-secondary:hover{background: rgba(13,110,253,.14);}
 
 .btn-outline{
+  background: transparent;
   border: 1px solid rgba(13,110,253,.30);
   color: var(--accent-2);
-  background: transparent;
 }
-.btn-outline:hover{
-  background: rgba(13,110,253,.08);
-}
+.btn-outline:hover{background: rgba(13,110,253,.08);}
 
 .btn-ghost{
   background: transparent;
   border: 1px solid var(--line);
 }
-.btn-ghost:hover{
-  background: rgba(13,110,253,.06);
+.btn-ghost:hover{background: rgba(13,110,253,.06);}
+
+/* Footer: putih bersih */
+.footer{
+  background:#fff;
+  border-top:1px solid var(--line);
 }
 
-/* Links in footer */
-.footer{
-  background: rgba(255,255,255,.72);
-  border-top: 1px solid var(--line);
-  backdrop-filter: blur(10px);
+/* Mobile: topbar tetap rapi, tombol tidak jadi full-width */
+@media(max-width:560px){
+  .topbar-actions{gap:8px}
+  .topbar-actions .btn{width:auto}  /* override global .btn{width:100%} */
+  .btn{padding:9px 10px;font-size:12.5px;border-radius:12px}
 }
-.footer .link, .footer a{
-  color: rgba(15,23,42,.78);
-}
-.footer .link:hover, .footer a:hover{
-  color: var(--accent-2);
-}
+
+/* HP kecil: sembunyikan tombol beranda agar tidak sempit */
+@media(max-width:420px){
+  .topbar-actions .btn-ghost{display:none}
+  .brand-text strong, .brand-text span{max-width:62vw}
+   }
