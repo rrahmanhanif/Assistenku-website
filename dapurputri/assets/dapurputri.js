@@ -66,8 +66,7 @@
   }
 
   function waLink(text) {
-    const t = encodeURIComponent(text);
-    return `${WHATSAPP_BASE}?text=${t}`;
+    return `${WHATSAPP_BASE}?text=${encodeURIComponent(text)}`;
   }
 
   function renderPaket() {
@@ -75,34 +74,30 @@
     if (!grid) return;
 
     PAKET_7_HARI.forEach((m) => {
-      const card = el("article", "card");
+      const card = el("article", "card paket-card");
 
-      const head = el("div", "paket-title");
-      head.appendChild(el("h4", "", m.day));
+      // header
+      const head = el("div", "paket-head");
+      head.appendChild(el("h4", "paket-day", m.day));
       head.appendChild(el("span", "badge", m.tag));
 
+      // list
       const ul = el("ul", "menu-list");
-      m.items.forEach((it) => {
-        const li = el("li", "", it);
-        ul.appendChild(li);
-      });
+      m.items.forEach((it) => ul.appendChild(el("li", "", it)));
 
-      const bottom = el("div", "bottom");
-      bottom.appendChild(el("span", "price", m.price));
+      // footer
+      const bottom = el("div", "paket-bottom");
+      bottom.appendChild(el("div", "paket-price", m.price));
 
-      const order = el("a", "btn", "Order");
+      const order = el("a", "btn btn-small", "Order");
       order.href = waLink(m.waText);
       order.target = "_blank";
       order.rel = "noopener";
       bottom.appendChild(order);
 
-      const priceBox = el("div", "paket-price", m.price);
-
       card.appendChild(head);
       card.appendChild(ul);
       card.appendChild(bottom);
-      card.appendChild(priceBox);
-
       grid.appendChild(card);
     });
   }
@@ -120,7 +115,7 @@
     lines.push("Paket Langganan: 7 Hari Rp180.000 / pax");
     lines.push("Minimal order: 10 box / hari");
     lines.push("Free sambal. Request pedas & pantangan makanan bisa.");
-    lines.push(`WhatsApp: +62 851-8666-0020`);
+    lines.push("WhatsApp: +62 851-8666-0020");
     lines.push(`Email: ${EMAIL_TO}`);
     return lines.join("\n");
   }
