@@ -1,68 +1,52 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ride Booking Assistenku</title>
 
-<title>Pesan Mobil Premium</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<h2>Form Pemesanan Mobil</h2>
+<header>
+<h1>Ride Booking Assistenku</h1>
+<p>Pilih kendaraan dan pesan perjalanan Anda.</p>
+</header>
 
-<label>Nama Pemesan</label>
-<input id="nama">
+<section class="vehicle-grid">
 
-<label>Nomor Whatsapp</label>
-<input id="wa">
+<div class="card">
+<h2>Basic</h2>
+<p>Rp3.500/KM</p>
+</div>
 
-<label>Jenis Layanan</label>
+<div class="card">
+<h2>Standar</h2>
+<p>Rp4.000/KM</p>
+</div>
 
-<select id="layanan">
+<div class="card">
+<h2>Casual</h2>
+<p>Rp5.000/KM</p>
+</div>
 
-<option value="pickup">Pick-up Only</option>
-<option value="dropoff">Drop-off Only</option>
-<option value="standby">Full Standby</option>
+<div class="card">
+<h2>Gold</h2>
+<p>Rp6.000/KM</p>
+</div>
 
-</select>
+<div class="card">
+<h2>Luxury</h2>
+<p>Rp10.000/KM</p>
+</div>
 
-<label>Durasi Standby</label>
+</section>
 
-<select id="durasi">
-
-<option value="3">3 Jam</option>
-<option value="5">5 Jam</option>
-<option value="8">8 Jam</option>
-
-</select>
-
-<h3>Pilih Lokasi</h3>
-
-<div id="map"></div>
-
-<p>
-
-Tarif Estimasi:  
-<span id="tarif">0</span>
-
-</p>
-
-<button onclick="submitBooking()">
-Pesan via WhatsApp
-</button>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<a href="pages/booking.html" class="btn">
+Mulai Booking
+</a>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
