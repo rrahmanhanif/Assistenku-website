@@ -14,23 +14,6 @@ maxZoom:19
 }
 ).addTo(map);
 
-}
-console.log("Ride Booking Assistenku Loaded");
-
-if(document.getElementById('map')){
-
-const map = L.map('map').setView(
-[-6.2088,106.8456],
-10
-);
-
-L.tileLayer(
-'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-maxZoom:19
-}
-).addTo(map);
-
 let pickupMarker = null;
 let destinationMarker = null;
 
@@ -43,8 +26,7 @@ pickupMarker = L.marker(e.latlng)
 .bindPopup("Titik Jemput")
 .openPopup();
 
-document.getElementById("pickup")
-.innerText =
+document.getElementById("pickup").innerText =
 e.latlng.lat.toFixed(6) +
 "," +
 e.latlng.lng.toFixed(6);
@@ -58,8 +40,7 @@ destinationMarker = L.marker(e.latlng)
 .bindPopup("Titik Tujuan")
 .openPopup();
 
-document.getElementById("destination")
-.innerText =
+document.getElementById("destination").innerText =
 e.latlng.lat.toFixed(6) +
 "," +
 e.latlng.lng.toFixed(6);
