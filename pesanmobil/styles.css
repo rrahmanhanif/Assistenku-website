@@ -1,32 +1,29 @@
 body{
-
-font-family:Arial;
-margin:20px;
-
+font-family:Arial,sans-serif;
+margin:0;
+padding:20px;
+background:#f5f7fb;
 }
 
-input,select{
-
-width:100%;
-padding:10px;
-margin-bottom:15px;
-
+.vehicle-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
 }
 
-#map{
-
-height:300px;
-margin-bottom:20px;
-
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
 }
 
-button{
-
-padding:15px;
-width:100%;
-background:#2ecc71;
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:#005eff;
 color:white;
-border:none;
-font-size:16px;
-
+text-decoration:none;
+border-radius:8px;
+margin-top:20px;
 }
