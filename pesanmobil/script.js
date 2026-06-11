@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pickupElement = document.getElementById("pickup");
   const destinationElement = document.getElementById("destination");
+  const distanceElement = document.getElementById("distance");
+  const fareElement = document.getElementById("fare");
 
   const map = L.map("map").setView(
     [-6.2088, 106.8456],
@@ -62,6 +64,28 @@ document.addEventListener("DOMContentLoaded", function () {
           e.latlng.lng.toFixed(6);
       }
 
+      // Hitung jarak
+      const from = pickupMarker.getLatLng();
+      const to = destinationMarker.getLatLng();
+
+      const distanceKm =
+        map.distance(from, to) / 1000;
+
+      if (distanceElement) {
+        distanceElement.innerText =
+          distanceKm.toFixed(1) + " KM";
+      }
+
+      // Tarif Basic
+      const fare =
+        Math.round(distanceKm * 3500);
+
+      if (fareElement) {
+        fareElement.innerText =
+          "Rp " +
+          fare.toLocaleString("id-ID");
+      }
+
       return;
     }
 
@@ -78,6 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (destinationElement) {
       destinationElement.innerText = "Belum dipilih";
+    }
+
+    if (distanceElement) {
+      distanceElement.innerText = "0 KM";
+    }
+
+    if (fareElement) {
+      fareElement.innerText = "Rp 0";
     }
 
   });
