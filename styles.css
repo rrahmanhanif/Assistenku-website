@@ -2695,7 +2695,51 @@ img:not(.loaded){
     }
 
 }
+.menu-button{
 
+display:none;
+
+align-items:center;
+
+gap:8px;
+
+padding:10px 18px;
+
+background:#0B5ED7;
+
+color:#fff;
+
+border:none;
+
+border-radius:999px;
+
+font-size:.95rem;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.menu-button:hover{
+
+background:#094db0;
+
+}
+
+.menu-button.active .menu-arrow{
+
+transform:rotate(180deg);
+
+}
+
+.menu-arrow{
+
+transition:.3s;
+
+}
 /* =========================
    PROJECT INFORMATION
 ========================= */
