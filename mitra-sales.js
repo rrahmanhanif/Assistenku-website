@@ -1,22 +1,22 @@
-// =====================================
+// ======================================================
 // MITRA SALES ASSISTENKU
-// JavaScript
-// =====================================
+// Premium Landing Page JavaScript
+// ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ==============================
+    /* ==========================================
        FAQ ACCORDION
-    ============================== */
+    ========================================== */
 
     const faqItems = document.querySelectorAll(".faq-item");
 
     faqItems.forEach(item => {
 
-        const button = item.querySelector(".faq-question");
+        const question = item.querySelector(".faq-question");
         const answer = item.querySelector(".faq-answer");
 
-        button.addEventListener("click", () => {
+        question.addEventListener("click", () => {
 
             faqItems.forEach(other => {
 
@@ -47,23 +47,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ==============================
+    /* ==========================================
+       HEADER SHADOW
+    ========================================== */
+
+    const header = document.querySelector("header");
+
+    function updateHeader(){
+
+        if(!header) return;
+
+        if(window.scrollY > 30){
+
+            header.style.boxShadow = "0 10px 30px rgba(0,0,0,.08)";
+
+        }else{
+
+            header.style.boxShadow = "none";
+
+        }
+
+    }
+
+    updateHeader();
+
+    window.addEventListener("scroll", updateHeader);
+
+
+    /* ==========================================
        SMOOTH SCROLL
-    ============================== */
+    ========================================== */
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
-        anchor.addEventListener("click", function (e) {
+        link.addEventListener("click",function(e){
 
-            e.preventDefault();
+            const target=document.querySelector(this.getAttribute("href"));
 
-            const target = document.querySelector(this.getAttribute("href"));
+            if(target){
 
-            if (target) {
+                e.preventDefault();
 
                 target.scrollIntoView({
 
-                    behavior: "smooth"
+                    behavior:"smooth",
+                    block:"start"
 
                 });
 
@@ -74,42 +102,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ==============================
-       HEADER SHADOW
-    ============================== */
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
 
-    const header = document.querySelector("header");
+    const reveals=document.querySelectorAll(
 
-    window.addEventListener("scroll", () => {
+        ".service-card,.benefit-card,.commission-card,.work-card,.equipment-card,.qualification-grid div,.contact-card"
 
-        if (window.scrollY > 50) {
+    );
 
-            header.classList.add("scrolled");
+    reveals.forEach(el=>{
 
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
+        el.classList.add("fade-up");
 
     });
 
+    function revealOnScroll(){
 
-    /* ==============================
-       SCROLL ANIMATION
-    ============================== */
+        reveals.forEach(el=>{
 
-    const revealElements = document.querySelectorAll(
-        ".service-card, .benefit-card, .commission-card, .work-card, .equipment-card, .contact-card"
-    );
+            const top=el.getBoundingClientRect().top;
 
-    const reveal = () => {
-
-        revealElements.forEach(el => {
-
-            const top = el.getBoundingClientRect().top;
-
-            if (top < window.innerHeight - 80) {
+            if(top<window.innerHeight-80){
 
                 el.classList.add("show");
 
@@ -117,106 +132,124 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-    };
+    }
 
-    window.addEventListener("scroll", reveal);
+    revealOnScroll();
 
-    reveal();
+    window.addEventListener("scroll",revealOnScroll);
 
 
-    /* ==============================
+    /* ==========================================
        COUNTER ANIMATION
-    ============================== */
+    ========================================== */
 
-    const counters = document.querySelectorAll(".commission-card h1");
+    let counterPlayed=false;
 
-    counters.forEach(counter => {
+    function animateCounter(){
 
-        const text = counter.innerText.replace(/[^\d]/g, "");
+        if(counterPlayed) return;
 
-        const target = parseInt(text);
+        const section=document.querySelector(".commission");
 
-        if (isNaN(target)) return;
+        if(!section) return;
 
-        let current = 0;
+        const top=section.getBoundingClientRect().top;
 
-        const speed = target / 80;
+        if(top>window.innerHeight-120) return;
 
-        const update = () => {
+        counterPlayed=true;
 
-            current += speed;
+        document.querySelectorAll(".commission-card h1").forEach(counter=>{
 
-            if (current >= target) {
+            const number=parseInt(counter.innerText.replace(/[^\d]/g,""));
 
-                counter.innerText =
-                    "Rp" + target.toLocaleString("id-ID");
+            if(isNaN(number)) return;
 
-            } else {
+            let start=0;
 
-                counter.innerText =
-                    "Rp" + Math.floor(current).toLocaleString("id-ID");
+            const duration=1500;
 
-                requestAnimationFrame(update);
+            const step=Math.ceil(number/(duration/16));
+
+            function update(){
+
+                start+=step;
+
+                if(start>=number){
+
+                    start=number;
+
+                }
+
+                counter.innerText="Rp"+start.toLocaleString("id-ID");
+
+                if(start<number){
+
+                    requestAnimationFrame(update);
+
+                }
 
             }
 
-        };
-
-        update();
-
-    });
-
-
-    /* ==============================
-       BUTTON RIPPLE
-    ============================== */
-
-    const buttons = document.querySelectorAll("a");
-
-    buttons.forEach(btn => {
-
-        btn.addEventListener("click", function (e) {
-
-            const ripple = document.createElement("span");
-
-            ripple.className = "ripple";
-
-            ripple.style.left =
-                e.offsetX + "px";
-
-            ripple.style.top =
-                e.offsetY + "px";
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-
-                ripple.remove();
-
-            }, 600);
+            update();
 
         });
 
-    });
+    }
+
+    animateCounter();
+
+    window.addEventListener("scroll",animateCounter);
 
 
-    /* ==============================
-       FLOATING WA
-    ============================== */
+    /* ==========================================
+       FLOATING WHATSAPP
+    ========================================== */
 
-    const wa = document.querySelector(".floating-wa");
+    const wa=document.querySelector(".floating-wa");
 
-    window.addEventListener("scroll", () => {
+    if(wa){
 
-        if (window.scrollY > 250) {
+        function floatingWA(){
 
-            wa.classList.add("visible");
+            if(window.scrollY>200){
 
-        } else {
+                wa.style.opacity="1";
+                wa.style.transform="translateY(0)";
 
-            wa.classList.remove("visible");
+            }else{
+
+                wa.style.opacity=".85";
+                wa.style.transform="translateY(8px)";
+
+            }
 
         }
+
+        floatingWA();
+
+        window.addEventListener("scroll",floatingWA);
+
+    }
+
+
+    /* ==========================================
+       BUTTON HOVER EFFECT
+    ========================================== */
+
+    document.querySelectorAll(".btn-primary,.btn-secondary").forEach(btn=>{
+
+        btn.addEventListener("mouseenter",()=>{
+
+            btn.style.transform="translateY(-2px)";
+
+        });
+
+        btn.addEventListener("mouseleave",()=>{
+
+            btn.style.transform="translateY(0)";
+
+        });
 
     });
 
