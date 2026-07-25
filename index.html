@@ -1,145 +1,730 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beranda | Assistenku</title>
 
-  <!-- SCHEMA: ORGANIZATION -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Assistenku",
-    "url": "https://assistenku.com",
-    "logo": "https://assistenku.com/logo.png",
-    "description": "Assistenku menyediakan layanan asistensi rumah tangga dan bisnis dengan tenaga kerja berpengalaman, aman, dan terpercaya."
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SCHEMA: WEBSITE -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://assistenku.com",
-    "name": "Assistenku",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://assistenku.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+<title>Beranda | Assistenku</title>
 
-  <!-- SCHEMA: WEBPAGE (Beranda) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Beranda Assistenku",
-    "url": "https://assistenku.com",
-    "description": "Assistenku membantu kebutuhan rumah tangga dan bisnis melalui layanan asistensi berbasis pengalaman kerja dan pengelolaan yang bertanggung jawab.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "url": "https://assistenku.com"
-    }
-  }
-  </script>
+<meta name="description" content="Assistenku menyediakan layanan asistensi rumah tangga dan bisnis dengan tenaga kerja berpengalaman, aman, dan terpercaya.">
 
-  <!-- SCHEMA: BREADCRUMB -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Beranda",
-      "item": "https://assistenku.com"
-    }]
-  }
-  </script>
+<meta name="keywords" content="Assistenku, ART, Babysitter, Caregiver, Sopir Pribadi, Cleaning Service, Layanan Rumah Tangga">
 
-  <link rel="stylesheet" href="/styles.css" />
+<meta name="author" content="PT Assistenku Solusi Indonesia">
 
-  <!-- PWA -->
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="theme-color" content="#0B5ED7">
-  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+<meta name="theme-color" content="#0A5BD8">
+
+<link rel="canonical" href="https://assistenku.com/">
+
+<!-- Open Graph -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Assistenku">
+<meta property="og:description" content="Kemudahan Ada Dalam Genggaman">
+<meta property="og:url" content="https://assistenku.com">
+<meta property="og:image" content="https://assistenku.com/logo.png">
+
+<!-- Twitter -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assistenku">
+<meta name="twitter:description" content="Kemudahan Ada Dalam Genggaman">
+
+<!-- PWA -->
+
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/styles.css">
+
+<!-- ========================================================= -->
+<!-- SCHEMA ORGANIZATION -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Organization",
+"name":"Assistenku",
+"url":"https://assistenku.com",
+"logo":"https://assistenku.com/logo.png",
+"description":"Assistenku menyediakan layanan asistensi rumah tangga dan bisnis dengan tenaga kerja berpengalaman, aman, dan terpercaya."
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- SCHEMA WEBSITE -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebSite",
+"url":"https://assistenku.com",
+"name":"Assistenku",
+"potentialAction":{
+"@type":"SearchAction",
+"target":"https://assistenku.com/?q={search_term_string}",
+"query-input":"required name=search_term_string"
+}
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- SCHEMA WEBPAGE -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebPage",
+"name":"Beranda Assistenku",
+"url":"https://assistenku.com",
+"description":"Assistenku membantu kebutuhan rumah tangga dan bisnis melalui layanan asistensi yang profesional dan bertanggung jawab.",
+"isPartOf":{
+"@type":"WebSite",
+"url":"https://assistenku.com"
+}
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- SCHEMA BREADCRUMB -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"BreadcrumbList",
+"itemListElement":[
+{
+"@type":"ListItem",
+"position":1,
+"name":"Beranda",
+"item":"https://assistenku.com"
+}
+]
+}
+</script>
+
 </head>
 
 <body>
+
 <header>
-  <div class="top-header">Assistenku — Kemudahan Ada Dalam Genggaman</div>
 
-  <div class="navbar">
-    <img src="/logo.png" class="logo" alt="Assistenku">
+<div class="top-header">
 
-    <nav>
-      <ul>
-        <li><a href="/" class="nav-beranda active">Beranda</a></li>
-        <li><a href="/profil" class="nav-profil">Profil</a></li>
-        <li><a href="/layanan" class="nav-layanan">Layanan</a></li>
-        <li><a href="/karir" class="nav-karir">Karir</a></li>
-        <li><a href="/kontak" class="nav-kontak">Kontak</a></li>
-      </ul>
-    </nav>
+Kemudahan Ada Dalam Genggaman
 
-    <div id="menuIcon">☰</div>
-  </div>
-
-  <div id="mobileMenu">
-    <a href="/" class="nav-beranda active">Beranda</a>
-    <a href="/profil" class="nav-profil">Profil</a>
-    <a href="/layanan" class="nav-layanan">Layanan</a>
-    <a href="/karir" class="nav-karir">Karir</a>
-    <a href="/kontak" class="nav-kontak">Kontak</a>
-  </div>
-</header>
-
-<section style="padding-top:160px;">
-  <h1>Assistenku</h1>
-
-  <p>
-    Kehidupan modern menuntut fokus dan efisiensi. Dalam kondisi tersebut,
-    Assistenku hadir untuk membantu kebutuhan rumah tangga, individu,
-    maupun operasional bisnis secara lebih tertata dan bertanggung jawab.
-  </p>
-
-  <p>
-    Assistenku menyediakan layanan asistensi yang ditangani oleh tenaga kerja
-    yang diseleksi berdasarkan pengalaman dan rekam kerja di bidangnya,
-    dengan pengelolaan layanan yang jelas dan terkontrol.
-  </p>
-
-  <h2>Visi Kami</h2>
-  <p>
-    Menjadi layanan asistensi yang terpercaya dan mudah diakses,
-    untuk membantu kebutuhan rumah tangga dan bisnis di Indonesia.
-  </p>
-
-  <h2>Misi Kami</h2>
-  <p>• Menyediakan layanan asistensi berbasis pengalaman kerja.</p>
-  <p>• Mengelola layanan secara rapi, jelas, dan bertanggung jawab.</p>
-  <p>• Membantu keluarga dan bisnis bekerja lebih efisien.</p>
-  <p>• Menjaga kepercayaan melalui proses dan komunikasi yang transparan.</p>
-
-  <br>
-  <a href="/layanan" class="btn-primary">Lihat Layanan Kami</a>
-</section>
-
-<div class="center-btn">
-  <a href="https://rb.gy/hr0ia6"
-     class="btn-primary" target="_blank" rel="noopener">
-    Unduh Aplikasi Assistenku
-  </a>
 </div>
 
+<div class="navbar">
+
+<a href="/" class="logo">
+
+<img src="/logo.png"
+alt="Logo Assistenku">
+
+<span>
+
+Assistenku
+
+</span>
+
+</a>
+
+<nav>
+
+<a href="/" class="active nav-beranda">
+Beranda
+</a>
+
+<a href="/profil" class="nav-profil">
+Profil
+</a>
+
+<a href="/layanan" class="nav-layanan">
+Layanan
+</a>
+
+<a href="/karir" class="nav-karir">
+Karir
+</a>
+
+<a href="/kontak" class="nav-kontak">
+Kontak
+</a>
+
+</nav>
+
+<button
+id="menuIcon"
+class="menu-toggle"
+aria-label="Menu">
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
+
+</div>
+
+<div
+id="mobileMenu"
+class="mobile-nav">
+
+<a href="/" class="active">
+Beranda
+</a>
+
+<a href="/profil">
+Profil
+</a>
+
+<a href="/layanan">
+Layanan
+</a>
+
+<a href="/karir">
+Karir
+</a>
+
+<a href="/kontak">
+Kontak
+</a>
+
+</div>
+
+</header>
+
+  <!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div class="hero-content">
+
+<div class="badge">
+✨ Solusi Asistensi Profesional
+</div>
+
+<h1>
+
+Kemudahan Ada Dalam
+<span>Genggaman</span>
+
+</h1>
+
+<p>
+
+Kehidupan modern menuntut fokus dan efisiensi.
+Assistenku hadir membantu kebutuhan rumah tangga,
+individu, dan operasional bisnis melalui layanan
+asistensi yang dikelola secara profesional,
+bertanggung jawab, dan terpercaya.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="/layanan" class="btn-primary">
+
+Lihat Layanan
+
+</a>
+
+<a href="/karir" class="btn-secondary">
+
+Gabung Menjadi Mitra
+
+</a>
+
+</div>
+
+<div class="hero-stat">
+
+<div>
+
+<h2>100%</h2>
+
+<p>
+Berorientasi Pelayanan
+</p>
+
+</div>
+
+<div>
+
+<h2>Profesional</h2>
+
+<p>
+Tenaga Berpengalaman
+</p>
+
+</div>
+
+<div>
+
+<h2>Terpercaya</h2>
+
+<p>
+Pengelolaan Bertanggung Jawab
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+src="/assets/images/hero-home.webp"
+alt="Layanan Assistenku">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ABOUT -->
+<!-- ========================================================= -->
+
+<section class="about">
+
+<div class="container">
+
+<h2>
+
+Tentang Assistenku
+
+</h2>
+
+<p>
+
+Assistenku merupakan layanan penyedia tenaga
+asistensi untuk kebutuhan rumah tangga,
+perorangan maupun operasional bisnis.
+Seluruh layanan dikelola dengan proses yang
+jelas sehingga pelanggan memperoleh pengalaman
+layanan yang nyaman, aman, dan profesional.
+
+</p>
+
+<p>
+
+Kami percaya bahwa setiap orang berhak memiliki
+lebih banyak waktu untuk keluarga, pekerjaan,
+maupun pengembangan diri.
+Karena itu, Assistenku hadir sebagai mitra
+yang membantu menyelesaikan berbagai kebutuhan
+sehari-hari secara lebih efisien.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- VISI MISI -->
+<!-- ========================================================= -->
+
+<section class="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Visi & Misi
+
+</h2>
+
+<p>
+
+Komitmen kami dalam memberikan pelayanan
+yang berkelanjutan.
+
+</p>
+
+</div>
+
+<div class="service-grid">
+
+<div class="service-card">
+
+<h3>
+
+Visi
+
+</h3>
+
+<p>
+
+Menjadi layanan asistensi terpercaya
+yang mudah diakses untuk membantu
+kebutuhan rumah tangga dan bisnis
+di seluruh Indonesia.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 1
+
+</h3>
+
+<p>
+
+Menyediakan tenaga kerja yang memiliki
+pengalaman sesuai bidang layanan.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 2
+
+</h3>
+
+<p>
+
+Memberikan proses pelayanan yang jelas,
+tertata, dan bertanggung jawab.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 3
+
+</h3>
+
+<p>
+
+Membantu keluarga dan bisnis bekerja
+lebih efektif melalui layanan asistensi.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 4
+
+</h3>
+
+<p>
+
+Membangun kepercayaan melalui komunikasi,
+transparansi, dan peningkatan kualitas
+layanan secara berkelanjutan.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Komitmen
+
+</h3>
+
+<p>
+
+Mengutamakan profesionalisme,
+kenyamanan pelanggan,
+serta kepuasan seluruh mitra kerja.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CTA -->
+<!-- ========================================================= -->
+
+<section class="bottom-cta">
+
+<div class="container">
+
+<h2>
+
+Siap Membantu Kebutuhan Anda
+
+</h2>
+
+<p>
+
+Temukan berbagai layanan profesional
+yang dapat disesuaikan dengan kebutuhan
+rumah tangga maupun bisnis Anda.
+
+</p>
+
+<a href="/layanan" class="btn-primary">
+
+Lihat Semua Layanan
+
+</a>
+
+<a href="https://rb.gy/hr0ia6"
+class="btn-secondary"
+target="_blank"
+rel="noopener">
+
+Unduh Aplikasi
+
+</a>
+
+</div>
+
+</section>
+
+  <!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
 <footer>
-  <strong>PT Assistenku Solusi Indonesia</strong>
+
+<div class="footer-content">
+
+<img
+src="/logo.png"
+alt="Logo Assistenku"
+class="footer-logo">
+
+<h3>
+
+PT Assistenku Solusi Indonesia
+
+</h3>
+
+<p>
+
+Kemudahan Ada Dalam Genggaman
+
+</p>
+
+<p>
+
+Assistenku menyediakan layanan asistensi
+rumah tangga dan bisnis dengan pengelolaan
+yang profesional, transparan, dan bertanggung jawab.
+
+</p>
+
+<div class="footer-links">
+
+<a href="/">Beranda</a>
+
+<a href="/profil">Profil</a>
+
+<a href="/layanan">Layanan</a>
+
+<a href="/karir">Karir</a>
+
+<a href="/kontak">Kontak</a>
+
+</div>
+
+<div class="copyright">
+
+© 2026 PT Assistenku Solusi Indonesia.
+Seluruh hak cipta dilindungi.
+
+</div>
+
+</div>
+
 </footer>
 
+<!-- ========================================================= -->
+<!-- FLOATING WHATSAPP -->
+<!-- ========================================================= -->
+
+<a
+href="https://wa.me/6280000000000"
+class="floating-wa"
+target="_blank"
+rel="noopener"
+aria-label="WhatsApp">
+
+💬
+
+</a>
+
+<!-- ========================================================= -->
+<!-- BACK TO TOP -->
+<!-- ========================================================= -->
+
+<button
+id="backToTop"
+aria-label="Kembali ke atas">
+
+↑
+
+</button>
+
+<!-- ========================================================= -->
+<!-- PWA INSTALL -->
+<!-- ========================================================= -->
+
+<div class="pwa-install">
+
+<div class="pwa-install__left">
+
+<div class="pwa-install__icon">
+
+<img
+src="/assets/icons/icon-192.png"
+alt="Assistenku">
+
+</div>
+
+<div>
+
+<div class="pwa-install__title">
+
+Install Assistenku
+
+</div>
+
+<div class="pwa-install__subtitle">
+
+Akses lebih cepat langsung dari layar utama
+
+</div>
+
+</div>
+
+</div>
+
+<button
+id="pwaInstallBtn"
+class="pwa-install__btn">
+
+Install
+
+</button>
+
+</div>
+
+  <!-- ========================================================= -->
+<!-- IMAGE MODAL -->
+<!-- ========================================================= -->
+
+<div
+id="imageModal"
+class="modal">
+
+<span class="close">
+
+&times;
+
+</span>
+
+<img
+id="modalImg"
+class="modal-content"
+alt="Preview Dokumen">
+
+</div>
+
+<!-- ========================================================= -->
+<!-- KBLI POPUP -->
+<!-- ========================================================= -->
+
+<div
+id="kbliPopup"
+class="kbli-popup">
+
+<div class="kbli-popup-content">
+
+<button
+id="closeKbli"
+class="kbli-close"
+aria-label="Tutup">
+
+&times;
+
+</button>
+
+<img
+src="/assets/images/kbli.webp"
+alt="Informasi KBLI Assistenku">
+
+</div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- NOSCRIPT -->
+<!-- ========================================================= -->
+
+<noscript>
+
+<div
+style="
+background:#DC2626;
+color:#FFFFFF;
+padding:16px;
+text-align:center;
+font-weight:600;">
+
+Website ini memerlukan JavaScript agar seluruh fitur dapat digunakan dengan optimal.
+
+</div>
+
+</noscript>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
 <script src="/script.js"></script>
+
 </body>
+
 </html>
