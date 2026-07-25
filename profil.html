@@ -1,74 +1,45 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Profil | Assistenku</title>
 
-<meta
-name="description"
-content="Profil resmi PT Assistenku Solusi Indonesia. Mengenal visi, misi, latar belakang perusahaan, legalitas, serta komitmen Assistenku dalam menyediakan layanan asistensi profesional.">
+<meta name="description" content="Profil resmi PT Assistenku Solusi Indonesia, visi, misi, legalitas perusahaan, founder, serta komitmen dalam menyediakan layanan asistensi profesional.">
 
-<meta
-name="keywords"
-content="Assistenku, Profil Assistenku, PT Assistenku Solusi Indonesia, Company Profile, Legalitas, Visi Misi">
+<meta name="keywords" content="Profil Assistenku, PT Assistenku Solusi Indonesia, Legalitas, Founder, Company Profile">
 
-<meta
-name="author"
-content="PT Assistenku Solusi Indonesia">
+<meta name="author" content="PT Assistenku Solusi Indonesia">
 
-<meta
-name="robots"
-content="index,follow">
+<meta name="theme-color" content="#0A5BD8">
 
-<link
-rel="canonical"
-href="https://assistenku.com/profil">
+<link rel="canonical" href="https://assistenku.com/profil">
 
 <!-- Open Graph -->
 
-<meta
-property="og:type"
-content="website">
-
-<meta
-property="og:title"
-content="Profil | Assistenku">
-
-<meta
-property="og:description"
-content="Mengenal lebih dekat PT Assistenku Solusi Indonesia beserta visi, misi, legalitas, dan komitmen pelayanan kami.">
-
-<meta
-property="og:url"
-content="https://assistenku.com/profil">
-
-<meta
-property="og:image"
-content="https://assistenku.com/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Profil | Assistenku">
+<meta property="og:description" content="Kenali lebih dekat PT Assistenku Solusi Indonesia beserta visi, misi, legalitas, dan komitmen perusahaan.">
+<meta property="og:url" content="https://assistenku.com/profil">
+<meta property="og:image" content="https://assistenku.com/logo.png">
 
 <!-- Twitter -->
 
-<meta
-name="twitter:card"
-content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Profil | Assistenku">
+<meta name="twitter:description" content="Kemudahan Ada Dalam Genggaman">
 
-<meta
-name="twitter:title"
-content="Profil | Assistenku">
+<!-- PWA -->
 
-<meta
-name="twitter:description"
-content="Profil resmi PT Assistenku Solusi Indonesia.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
 
-<meta
-name="twitter:image"
-content="https://assistenku.com/logo.png">
+<!-- CSS -->
+
+<link rel="stylesheet" href="/styles.css">
 
 <!-- Schema Organization -->
 
@@ -79,7 +50,7 @@ content="https://assistenku.com/logo.png">
 "name":"PT Assistenku Solusi Indonesia",
 "url":"https://assistenku.com",
 "logo":"https://assistenku.com/logo.png",
-"description":"Perusahaan penyedia layanan asistensi profesional untuk individu, keluarga, UMKM, dan perusahaan."
+"description":"Perusahaan penyedia layanan asistensi profesional untuk rumah tangga, individu, dan bisnis."
 }
 </script>
 
@@ -89,216 +60,105 @@ content="https://assistenku.com/logo.png">
 {
 "@context":"https://schema.org",
 "@type":"WebPage",
-"name":"Profil Assistenku",
+"name":"Profil Perusahaan",
 "url":"https://assistenku.com/profil",
 "description":"Profil resmi PT Assistenku Solusi Indonesia."
 }
 </script>
 
-<!-- Schema Breadcrumb -->
-
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"BreadcrumbList",
-"itemListElement":[
-{
-"@type":"ListItem",
-"position":1,
-"name":"Beranda",
-"item":"https://assistenku.com"
-},
-{
-"@type":"ListItem",
-"position":2,
-"name":"Profil",
-"item":"https://assistenku.com/profil"
-}
-]
-}
-</script>
-
-<link
-rel="stylesheet"
-href="/styles.css">
-
-<link
-rel="manifest"
-href="/manifest.webmanifest">
-
-<meta
-name="theme-color"
-content="#0B5ED7">
-
-<link
-rel="apple-touch-icon"
-href="/assets/icons/icon-192.png">
-
 </head>
 
-<body class="profil-page">
+<body>
 
 <header>
 
 <div class="top-header">
 
-Assistenku — Kemudahan Ada Dalam Genggaman
+Kemudahan Ada Dalam Genggaman
 
 </div>
 
 <div class="navbar">
 
-<a href="/">
+<a href="/" class="logo">
 
-<img
-src="/logo.png"
-class="logo"
-alt="Logo Assistenku">
+<img src="/logo.png" alt="Logo Assistenku">
+
+<span>Assistenku</span>
 
 </a>
 
 <nav>
 
-<ul>
+<a href="/" class="nav-beranda">Beranda</a>
 
-<li>
-<a href="/" class="nav-beranda">
-Beranda
-</a>
-</li>
+<a href="/profil" class="active nav-profil">Profil</a>
 
-<li>
-<a href="/profil" class="nav-profil active">
-Profil
-</a>
-</li>
+<a href="/layanan" class="nav-layanan">Layanan</a>
 
-<li>
-<a href="/layanan" class="nav-layanan">
-Layanan
-</a>
-</li>
+<a href="/karir" class="nav-karir">Karir</a>
 
-<li>
-<a href="/karir" class="nav-karir">
-Karir
-</a>
-</li>
-
-<li>
-<a href="/kontak" class="nav-kontak">
-Kontak
-</a>
-</li>
-
-</ul>
+<a href="/kontak" class="nav-kontak">Kontak</a>
 
 </nav>
 
 <button
 id="menuIcon"
+class="menu-toggle"
 aria-label="Menu">
 
-☰
+Menu
 
 </button>
 
 </div>
 
-<div id="mobileMenu">
+<div
+id="mobileMenu"
+class="mobile-nav">
 
-<a href="/" class="nav-beranda">
-Beranda
-</a>
+<a href="/">Beranda</a>
 
-<a href="/profil" class="nav-profil active">
-Profil
-</a>
+<a href="/profil" class="active">Profil</a>
 
-<a href="/layanan" class="nav-layanan">
-Layanan
-</a>
+<a href="/layanan">Layanan</a>
 
-<a href="/karir" class="nav-karir">
-Karir
-</a>
+<a href="/karir">Karir</a>
 
-<a href="/kontak" class="nav-kontak">
-Kontak
-</a>
+<a href="/kontak">Kontak</a>
 
 </div>
 
 </header>
 
-<section class="hero-page">
+  <!-- ========================================================= -->
+<!-- PROFIL PERUSAHAAN -->
+<!-- ========================================================= -->
+
+<section class="page-section" style="padding-top:160px;">
 
 <div class="container">
-
-<span class="section-badge">
-
-PROFIL PERUSAHAAN
-
-</span>
 
 <h1>
 
-Mengenal Assistenku Lebih Dekat
+Profil Perusahaan
 
 </h1>
 
-<p class="hero-description">
-
-Assistenku hadir sebagai perusahaan penyedia layanan
-asistensi profesional yang membantu kebutuhan
-individu, keluarga, UMKM, hingga perusahaan melalui
-pengelolaan layanan yang jelas, bertanggung jawab,
-dan berorientasi pada kualitas.
-
-</p>
-
-</div>
-
-</section>
-
-<section class="about">
-
-<div class="container">
-
-<h2>
-
-Profil Perusahaan
-
-</h2>
-
 <p>
 
-Assistenku dibangun untuk memberikan solusi atas
-kebutuhan tenaga asistensi yang semakin beragam di
-masyarakat. Kami menghadirkan layanan yang tidak
-hanya berfokus pada penyediaan tenaga kerja, tetapi
-juga pada pengelolaan proses layanan agar berjalan
-lebih profesional, transparan, dan mudah diakses.
+Assistenku hadir sebagai layanan asistensi yang membantu kebutuhan
+rumah tangga, individu, dan operasional bisnis secara lebih tertata.
+Fokus kami adalah mempermudah aktivitas harian melalui layanan yang
+dikelola secara profesional, transparan, dan bertanggung jawab.
 
 </p>
 
 <p>
 
-Dengan pendekatan yang terstruktur, Assistenku
-berkomitmen menjadi mitra terpercaya bagi pelanggan
-dalam memenuhi kebutuhan layanan sehari-hari maupun
-operasional bisnis.
-
-</p>
-
-  <p>
-
-Kepercayaan merupakan fondasi utama dalam setiap
-layanan yang kami berikan. Oleh karena itu,
-Assistenku terus mengembangkan sistem pengelolaan
-layanan yang profesional, terdokumentasi, dan
-bertanggung jawab untuk memberikan pengalaman
-terbaik bagi setiap pelanggan.
+Assistenku tidak sekadar menyediakan tenaga kerja, tetapi mengelola
+layanan agar sesuai dengan kebutuhan, kondisi di lapangan, serta
+kesepakatan yang jelas antara pengguna layanan dan penyedia layanan.
 
 </p>
 
@@ -322,213 +182,173 @@ Latar Belakang Assistenku
 
 <p>
 
-Assistenku lahir dari kebutuhan masyarakat akan
-layanan asistensi yang lebih mudah diakses,
-terpercaya, dan memiliki pengelolaan yang jelas.
-Banyak keluarga maupun pelaku usaha mengalami
-kesulitan memperoleh tenaga kerja yang sesuai,
-memiliki pengalaman, serta didukung proses
-administrasi yang baik.
+Assistenku berangkat dari realitas bahwa banyak keluarga maupun pelaku
+usaha membutuhkan bantuan tenaga kerja yang dapat diandalkan, namun
+sering menghadapi proses pencarian yang tidak jelas, memakan waktu,
+dan memiliki risiko yang tinggi.
 
 </p>
 
 <p>
 
-Melihat kebutuhan tersebut, Assistenku hadir sebagai
-platform layanan yang menghubungkan kebutuhan
-pelanggan dengan tenaga kerja yang telah melalui
-proses seleksi berdasarkan pengalaman, kompetensi,
-dan rekam kerja di bidangnya.
+Melalui pendekatan yang lebih profesional dan terkelola, Assistenku
+dibangun untuk menjembatani kebutuhan tersebut dengan menghadirkan
+layanan asistensi berbasis pengalaman kerja, rekam jejak, serta proses
+seleksi yang lebih sistematis.
 
 </p>
 
 <p>
 
-Kami percaya bahwa layanan yang baik bukan hanya
-tentang menyediakan tenaga kerja, tetapi juga
-bagaimana proses penempatan, komunikasi, serta
-pengelolaan layanan dilakukan secara profesional,
-transparan, dan bertanggung jawab.
+Dengan sistem pengelolaan yang terus berkembang, Assistenku berkomitmen
+membangun kepercayaan melalui pelayanan yang transparan, komunikasi yang
+baik, serta peningkatan kualitas layanan secara berkelanjutan.
 
 </p>
-
-</div>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- VISI & MISI -->
-<!-- ========================================================= -->
-
-<section class="about">
-
-<div class="container">
-
-<h2>
-
-Visi Perusahaan
-
-</h2>
-
-<div class="card">
-
-<p>
-
-Menjadi perusahaan layanan asistensi terpercaya,
-profesional, dan mudah diakses yang mampu
-memberikan solusi bagi kebutuhan individu,
-keluarga, UMKM, hingga perusahaan di Indonesia.
-
-</p>
-
-</div>
-
-<h2 style="margin-top:50px;">
-
-Misi Perusahaan
-
-</h2>
-
-<div class="card">
-
-<ul>
-
-<li>
-
-Menyediakan layanan asistensi yang dikelola secara
-profesional.
-
-</li>
-
-<li>
-
-Mengutamakan tenaga kerja yang memiliki pengalaman,
-kompetensi, dan integritas.
-
-</li>
-
-<li>
-
-Membangun sistem layanan yang transparan,
-bertanggung jawab, dan berorientasi pada kualitas.
-
-</li>
-
-<li>
-
-Memberikan kemudahan bagi masyarakat dalam
-memperoleh layanan yang sesuai kebutuhan.
-
-</li>
-
-<li>
-
-Menjalin hubungan jangka panjang yang saling
-menguntungkan dengan pelanggan maupun mitra.
-
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- NILAI PERUSAHAAN -->
-<!-- ========================================================= -->
-
-<section class="about">
-
-<div class="container">
-
-<h2>
-
-Nilai-Nilai Perusahaan
-
-</h2>
-
-<div class="card-grid">
-
-<div class="card">
-
-<h3>
-
-Integritas
-
-</h3>
-
-<p>
-
-Menjunjung tinggi kejujuran, tanggung jawab,
-dan profesionalisme dalam setiap layanan.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-Pelayanan
-
-</h3>
-
-<p>
-
-Berorientasi pada kebutuhan pelanggan dengan
-memberikan pelayanan yang ramah, cepat,
-dan berkualitas.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-Kepercayaan
-
-</h3>
-
-<p>
-
-Membangun hubungan jangka panjang melalui proses
-kerja yang transparan dan dapat dipertanggungjawabkan.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-Inovasi
-
-</h3>
-
-<p>
-
-Terus mengembangkan sistem dan layanan agar mampu
-mengikuti kebutuhan masyarakat serta perkembangan
-teknologi.
-
-</p>
-
-</div>
-
-</div>
 
 </div>
 
 </section>
 
   <!-- ========================================================= -->
+<!-- VISI MISI -->
+<!-- ========================================================= -->
+
+<section class="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Visi & Misi
+
+</h2>
+
+<p>
+
+Komitmen Assistenku dalam membangun layanan asistensi
+yang profesional, terpercaya, dan berkelanjutan.
+
+</p>
+
+</div>
+
+<div class="service-grid">
+
+<div class="service-card">
+
+<h3>
+
+Visi
+
+</h3>
+
+<p>
+
+Menjadi layanan asistensi terpercaya yang mudah diakses
+untuk membantu kebutuhan rumah tangga, individu,
+dan operasional bisnis di seluruh Indonesia.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 1
+
+</h3>
+
+<p>
+
+Menyediakan layanan asistensi berbasis pengalaman kerja
+dan kompetensi sesuai bidang masing-masing.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 2
+
+</h3>
+
+<p>
+
+Mengelola layanan secara profesional,
+jelas, transparan, dan bertanggung jawab.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 3
+
+</h3>
+
+<p>
+
+Membantu pelanggan bekerja lebih efektif
+melalui layanan asistensi yang tepat
+sesuai kebutuhan.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Misi 4
+
+</h3>
+
+<p>
+
+Membangun kepercayaan melalui peningkatan
+kualitas layanan dan komunikasi yang baik.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Komitmen
+
+</h3>
+
+<p>
+
+Mengutamakan profesionalisme,
+keamanan, kenyamanan pelanggan,
+serta kepuasan seluruh mitra kerja.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
 <!-- FOUNDER -->
 <!-- ========================================================= -->
 
@@ -536,23 +356,26 @@ teknologi.
 
 <div class="container">
 
+<div class="section-title">
+
 <h2>
 
 Founder & Co-Founder
 
 </h2>
 
-<p class="section-description">
+<p>
 
-Assistenku dibangun oleh tim yang memiliki komitmen
-untuk menghadirkan layanan asistensi profesional,
-transparan, dan berorientasi pada kepuasan pelanggan.
+Orang-orang yang membangun dan mengembangkan
+Assistenku sebagai layanan asistensi profesional.
 
 </p>
 
+</div>
+
 <div class="card-grid">
 
-<div class="card founder-card">
+<div class="card">
 
 <img
 src="/founder1.png"
@@ -565,24 +388,18 @@ Abdurrahman Hanif
 
 </h3>
 
-<span class="badge-primary">
-
-Founder
-
-</span>
-
 <p>
 
-Berperan dalam pengembangan strategi perusahaan,
-operasional, sistem digital, serta arah bisnis
-Assistenku agar mampu memberikan layanan yang
-profesional dan berkelanjutan.
+Founder Assistenku yang berfokus pada pengembangan
+operasional, sistem layanan, serta peningkatan kualitas
+pelayanan agar lebih profesional, transparan,
+dan mudah diakses masyarakat.
 
 </p>
 
 </div>
 
-<div class="card founder-card">
+<div class="card">
 
 <img
 src="/founder2.png"
@@ -595,17 +412,12 @@ Putri Rahmadani
 
 </h3>
 
-<span class="badge-primary">
-
-Co-Founder
-
-</span>
-
 <p>
 
-Berfokus pada pengelolaan sumber daya manusia,
-seleksi tenaga kerja, pengembangan kualitas layanan,
-serta menjaga standar pelayanan Assistenku.
+Co-Founder Assistenku yang berfokus pada proses
+seleksi tenaga kerja, pengelolaan sumber daya manusia,
+serta menjaga standar kualitas layanan
+kepada seluruh pelanggan.
 
 </p>
 
@@ -617,13 +429,15 @@ serta menjaga standar pelayanan Assistenku.
 
 </section>
 
-<!-- ========================================================= -->
-<!-- LEGALTAS -->
+  <!-- ========================================================= -->
+<!-- LEGALITAS -->
 <!-- ========================================================= -->
 
-<section class="about legal-section">
+<section class="services">
 
 <div class="container">
+
+<div class="section-title">
 
 <h2>
 
@@ -631,56 +445,91 @@ Legalitas Perusahaan
 
 </h2>
 
-<div class="card">
-
-<h3>
-
-Legalitas & Kepatuhan Usaha
-
-</h3>
-
 <p>
 
-PT Assistenku Solusi Indonesia merupakan badan usaha
-yang menjalankan kegiatan usaha secara sah sesuai
-ketentuan peraturan perundang-undangan yang berlaku
-di Indonesia.
-
-</p>
-
-<p>
-
-Perusahaan telah memiliki dokumen legalitas usaha
-serta menjalankan kegiatan berdasarkan klasifikasi
-KBLI yang relevan dengan bidang usaha yang
-dijalankan.
-
-</p>
-
-<p>
-
-Legalitas tersebut menjadi dasar komitmen
-perusahaan dalam memberikan pelayanan secara
-profesional, transparan, dan dapat dipertanggung-
-jawabkan kepada seluruh pelanggan, mitra, maupun
-instansi yang bekerja sama.
+PT Assistenku Solusi Indonesia menjalankan kegiatan usaha
+berdasarkan legalitas yang sah dan terdokumentasi sebagai
+landasan dalam memberikan pelayanan yang profesional,
+transparan, dan bertanggung jawab.
 
 </p>
 
 </div>
 
-<div class="card-grid">
+<div class="service-grid">
+
+<div class="service-card">
+
+<h3>
+
+Legalitas & Kepatuhan
+
+</h3>
+
+<p>
+
+Assistenku merupakan badan usaha yang telah memperoleh
+pengesahan melalui sistem Administrasi Hukum Umum (AHU)
+Kementerian Hukum Republik Indonesia dan menjalankan
+kegiatan usaha sesuai ketentuan yang berlaku.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+KBLI Perusahaan
+
+</h3>
+
+<p>
+
+Perusahaan menjalankan kegiatan usaha berdasarkan
+Klasifikasi Baku Lapangan Usaha Indonesia (KBLI),
+meliputi penyediaan tenaga kerja, platform digital,
+konsultasi manajemen, event catering,
+serta layanan operasional lainnya.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<h3>
+
+Komitmen Kepatuhan
+
+</h3>
+
+<p>
+
+Seluruh aktivitas perusahaan dijalankan dengan
+mengutamakan transparansi, tata kelola yang baik,
+serta kepatuhan terhadap ketentuan hukum
+yang berlaku di Indonesia.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card-grid" style="margin-top:50px;">
 
 <div class="card legal-card">
 
 <img
 src="/assets/AHU1.jpg"
-alt="Akta dan Pengesahan AHU"
-class="legal-card-img">
+class="legal-card-img"
+alt="Akta Pendirian dan Pengesahan AHU">
 
 <p class="legal-caption">
 
-Akta & Pengesahan AHU
+Akta Pendirian & Pengesahan AHU
 
 </p>
 
@@ -690,8 +539,8 @@ Akta & Pengesahan AHU
 
 <img
 src="/assets/AHU2.jpg"
-alt="Detail Pengesahan Badan Usaha"
-class="legal-card-img">
+class="legal-card-img"
+alt="Detail Pengesahan Badan Usaha">
 
 <p class="legal-caption">
 
@@ -705,8 +554,8 @@ Detail Pengesahan Badan Usaha
 
 <img
 src="/assets/KBLI1.jpg"
-alt="KBLI Assistenku"
-class="legal-card-img">
+class="legal-card-img"
+alt="Klasifikasi KBLI">
 
 <p class="legal-caption">
 
@@ -716,13 +565,26 @@ Klasifikasi KBLI Perusahaan
 
 </div>
 
-</div>
+<div class="card">
 
-<div class="center-btn">
+<h3>
+
+Dokumen Legal
+
+</h3>
+
+<p>
+
+Seluruh dokumen legal perusahaan tersedia
+untuk kebutuhan verifikasi, audit,
+dan proses kerja sama bisnis.
+
+</p>
 
 <a
 href="https://drive.google.com/drive/folders/1kJm1dxylECteWevlq5t2FjFmLEXXLD0g"
 target="_blank"
+rel="noopener"
 class="btn-primary">
 
 Lihat Dokumen Legalitas
@@ -732,7 +594,9 @@ Lihat Dokumen Legalitas
 <a
 href="https://legal.assistenku.com"
 target="_blank"
-class="btn-secondary">
+rel="noopener"
+class="btn-secondary"
+style="margin-top:14px;display:block;">
 
 Legal Notice & Compliance
 
@@ -742,12 +606,15 @@ Legal Notice & Compliance
 
 </div>
 
+</div>
+
 </section>
-<!-- ========================================================= -->
-<!-- COMPANY PROFILE -->
+
+  <!-- ========================================================= -->
+<!-- COMPANY PROFILE CTA -->
 <!-- ========================================================= -->
 
-<section class="about">
+<section class="bottom-cta">
 
 <div class="container">
 
@@ -757,43 +624,13 @@ Kenali Assistenku Lebih Dekat
 
 </h2>
 
-<p class="section-description">
-
-Kami percaya bahwa kepercayaan dibangun melalui
-keterbukaan informasi, profesionalisme, dan
-komitmen dalam memberikan layanan terbaik kepada
-setiap pelanggan maupun mitra kerja.
-
-</p>
-
-<div class="card">
-
-<h3>
-
-Company Profile Assistenku
-
-</h3>
-
 <p>
 
-Company Profile Assistenku memuat informasi lengkap
-mengenai sejarah perusahaan, visi dan misi,
-legalitas, struktur layanan, nilai perusahaan,
-serta berbagai solusi yang kami hadirkan untuk
-individu, keluarga, UMKM, hingga perusahaan.
+Kepercayaan dibangun melalui keterbukaan informasi,
+proses yang jelas, serta komitmen terhadap kualitas
+layanan yang terus berkembang.
 
 </p>
-
-<p>
-
-Dokumen ini disusun sebagai referensi resmi bagi
-calon pelanggan, investor, vendor, instansi,
-maupun mitra yang ingin mengenal Assistenku secara
-lebih mendalam.
-
-</p>
-
-<div class="center-btn">
 
 <a
 href="/kompro.html"
@@ -805,91 +642,39 @@ Lihat Company Profile
 
 </div>
 
-</div>
-
-</div>
-
 </section>
 
-<!-- ========================================================= -->
-<!-- PENUTUP -->
-<!-- ========================================================= -->
-
-<section class="about">
-
-<div class="container">
-
-<h2>
-
-Komitmen Kami
-
-</h2>
-
-<p>
-
-Assistenku berkomitmen untuk terus mengembangkan
-layanan yang aman, profesional, dan mudah diakses,
-dengan mengedepankan kualitas pelayanan,
-transparansi proses, serta kepatuhan terhadap
-ketentuan yang berlaku.
-
-</p>
-
-<p>
-
-Melalui pengembangan teknologi, peningkatan kualitas
-sumber daya manusia, dan kerja sama yang
-berkelanjutan, kami berharap dapat menjadi mitra
-terpercaya bagi masyarakat maupun dunia usaha di
-Indonesia.
-
-</p>
-
-<div class="center-btn">
-
-<a
-href="/layanan"
-class="btn-primary">
-
-Jelajahi Layanan Kami
-
-</a>
-
-<a
-href="/kontak"
-class="btn-secondary">
-
-Hubungi Kami
-
-</a>
-
-</div>
-
-</div>
-
-</section>
 <!-- ========================================================= -->
 <!-- FOOTER -->
 <!-- ========================================================= -->
 
-<footer class="site-footer">
+<footer>
 
-<div class="footer-inner">
+<div class="footer-content">
 
 <img
 src="/logo.png"
 alt="Logo Assistenku"
 class="footer-logo">
 
-<strong>
+<h3>
 
 PT Assistenku Solusi Indonesia
 
-</strong>
+</h3>
 
 <p>
 
 Kemudahan Ada Dalam Genggaman
+
+</p>
+
+<p>
+
+Assistenku menyediakan layanan asistensi
+rumah tangga, individu, dan bisnis
+dengan pengelolaan yang profesional,
+transparan, dan bertanggung jawab.
 
 </p>
 
@@ -907,11 +692,10 @@ Kemudahan Ada Dalam Genggaman
 
 </div>
 
-<div class="footer-copy">
+<div class="copyright">
 
-© <span id="year"></span>
-PT Assistenku Solusi Indonesia.
-Seluruh Hak Dilindungi.
+© 2026 PT Assistenku Solusi Indonesia.
+Seluruh hak cipta dilindungi.
 
 </div>
 
@@ -924,11 +708,11 @@ Seluruh Hak Dilindungi.
 <!-- ========================================================= -->
 
 <a
-href="https://wa.me/628989760020?text=Halo%20Assistenku"
+href="https://wa.me/628989760020"
 class="floating-wa"
 target="_blank"
 rel="noopener"
-aria-label="Hubungi Assistenku melalui WhatsApp">
+aria-label="WhatsApp">
 
 💬
 
@@ -940,34 +724,11 @@ aria-label="Hubungi Assistenku melalui WhatsApp">
 
 <button
 id="backToTop"
-class="back-to-top"
 aria-label="Kembali ke atas">
 
 ↑
 
 </button>
-
-<!-- ========================================================= -->
-<!-- IMAGE MODAL -->
-<!-- ========================================================= -->
-
-<div
-id="imageModal"
-class="image-modal">
-
-<span
-class="image-modal-close">
-
-&times;
-
-</span>
-
-<img
-id="imageModalImg"
-class="image-modal-content"
-alt="Preview Dokumen">
-
-</div>
 
 <!-- ========================================================= -->
 <!-- PWA INSTALL -->
@@ -980,22 +741,25 @@ style="display:none;">
 
 <div class="pwa-install__left">
 
+<div class="pwa-install__icon">
+
 <img
 src="/assets/icons/icon-192.png"
-alt="Assistenku"
-class="pwa-install__icon">
+alt="Assistenku">
 
-<div class="pwa-install__text">
+</div>
+
+<div>
 
 <div class="pwa-install__title">
 
-Instal Assistenku
+Install Assistenku
 
 </div>
 
 <div class="pwa-install__subtitle">
 
-assistenku.com
+Akses lebih cepat langsung dari layar utama
 
 </div>
 
@@ -1009,9 +773,59 @@ assistenku.com
 id="pwaInstallBtn"
 class="pwa-install__btn">
 
-Instal
+Install
 
 </button>
+
+</div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- IMAGE MODAL -->
+<!-- ========================================================= -->
+
+<div
+id="imageModal"
+class="modal">
+
+<span
+class="close">
+
+&times;
+
+</span>
+
+<img
+id="modalImg"
+class="modal-content"
+alt="Preview Dokumen">
+
+</div>
+
+<!-- ========================================================= -->
+<!-- KBLI POPUP -->
+<!-- ========================================================= -->
+
+<div
+id="kbliPopup"
+class="kbli-popup">
+
+<div class="kbli-popup-content">
+
+<button
+id="closeKbli"
+class="kbli-close"
+aria-label="Tutup">
+
+&times;
+
+</button>
+
+<img
+src="/assets/images/kbli.webp"
+alt="Informasi KBLI Assistenku"
+class="kbli-image">
 
 </div>
 
@@ -1025,32 +839,23 @@ Instal
 
 <div
 style="
-background:#dc2626;
-color:#fff;
+background:#DC2626;
+color:#FFFFFF;
 padding:16px;
 text-align:center;
 font-weight:600;">
 
-Website ini memerlukan JavaScript agar seluruh
-fitur dapat berjalan dengan baik.
+Website ini memerlukan JavaScript agar seluruh fitur dapat digunakan dengan optimal.
 
 </div>
 
 </noscript>
 
 <!-- ========================================================= -->
-<!-- SCRIPT -->
+<!-- JAVASCRIPT -->
 <!-- ========================================================= -->
-
-<script>
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-</script>
 
 <script src="/script.js"></script>
 
 </body>
-
 </html>
