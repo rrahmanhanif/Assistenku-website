@@ -44,36 +44,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mobile Menu
     // ==================================================
 
-    const menuButton =
-        $("#menuIcon") ||
-        $(".menu-toggle");
+    const menuButton = document.getElementById("menuIcon");
+const mobileMenu = document.getElementById("mobileMenu");
 
-    const mobileMenu =
-        $("#mobileMenu") ||
-        $(".mobile-nav");
+if (menuButton && mobileMenu) {
 
-    if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", function () {
 
-        menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        menuButton.classList.toggle("active");
 
-            mobileMenu.classList.toggle("active");
-            menuButton.classList.toggle("active");
+    });
 
-        });
+    mobileMenu.querySelectorAll("a").forEach(link => {
 
-        mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function () {
 
-            link.addEventListener("click", () => {
-
-                mobileMenu.classList.remove("active");
-                menuButton.classList.remove("active");
-
-            });
+            mobileMenu.classList.remove("active");
+            menuButton.classList.remove("active");
 
         });
 
-    }
+    });
 
+}
     // ==================================================
     // Smooth Scroll
     // ==================================================
