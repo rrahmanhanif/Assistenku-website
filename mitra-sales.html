@@ -597,3 +597,342 @@
 </body>
 
 </html>
+    <!-- =========================
+         KUALIFIKASI
+    ========================== -->
+
+    <section class="qualification">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Kualifikasi Mitra Sales</h2>
+
+                <p>
+                    Kami mencari individu yang memiliki semangat membangun
+                    relasi, berkomunikasi dengan baik, dan berkembang bersama
+                    Assistenku.
+                </p>
+
+            </div>
+
+            <div class="qualification-grid">
+
+                <div>✔ Komunikatif</div>
+
+                <div>✔ Percaya Diri</div>
+
+                <div>✔ Berorientasi Target</div>
+
+                <div>✔ Bertanggung Jawab</div>
+
+                <div>✔ Menyukai Dunia Penjualan</div>
+
+                <div>✔ Memiliki Relasi Menjadi Nilai Tambah</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         DOKUMEN
+    ========================== -->
+
+    <section class="documents">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Dokumen Pendaftaran</h2>
+
+                <p>
+                    Siapkan dokumen berikut sebelum melakukan pendaftaran.
+                </p>
+
+            </div>
+
+            <div class="document-list">
+
+                <ul>
+
+                    <li>Kartu Tanda Penduduk (KTP)</li>
+
+                    <li>Surat Lamaran</li>
+
+                    <li>Curriculum Vitae (CV)</li>
+
+                    <li>SIM (Apabila Memiliki)</li>
+
+                    <li>Ijazah Terakhir (Apabila Ada)</li>
+
+                    <li>Surat Pengalaman Kerja / Paklaring (Apabila Ada)</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         PENDAFTARAN
+    ========================== -->
+
+    <section class="register">
+
+        <div class="container">
+
+            <div class="register-box">
+
+                <h2>
+
+                    Siap Menjadi Mitra Sales Assistenku?
+
+                </h2>
+
+                <p>
+
+                    Bangun relasi bisnis, bantu lebih banyak perusahaan,
+                    dan raih penghasilan berdasarkan setiap client yang
+                    berhasil Anda dapatkan.
+
+                </p>
+
+                <div class="register-button">
+
+                    <a href="https://wa.me/628989760020?text=Halo%20Assistenku,%20Saya%20ingin%20mendaftar%20sebagai%20Mitra%20Sales."
+                        class="btn-primary">
+
+                        Daftar via WhatsApp
+
+                    </a>
+
+                    <a href="mailto:kontakassistenku@gmail.com?subject=Pendaftaran%20Mitra%20Sales"
+                        class="btn-secondary">
+
+                        Kirim Lamaran
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    /* ================= FOOTER ================= */
+
+footer{
+    background:#0F172A;
+    color:rgba(255,255,255,.85);
+    padding:50px 0;
+    text-align:center;
+}
+
+.footer-logo{
+    width:72px;
+    margin:0 auto 18px;
+}
+
+.footer-content h3{
+    color:#fff;
+    margin-bottom:10px;
+    font-size:1.35rem;
+}
+
+.footer-content p{
+    color:rgba(255,255,255,.75);
+    margin-bottom:8px;
+}
+
+.copyright{
+    margin-top:22px;
+    font-size:.9rem;
+    color:rgba(255,255,255,.55);
+}
+
+/* ================= FLOATING WHATSAPP ================= */
+
+.floating-wa{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+    text-decoration:none;
+    box-shadow:0 18px 36px rgba(37,211,102,.35);
+    z-index:999;
+    transition:.25s ease;
+}
+
+.floating-wa:hover{
+    transform:translateY(-4px) scale(1.08);
+}
+
+.floating-wa.visible{
+    opacity:1;
+    visibility:visible;
+}
+
+/* ================= REVEAL ANIMATION ================= */
+
+.service-card,
+.benefit-card,
+.work-card,
+.equipment-card,
+.commission-card,
+.contact-card{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.6s ease;
+}
+
+.service-card.show,
+.benefit-card.show,
+.work-card.show,
+.equipment-card.show,
+.commission-card.show,
+.contact-card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= BUTTON RIPPLE ================= */
+
+.btn-primary,
+.btn-secondary{
+    position:relative;
+    overflow:hidden;
+}
+
+.ripple{
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:rgba(255,255,255,.45);
+    border-radius:50%;
+    transform:translate(-50%,-50%) scale(0);
+    animation:ripple .6s linear;
+    pointer-events:none;
+}
+
+@keyframes ripple{
+    to{
+        transform:translate(-50%,-50%) scale(18);
+        opacity:0;
+    }
+}
+
+/* ================= HEADER SCROLL ================= */
+
+header.scrolled{
+    box-shadow:0 10px 28px rgba(0,0,0,.08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:992px){
+
+    .hero-grid,
+    .commission-grid,
+    .equipment-grid,
+    .qualification-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content{
+        text-align:center;
+    }
+
+    .hero-content p{
+        margin-inline:auto;
+    }
+
+    .hero-buttons,
+    .register-button{
+        justify-content:center;
+    }
+
+    .hero-image{
+        order:-1;
+    }
+
+}
+
+@media (max-width:768px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:70px 0 60px;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+    .hero-stat{
+        grid-template-columns:1fr;
+    }
+
+    .service-grid,
+    .benefit-grid,
+    .work-grid{
+        grid-template-columns:1fr;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        width:100%;
+    }
+
+    .register-box{
+        padding:40px 24px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .hero-content h1{
+        font-size:2.2rem;
+    }
+
+    .section-title h2{
+        font-size:1.8rem;
+    }
+
+    .service-card,
+    .benefit-card,
+    .work-card,
+    .equipment-card,
+    .contact-card,
+    .commission-card{
+        padding:22px;
+    }
+
+    .floating-wa{
+        width:56px;
+        height:56px;
+        right:18px;
+        bottom:18px;
+        font-size:1.6rem;
+    }
+
+}
