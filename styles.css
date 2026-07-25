@@ -1,324 +1,43 @@
-/* =========================================================
-   PT ASSISTENKU SOLUSI INDONESIA
-   GLOBAL FOUNDATION
-   Part 1 / 8
-   - CSS Variables
-   - Reset
-   - Base Layout
-   - Typography
-   - Container
-   - Grid System
-   - Buttons
-   - Cards
-   - Utilities
-========================================================= */
+    /* ==========================================
+       ERROR SAFETY
+    ========================================== */
 
-/* =========================================================
-   CSS VARIABLES
-========================================================= */
+    window.addEventListener("error", (e) => {
 
-:root{
+        console.warn(
+            "Script Warning:",
+            e.message
+        );
 
-    /* Brand */
-    --primary:#0A5BD8;
-    --primary-dark:#0847AA;
+    });
 
-    --secondary:#FFD166;
-    --secondary-dark:#F4B400;
+    /* ==========================================
+       PERFORMANCE OPTIMIZATION
+    ========================================== */
 
-    /* Status */
-    --success:#16A34A;
-    --danger:#DC2626;
-    --warning:#F59E0B;
+    window.addEventListener("pageshow", () => {
 
-    /* Neutral */
-    --text:#1F2937;
-    --text-light:#6B7280;
+        revealOnScroll();
+        animateCounter();
+        updateHeader();
+        updateFloatingWA();
 
-    --bg:#F8FAFC;
-    --white:#FFFFFF;
+    });
 
-    --border:#E5E7EB;
+    /* ==========================================
+       DEBUG MODE
+    ========================================== */
 
-    /* Radius */
-    --radius:20px;
+    console.log("====================================");
+    console.log("PT ASSISTENKU SOLUSI INDONESIA");
+    console.log("Premium Website Script Loaded");
+    console.log("Version : 2.0");
+    console.log("Status  : Ready");
+    console.log("====================================");
 
-    /* Shadow */
-    --shadow-sm:0 4px 12px rgba(0,0,0,.05);
-    --shadow:0 10px 30px rgba(0,0,0,.08);
-    --shadow-lg:0 20px 60px rgba(0,0,0,.15);
+}); // END DOMContentLoaded
 
-    /* Transition */
-    --transition:.25s ease;
-
-}
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
-                "Segoe UI",Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.7;
-    overflow-x:hidden;
-}
-
-img{
-    display:block;
-    max-width:100%;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-    cursor:pointer;
-}
-
-ul{
-    list-style:none;
-}
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container{
-    width:min(1200px,92%);
-    margin:auto;
-}
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-section{
-    padding:80px 0;
-}
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
-h1{
-    font-size:clamp(2.5rem,5vw,4.5rem);
-    line-height:1.1;
-    font-weight:900;
-}
-
-h2{
-    font-size:clamp(2rem,4vw,3rem);
-    font-weight:800;
-}
-
-h3{
-    font-size:1.25rem;
-    font-weight:700;
-}
-
-p{
-    color:var(--text-light);
-}
-
-/* =========================================================
-   SECTION TITLE
-========================================================= */
-
-.section-title{
-    text-align:center;
-    margin-bottom:48px;
-}
-
-.section-title h2{
-    margin-bottom:12px;
-    color:var(--text);
-}
-
-.section-title p{
-    max-width:760px;
-    margin:auto;
-    font-size:1.02rem;
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn-primary,
-.btn-secondary,
-.btn-outline{
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-
-    padding:14px 24px;
-
-    border:none;
-    border-radius:14px;
-
-    font-weight:700;
-
-    transition:all var(--transition);
-}
-
-.btn-primary{
-
-    background:var(--secondary);
-    color:var(--text);
-
-    box-shadow:0 10px 24px rgba(255,209,102,.28);
-}
-
-.btn-primary:hover{
-
-    background:var(--secondary-dark);
-    transform:translateY(-2px);
-}
-
-.btn-secondary{
-
-    background:var(--primary);
-    color:#fff;
-}
-
-.btn-secondary:hover{
-
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-}
-
-.btn-outline{
-
-    background:transparent;
-    color:var(--primary);
-
-    border:2px solid var(--primary);
-}
-
-.btn-outline:hover{
-
-    background:var(--primary);
-    color:#fff;
-}
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.card{
-
-    background:var(--white);
-
-    padding:26px;
-
-    border-radius:var(--radius);
-
-    border:1px solid rgba(229,231,235,.7);
-
-    box-shadow:var(--shadow);
-
-    transition:all var(--transition);
-}
-
-.card:hover{
-
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-lg);
-}
-
-/* =========================================================
-   GRID SYSTEM
-========================================================= */
-
-.grid-2{
-
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:28px;
-}
-
-.grid-3{
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:28px;
-}
-
-.grid-4{
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-}
-
-.grid-auto{
-
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:24px;
-}
-
-/* =========================================================
-   IMAGE UTILITIES
-========================================================= */
-
-.rounded{
-    border-radius:20px;
-}
-
-.shadow{
-    box-shadow:var(--shadow);
-}
-
-/* =========================================================
-   SPACING UTILITIES
-========================================================= */
-
-.mt-1{margin-top:10px;}
-.mt-2{margin-top:20px;}
-.mt-3{margin-top:30px;}
-.mt-4{margin-top:40px;}
-
-.mb-1{margin-bottom:10px;}
-.mb-2{margin-bottom:20px;}
-.mb-3{margin-bottom:30px;}
-.mb-4{margin-bottom:40px;}
-
-/* =========================================================
-   TEXT UTILITIES
-========================================================= */
-
-.text-center{
-    text-align:center;
-}
-
-.hidden{
-    display:none;
-}
-
-/* =========================================================
-   END OF PART 1 / 8
-========================================================= */
-
-/* =========================================================
+       /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    HEADER & NAVIGATION
    Part 2 / 8
@@ -328,7 +47,6 @@ p{
    - Logo
    - Desktop Navigation
    - Mobile Navigation
-   - Responsive Navbar
 ========================================================= */
 
 /* =========================================================
@@ -336,13 +54,21 @@ p{
 ========================================================= */
 
 .top-header{
+
     width:100%;
+
     padding:8px 15px;
+
     background:var(--primary);
+
     color:#fff;
+
     text-align:center;
+
     font-size:.9rem;
+
     font-weight:500;
+
 }
 
 /* =========================================================
@@ -354,6 +80,7 @@ header{
     position:sticky;
 
     top:0;
+
     left:0;
 
     width:100%;
@@ -367,19 +94,21 @@ header{
     border-bottom:1px solid rgba(229,231,235,.7);
 
     transition:all .3s ease;
+
 }
 
 header.scrolled{
 
     box-shadow:0 8px 28px rgba(0,0,0,.08);
+
 }
 
 /* =========================================================
    NAVBAR
 ========================================================= */
 
-.nav-container,
-.navbar{
+.navbar,
+.nav-container{
 
     width:min(1200px,92%);
 
@@ -392,6 +121,7 @@ header.scrolled{
     justify-content:space-between;
 
     padding:16px 0;
+
 }
 
 /* =========================================================
@@ -411,6 +141,7 @@ header.scrolled{
     font-weight:800;
 
     color:var(--text);
+
 }
 
 .logo img{
@@ -420,6 +151,7 @@ header.scrolled{
     height:46px;
 
     object-fit:contain;
+
 }
 
 .logo span{
@@ -427,6 +159,7 @@ header.scrolled{
     font-weight:800;
 
     color:var(--text);
+
 }
 
 /* =========================================================
@@ -440,6 +173,7 @@ nav{
     align-items:center;
 
     gap:28px;
+
 }
 
 nav a{
@@ -451,11 +185,13 @@ nav a{
     font-weight:600;
 
     transition:.25s;
+
 }
 
 nav a:hover{
 
     color:var(--primary);
+
 }
 
 nav a::after{
@@ -477,21 +213,25 @@ nav a::after{
     background:var(--primary);
 
     transition:.3s;
+
 }
 
 nav a:hover::after{
 
     width:100%;
+
 }
 
 nav a.active{
 
     color:var(--primary);
+
 }
 
 nav a.active::after{
 
     width:100%;
+
 }
 
 /* =========================================================
@@ -517,6 +257,7 @@ nav a.active::after{
     font-weight:700;
 
     transition:.25s;
+
 }
 
 .nav-button:hover{
@@ -524,10 +265,11 @@ nav a.active::after{
     background:var(--primary-dark);
 
     transform:translateY(-2px);
+
 }
 
 /* =========================================================
-   MOBILE MENU BUTTON
+   HAMBURGER BUTTON
 ========================================================= */
 
 .menu-toggle{
@@ -544,28 +286,52 @@ nav a.active::after{
 
     background:#EEF4FF;
 
-    cursor:pointer;
+    align-items:center;
 
     justify-content:center;
 
-    align-items:center;
+    flex-direction:column;
+
+    gap:5px;
+
+    cursor:pointer;
+
 }
 
 .menu-toggle span{
-
-    display:block;
 
     width:24px;
 
     height:3px;
 
-    margin:4px auto;
-
     background:var(--primary);
 
-    border-radius:20px;
+    border-radius:999px;
 
     transition:.3s;
+
+}
+
+/* =========================================================
+   HAMBURGER ACTIVE
+========================================================= */
+
+.menu-toggle.active span:nth-child(1){
+
+    transform:translateY(8px) rotate(45deg);
+
+}
+
+.menu-toggle.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.menu-toggle.active span:nth-child(3){
+
+    transform:translateY(-8px) rotate(-45deg);
+
 }
 
 /* =========================================================
@@ -589,11 +355,17 @@ nav a.active::after{
     border-top:1px solid var(--border);
 
     box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+    overflow:hidden;
+
 }
 
 .mobile-nav.active{
 
     display:block;
+
+    animation:slideDown .25s ease;
+
 }
 
 .mobile-nav a{
@@ -609,6 +381,7 @@ nav a.active::after{
     font-weight:600;
 
     transition:.25s;
+
 }
 
 .mobile-nav a:hover{
@@ -616,19 +389,35 @@ nav a.active::after{
     background:#EEF4FF;
 
     color:var(--primary);
+
 }
 
 /* =========================================================
-   HEADER SHADOW
+   MOBILE ANIMATION
 ========================================================= */
 
-header.shadow{
+@keyframes slideDown{
 
-    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
 /* =========================================================
-   RESPONSIVE TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width:992px){
@@ -636,81 +425,41 @@ header.shadow{
     nav{
 
         display:none;
+
     }
 
     .menu-toggle{
 
         display:flex;
-    }
 
-    .logo span{
-
-        font-size:1rem;
     }
 
 }
 
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
+@media (min-width:993px){
 
-@media (max-width:768px){
+    .mobile-nav{
 
-    .navbar,
-    .nav-container{
+        display:none !important;
 
-        padding:14px 0;
-    }
-
-    .logo img{
-
-        width:40px;
-
-        height:40px;
-    }
-
-    .top-header{
-
-        font-size:.8rem;
     }
 
 }
-
-/* =========================================================
-   RESPONSIVE SMALL MOBILE
-========================================================= */
 
 @media (max-width:480px){
 
     .logo span{
 
         display:none;
+
     }
 
-    .menu-toggle{
-
-        width:42px;
-
-        height:42px;
-    }
-
-}
-
-/* =========================================================
-   END OF PART 2 / 8
-========================================================= */
+       }
 
 /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    HERO & ABOUT
    Part 3 / 8
-   - Hero
-   - Hero Content
-   - Hero Buttons
-   - Hero Statistics
-   - Hero Image
-   - About
-   - Section Background
 ========================================================= */
 
 /* =========================================================
@@ -733,6 +482,7 @@ header.shadow{
     color:#fff;
 
     padding:100px 0 90px;
+
 }
 
 .hero::before{
@@ -751,11 +501,8 @@ header.shadow{
         rgba(255,255,255,.12),transparent 45%);
 
     pointer-events:none;
-}
 
-/* =========================================================
-   HERO GRID
-========================================================= */
+}
 
 .hero-grid{
 
@@ -770,6 +517,7 @@ header.shadow{
     align-items:center;
 
     z-index:2;
+
 }
 
 /* =========================================================
@@ -781,6 +529,7 @@ header.shadow{
     position:relative;
 
     z-index:2;
+
 }
 
 .hero-content h1{
@@ -790,11 +539,13 @@ header.shadow{
     margin-bottom:20px;
 
     line-height:1.1;
+
 }
 
 .hero-content h1 span{
 
     color:var(--secondary);
+
 }
 
 .hero-content p{
@@ -806,10 +557,11 @@ header.shadow{
     color:rgba(255,255,255,.92);
 
     font-size:1.08rem;
+
 }
 
 /* =========================================================
-   HERO BADGE
+   BADGE
 ========================================================= */
 
 .badge{
@@ -835,10 +587,11 @@ header.shadow{
     font-size:.9rem;
 
     font-weight:700;
+
 }
 
 /* =========================================================
-   HERO BUTTONS
+   HERO BUTTON
 ========================================================= */
 
 .hero-buttons{
@@ -850,6 +603,7 @@ header.shadow{
     gap:16px;
 
     margin-bottom:40px;
+
 }
 
 /* =========================================================
@@ -863,6 +617,7 @@ header.shadow{
     grid-template-columns:repeat(3,1fr);
 
     gap:18px;
+
 }
 
 .hero-stat div{
@@ -876,6 +631,7 @@ header.shadow{
     backdrop-filter:blur(12px);
 
     border:1px solid rgba(255,255,255,.18);
+
 }
 
 .hero-stat h2{
@@ -885,6 +641,7 @@ header.shadow{
     color:var(--secondary);
 
     font-size:1.5rem;
+
 }
 
 .hero-stat p{
@@ -894,6 +651,7 @@ header.shadow{
     color:rgba(255,255,255,.85);
 
     font-size:.95rem;
+
 }
 
 /* =========================================================
@@ -903,6 +661,7 @@ header.shadow{
 .hero-image{
 
     position:relative;
+
 }
 
 .hero-image img{
@@ -916,11 +675,13 @@ header.shadow{
     box-shadow:0 28px 60px rgba(0,0,0,.28);
 
     transition:.35s;
+
 }
 
 .hero-image img:hover{
 
     transform:translateY(-8px);
+
 }
 
 /* =========================================================
@@ -930,6 +691,7 @@ header.shadow{
 .about{
 
     background:#fff;
+
 }
 
 .about h2{
@@ -937,6 +699,7 @@ header.shadow{
     text-align:center;
 
     margin-bottom:20px;
+
 }
 
 .about p{
@@ -948,6 +711,7 @@ header.shadow{
     text-align:center;
 
     color:var(--text-light);
+
 }
 
 /* =========================================================
@@ -960,6 +724,7 @@ header.shadow{
 .bottom-cta{
 
     background:var(--bg);
+
 }
 
 .about,
@@ -969,10 +734,11 @@ header.shadow{
 .equipment{
 
     background:#fff;
+
 }
 
 /* =========================================================
-   RESPONSIVE TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width:992px){
@@ -982,68 +748,70 @@ header.shadow{
         grid-template-columns:1fr;
 
         text-align:center;
+
     }
 
     .hero-content p{
 
         margin-left:auto;
         margin-right:auto;
+
     }
 
     .hero-buttons{
 
         justify-content:center;
+
     }
 
     .hero-stat{
 
         grid-template-columns:1fr;
+
     }
 
 }
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
 
 @media (max-width:768px){
 
     .hero{
 
         padding:80px 0 70px;
+
     }
 
     .hero-grid{
 
         gap:40px;
+
     }
 
     .hero-content h1{
 
         font-size:2.5rem;
+
     }
 
 }
-
-/* =========================================================
-   RESPONSIVE SMALL MOBILE
-========================================================= */
 
 @media (max-width:480px){
 
     .hero{
 
         padding:70px 0 60px;
+
     }
 
     .hero-content h1{
 
         font-size:2.15rem;
+
     }
 
     .badge{
 
         font-size:.8rem;
+
     }
 
 }
@@ -1051,7 +819,6 @@ header.shadow{
 /* =========================================================
    END OF PART 3 / 8
 ========================================================= */
-
 /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    SERVICES • BENEFITS • COMMISSION
@@ -1074,6 +841,7 @@ header.shadow{
 .register{
 
     padding:90px 0;
+
 }
 
 /* =========================================================
@@ -1089,6 +857,7 @@ header.shadow{
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
     gap:24px;
+
 }
 
 .equipment-grid{
@@ -1098,6 +867,7 @@ header.shadow{
     grid-template-columns:repeat(2,1fr);
 
     gap:24px;
+
 }
 
 .commission-grid{
@@ -1107,6 +877,7 @@ header.shadow{
     grid-template-columns:repeat(3,1fr);
 
     gap:24px;
+
 }
 
 .qualification-grid{
@@ -1116,10 +887,11 @@ header.shadow{
     grid-template-columns:repeat(3,1fr);
 
     gap:18px;
+
 }
 
 /* =========================================================
-   CARD HOVER ANIMATION
+   CARD HOVER
 ========================================================= */
 
 .service-card,
@@ -1131,6 +903,7 @@ header.shadow{
     transition:
         transform .3s ease,
         box-shadow .3s ease;
+
 }
 
 .service-card:hover,
@@ -1142,6 +915,7 @@ header.shadow{
     transform:translateY(-8px);
 
     box-shadow:var(--shadow-lg);
+
 }
 
 /* =========================================================
@@ -1159,6 +933,7 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
+
 }
 
 .service-card h3{
@@ -1166,13 +941,13 @@ header.shadow{
     color:var(--primary);
 
     margin-bottom:14px;
+
 }
 
 .service-card p{
 
-    color:var(--text-light);
-
     margin:0;
+
 }
 
 /* =========================================================
@@ -1190,6 +965,7 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
+
 }
 
 .benefit-card h3{
@@ -1197,15 +973,11 @@ header.shadow{
     color:var(--primary);
 
     margin-bottom:14px;
-}
 
-.benefit-card p{
-
-    color:var(--text-light);
 }
 
 /* =========================================================
-   WORK SYSTEM CARD
+   WORK SYSTEM
 ========================================================= */
 
 .work-card{
@@ -1219,6 +991,7 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
+
 }
 
 .work-card h3{
@@ -1226,15 +999,11 @@ header.shadow{
     color:var(--primary);
 
     margin-bottom:12px;
-}
 
-.work-card p{
-
-    color:var(--text-light);
 }
 
 /* =========================================================
-   EQUIPMENT CARD
+   EQUIPMENT
 ========================================================= */
 
 .equipment-card{
@@ -1250,6 +1019,7 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
+
 }
 
 .equipment-card h3{
@@ -1257,11 +1027,7 @@ header.shadow{
     color:var(--primary);
 
     margin-bottom:14px;
-}
 
-.equipment-card p{
-
-    color:var(--text-light);
 }
 
 /* =========================================================
@@ -1271,6 +1037,7 @@ header.shadow{
 .commission{
 
     background:linear-gradient(180deg,#EEF4FF,#FFFFFF);
+
 }
 
 .commission-card{
@@ -1286,16 +1053,12 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
-}
 
-.commission-card h3{
-
-    color:var(--text);
-
-    margin-bottom:14px;
 }
 
 .commission-card h1{
+
+    margin-bottom:16px;
 
     font-size:2.8rem;
 
@@ -1303,12 +1066,12 @@ header.shadow{
 
     color:var(--primary);
 
-    margin-bottom:16px;
 }
 
-.commission-card p{
+.commission-card h3{
 
-    color:var(--text-light);
+    margin-bottom:12px;
+
 }
 
 .commission-card.highlight{
@@ -1316,11 +1079,13 @@ header.shadow{
     border:2px solid var(--primary);
 
     transform:translateY(-6px);
+
 }
 
 .commission-card.bonus{
 
     border:2px solid var(--secondary);
+
 }
 
 /* =========================================================
@@ -1342,6 +1107,7 @@ header.shadow{
     box-shadow:var(--shadow-sm);
 
     transition:.25s;
+
 }
 
 .qualification-grid div:hover{
@@ -1349,6 +1115,7 @@ header.shadow{
     background:#EEF4FF;
 
     transform:translateY(-3px);
+
 }
 
 /* =========================================================
@@ -1370,11 +1137,13 @@ header.shadow{
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
+
 }
 
 .document-list ul{
 
     list-style:none;
+
 }
 
 .document-list li{
@@ -1388,11 +1157,13 @@ header.shadow{
     padding:15px 0;
 
     border-bottom:1px solid var(--border);
+
 }
 
 .document-list li:last-child{
 
     border-bottom:none;
+
 }
 
 .document-list li::before{
@@ -1402,15 +1173,20 @@ header.shadow{
     color:var(--success);
 
     font-weight:bold;
+
 }
 
 /* =========================================================
-   REGISTER SECTION
+   REGISTER
 ========================================================= */
 
 .register-box{
 
-    background:linear-gradient(135deg,#0A5BD8,#0847AA);
+    background:linear-gradient(
+        135deg,
+        #0A5BD8,
+        #0847AA
+    );
 
     color:#fff;
 
@@ -1421,6 +1197,7 @@ header.shadow{
     border-radius:30px;
 
     box-shadow:0 25px 60px rgba(10,91,216,.28);
+
 }
 
 .register-box h2{
@@ -1428,6 +1205,7 @@ header.shadow{
     color:#fff;
 
     margin-bottom:16px;
+
 }
 
 .register-box p{
@@ -1437,6 +1215,7 @@ header.shadow{
     margin:0 auto 28px;
 
     color:rgba(255,255,255,.90);
+
 }
 
 .register-button{
@@ -1448,26 +1227,24 @@ header.shadow{
     flex-wrap:wrap;
 
     gap:16px;
+
 }
 
 /* =========================================================
-   RESPONSIVE TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width:992px){
 
-    .commission-grid,
     .equipment-grid,
+    .commission-grid,
     .qualification-grid{
 
         grid-template-columns:1fr;
+
     }
 
 }
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
 
 @media (max-width:768px){
 
@@ -1478,11 +1255,13 @@ header.shadow{
     .commission-card{
 
         padding:24px;
+
     }
 
     .register-box{
 
         padding:40px 24px;
+
     }
 
 }
@@ -1490,14 +1269,10 @@ header.shadow{
 /* =========================================================
    END OF PART 4 / 8
 ========================================================= */
-
 /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
-   FAQ • CONTACT • CTA
+   FAQ • CONTACT • BOTTOM CTA
    Part 5 / 8
-   - FAQ
-   - Contact
-   - Bottom CTA
 ========================================================= */
 
 /* =========================================================
@@ -1509,6 +1284,7 @@ header.shadow{
 .bottom-cta{
 
     padding:90px 0;
+
 }
 
 /* =========================================================
@@ -1518,6 +1294,7 @@ header.shadow{
 .faq{
 
     background:#fff;
+
 }
 
 .faq-container{
@@ -1529,6 +1306,7 @@ header.shadow{
     display:grid;
 
     gap:18px;
+
 }
 
 .faq-item{
@@ -1539,16 +1317,18 @@ header.shadow{
 
     border-radius:18px;
 
-    box-shadow:var(--shadow-sm);
-
     overflow:hidden;
 
+    box-shadow:var(--shadow-sm);
+
     transition:.3s;
+
 }
 
 .faq-item:hover{
 
     box-shadow:var(--shadow);
+
 }
 
 .faq-question{
@@ -1574,11 +1354,13 @@ header.shadow{
     cursor:pointer;
 
     transition:.25s;
+
 }
 
 .faq-question:hover{
 
     color:var(--primary);
+
 }
 
 .faq-question::after{
@@ -1598,11 +1380,13 @@ header.shadow{
     color:var(--primary);
 
     transition:.3s;
+
 }
 
 .faq-item.active .faq-question::after{
 
     content:"−";
+
 }
 
 .faq-answer{
@@ -1612,6 +1396,7 @@ header.shadow{
     overflow:hidden;
 
     transition:max-height .35s ease;
+
 }
 
 .faq-answer p{
@@ -1621,6 +1406,7 @@ header.shadow{
     margin:0;
 
     color:var(--text-light);
+
 }
 
 /* =========================================================
@@ -1630,6 +1416,7 @@ header.shadow{
 .contact{
 
     background:#F8FAFC;
+
 }
 
 .contact-grid{
@@ -1639,6 +1426,7 @@ header.shadow{
     grid-template-columns:repeat(3,1fr);
 
     gap:24px;
+
 }
 
 .contact-card{
@@ -1647,17 +1435,18 @@ header.shadow{
 
     padding:30px;
 
-    text-align:center;
-
     border-radius:22px;
 
     border:1px solid var(--border);
 
     box-shadow:var(--shadow);
 
+    text-align:center;
+
     transition:
         transform .3s ease,
         box-shadow .3s ease;
+
 }
 
 .contact-card:hover{
@@ -1665,6 +1454,7 @@ header.shadow{
     transform:translateY(-8px);
 
     box-shadow:var(--shadow-lg);
+
 }
 
 .contact-card h3{
@@ -1672,6 +1462,7 @@ header.shadow{
     margin-bottom:12px;
 
     color:var(--primary);
+
 }
 
 .contact-card p{
@@ -1679,6 +1470,7 @@ header.shadow{
     margin-bottom:16px;
 
     color:var(--text-light);
+
 }
 
 .contact-card a{
@@ -1686,6 +1478,31 @@ header.shadow{
     color:var(--primary);
 
     font-weight:700;
+
+}
+
+.contact-card i{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:60px;
+
+    height:60px;
+
+    margin-bottom:18px;
+
+    border-radius:50%;
+
+    background:#EEF4FF;
+
+    color:var(--primary);
+
+    font-size:26px;
+
 }
 
 /* =========================================================
@@ -1694,14 +1511,20 @@ header.shadow{
 
 .bottom-cta{
 
-    background:linear-gradient(180deg,#EEF4FF,#FFFFFF);
+    background:linear-gradient(
+        180deg,
+        #EEF4FF,
+        #FFFFFF
+    );
 
     text-align:center;
+
 }
 
 .bottom-cta h2{
 
     margin-bottom:18px;
+
 }
 
 .bottom-cta p{
@@ -1711,10 +1534,18 @@ header.shadow{
     margin:0 auto 28px;
 
     color:var(--text-light);
+
+}
+
+.bottom-cta .btn-primary,
+.bottom-cta .btn-secondary{
+
+    margin:8px;
+
 }
 
 /* =========================================================
-   RESPONSIVE TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width:992px){
@@ -1722,24 +1553,43 @@ header.shadow{
     .contact-grid{
 
         grid-template-columns:1fr;
+
     }
 
 }
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
 
 @media (max-width:768px){
 
     .faq-question{
 
         padding:20px;
+
     }
 
     .faq-answer p{
 
         padding:0 20px 20px;
+
+    }
+
+    .contact-card{
+
+        padding:24px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .contact-card i{
+
+        width:52px;
+
+        height:52px;
+
+        font-size:22px;
+
     }
 
 }
@@ -1747,11 +1597,10 @@ header.shadow{
 /* =========================================================
    END OF PART 5 / 8
 ========================================================= */
-
 /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    FOOTER • FLOATING BUTTON • PWA
-   LEGAL GALLERY • POPUP • ANIMATION
+   LEGAL GALLERY • IMAGE MODAL • POPUP
    Part 6 / 8
 ========================================================= */
 
@@ -1766,6 +1615,7 @@ footer{
     color:#fff;
 
     padding:60px 20px 30px;
+
 }
 
 .footer-content{
@@ -1775,6 +1625,7 @@ footer{
     margin:auto;
 
     text-align:center;
+
 }
 
 .footer-logo{
@@ -1782,24 +1633,53 @@ footer{
     width:70px;
 
     margin:0 auto 18px;
+
 }
 
 .footer-content h3{
+
+    color:#fff;
 
     margin-bottom:12px;
 
     font-size:24px;
 
-    color:#fff;
 }
 
 .footer-content p{
 
-    margin-bottom:12px;
-
     color:#CBD5E1;
 
-    text-align:center;
+    margin-bottom:12px;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin:25px 0;
+
+}
+
+.footer-links a{
+
+    color:#fff;
+
+    transition:.25s;
+
+}
+
+.footer-links a:hover{
+
+    color:var(--secondary);
+
 }
 
 .copyright{
@@ -1809,6 +1689,7 @@ footer{
     font-size:.9rem;
 
     color:#94A3B8;
+
 }
 
 /* =========================================================
@@ -1848,6 +1729,7 @@ footer{
     z-index:999;
 
     transition:.25s;
+
 }
 
 .floating-wa:hover{
@@ -1855,10 +1737,11 @@ footer{
     transform:scale(1.08);
 
     box-shadow:0 18px 40px rgba(37,211,102,.45);
+
 }
 
 /* =========================================================
-   PWA INSTALL BANNER
+   PWA INSTALL
 ========================================================= */
 
 .pwa-install{
@@ -1890,6 +1773,7 @@ footer{
     color:#fff;
 
     box-shadow:0 10px 30px rgba(0,0,0,.35);
+
 }
 
 .pwa-install__left{
@@ -1899,6 +1783,7 @@ footer{
     align-items:center;
 
     gap:12px;
+
 }
 
 .pwa-install__icon{
@@ -1910,6 +1795,7 @@ footer{
     border-radius:12px;
 
     background:#fff;
+
 }
 
 .pwa-install__title{
@@ -1917,6 +1803,7 @@ footer{
     font-size:16px;
 
     font-weight:700;
+
 }
 
 .pwa-install__subtitle{
@@ -1924,11 +1811,10 @@ footer{
     font-size:12px;
 
     opacity:.8;
+
 }
 
 .pwa-install__btn{
-
-    padding:8px;
 
     border:none;
 
@@ -1936,15 +1822,14 @@ footer{
 
     color:#7CB7FF;
 
-    font-size:16px;
-
     font-weight:700;
 
     cursor:pointer;
+
 }
 
 /* =========================================================
-   LEGAL DOCUMENT GALLERY
+   LEGAL GALLERY
 ========================================================= */
 
 .legal-doc{
@@ -1956,6 +1841,7 @@ footer{
     gap:10px;
 
     margin-top:10px;
+
 }
 
 .legal-doc img{
@@ -1966,31 +1852,30 @@ footer{
 
     padding:6px;
 
-    background:#F5F5F5;
-
     border:1px solid #E5E5E5;
 
     border-radius:8px;
+
+    background:#F5F5F5;
 
     object-fit:contain;
 
     cursor:pointer;
 
-    transition:transform .25s ease;
+    transition:.25s;
+
 }
 
 .legal-doc img:hover{
 
     transform:scale(1.05);
-}
 
-/* =========================================================
-   LEGAL CARD
-========================================================= */
+}
 
 .legal-card{
 
     padding:10px;
+
 }
 
 .legal-card-img{
@@ -1999,13 +1884,14 @@ footer{
 
     height:200px;
 
-    border-radius:8px;
+    border-radius:10px;
 
     background:#F5F5F5;
 
     object-fit:contain;
 
     cursor:pointer;
+
 }
 
 .legal-caption{
@@ -2016,11 +1902,70 @@ footer{
 
     font-size:13px;
 
-    color:#555;
+    color:#666;
+
 }
 
 /* =========================================================
-   IMAGE POPUP
+   IMAGE MODAL
+========================================================= */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    background:rgba(0,0,0,.88);
+
+}
+
+.modal-content{
+
+    display:block;
+
+    max-width:90%;
+
+    max-height:90%;
+
+    margin:3% auto;
+
+    transition:transform .25s ease;
+
+}
+
+.close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:30px;
+
+    color:#fff;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.close:hover{
+
+    transform:scale(1.15);
+
+}
+
+/* =========================================================
+   KBLI POPUP
 ========================================================= */
 
 .kbli-popup{
@@ -2038,6 +1983,7 @@ footer{
     background:rgba(0,0,0,.75);
 
     z-index:9999;
+
 }
 
 .kbli-popup-content{
@@ -2047,15 +1993,15 @@ footer{
     max-width:90%;
 
     max-height:90%;
+
 }
 
 .kbli-image{
 
     width:100%;
 
-    height:auto;
-
     border-radius:12px;
+
 }
 
 .kbli-close{
@@ -2080,7 +2026,6 @@ footer{
 
     cursor:pointer;
 
-    box-shadow:0 2px 8px rgba(0,0,0,.30);
 }
 
 /* =========================================================
@@ -2094,6 +2039,7 @@ footer{
     transform:translateY(40px);
 
     transition:all .8s ease;
+
 }
 
 .fade-up.show{
@@ -2101,6 +2047,7 @@ footer{
     opacity:1;
 
     transform:translateY(0);
+
 }
 
 /* =========================================================
@@ -2120,6 +2067,15 @@ footer{
         bottom:18px;
 
         font-size:24px;
+
+    }
+
+    .pwa-install{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
     }
 
 }
@@ -2131,31 +2087,21 @@ footer{
         width:70px;
 
         height:110px;
+
     }
 
-}
-
-/* =========================================================
-   END OF PART 6 / 8
-========================================================= */
-
-/* =========================================================
+   }
+       /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    GLOBAL RESPONSIVE
    Part 7 / 8
-   - Tablet (≤992px)
-   - Mobile (≤768px)
-   - Small Mobile (≤480px)
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    TABLET
-   max-width : 992px
 ========================================================= */
 
 @media (max-width:992px){
-
-    /* ---------- Layout ---------- */
 
     .grid-2,
     .grid-3,
@@ -2164,220 +2110,228 @@ footer{
     .commission-grid,
     .qualification-grid,
     .contact-grid{
-
         grid-template-columns:1fr;
     }
 
-    /* ---------- Hero ---------- */
-
     .hero-grid{
-
         grid-template-columns:1fr;
-
         gap:50px;
-
         text-align:center;
     }
 
     .hero-content p{
-
         margin-left:auto;
         margin-right:auto;
     }
 
     .hero-buttons,
     .register-button{
-
         justify-content:center;
     }
 
     .hero-stat{
-
         grid-template-columns:1fr;
     }
 
-    /* ---------- Navigation ---------- */
-
     nav{
-
         display:none;
     }
 
     .menu-toggle{
-
         display:flex;
     }
 
     .logo span{
-
         font-size:1rem;
+    }
+
+    .equipment-card,
+    .service-card,
+    .benefit-card,
+    .work-card,
+    .commission-card,
+    .contact-card{
+        padding:24px;
     }
 
 }
 
 /* =========================================================
    MOBILE
-   max-width : 768px
 ========================================================= */
 
 @media (max-width:768px){
 
-    /* ---------- Global ---------- */
+    html{
+        font-size:15px;
+    }
+
+    body{
+        overflow-x:hidden;
+    }
 
     section{
-
         padding:65px 0;
     }
 
     .container{
-
-        width:min(100%,92%);
+        width:92%;
     }
 
-    /* ---------- Typography ---------- */
-
     h1{
-
-        font-size:2.35rem;
+        font-size:2.25rem;
     }
 
     h2{
-
-        font-size:2rem;
+        font-size:1.8rem;
     }
 
-    .section-title{
-
-        margin-bottom:36px;
+    h3{
+        font-size:1.15rem;
     }
 
-    /* ---------- Header ---------- */
+    p{
+        font-size:.95rem;
+    }
 
     .navbar,
     .nav-container{
-
         padding:14px 0;
     }
 
     .logo img{
-
         width:40px;
         height:40px;
     }
 
     .top-header{
-
         font-size:.8rem;
     }
 
-    /* ---------- Hero ---------- */
-
     .hero{
-
         padding:80px 0 70px;
     }
 
     .hero-grid{
-
         gap:40px;
     }
 
-    /* ---------- Cards ---------- */
-
-    .service-card,
-    .benefit-card,
-    .work-card,
-    .equipment-card,
-    .commission-card,
-    .contact-card{
-
-        padding:24px;
+    .hero-content{
+        text-align:center;
     }
 
-    /* ---------- Register ---------- */
-
-    .register-box{
-
-        padding:40px 24px;
+    .hero-content p{
+        margin:auto;
     }
 
-    /* ---------- FAQ ---------- */
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-stat{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .service-grid,
+    .benefit-grid,
+    .work-grid,
+    .commission-grid,
+    .equipment-grid,
+    .qualification-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
 
     .faq-question{
-
         padding:20px;
     }
 
     .faq-answer p{
-
         padding:0 20px 20px;
     }
 
-    /* ---------- Floating Button ---------- */
+    .document-list{
+        padding:22px;
+    }
+
+    .register-box{
+        padding:40px 24px;
+    }
 
     .floating-wa{
-
         width:56px;
         height:56px;
-
         right:18px;
         bottom:18px;
-
         font-size:24px;
+    }
+
+    .footer-content{
+        padding:0 10px;
     }
 
 }
 
 /* =========================================================
    SMALL MOBILE
-   max-width : 480px
 ========================================================= */
 
 @media (max-width:480px){
 
-    /* ---------- Typography ---------- */
+    html{
+        font-size:14px;
+    }
 
     h1{
-
         font-size:2rem;
     }
 
     h2{
-
-        font-size:1.8rem;
+        font-size:1.65rem;
     }
 
-    .badge{
+    h3{
+        font-size:1.05rem;
+    }
 
-        font-size:.8rem;
+    .hero{
+        padding:70px 0 60px;
+    }
+
+    .hero-content h1{
+        line-height:1.2;
     }
 
     .hero-content p{
-
-        font-size:.95rem;
+        font-size:.92rem;
     }
 
-    /* ---------- Logo ---------- */
+    .badge{
+        font-size:.78rem;
+        padding:8px 14px;
+    }
 
     .logo span{
-
         display:none;
     }
 
-    .menu-toggle{
+    .logo img{
+        width:38px;
+        height:38px;
+    }
 
+    .menu-toggle{
         width:42px;
         height:42px;
     }
 
-    /* ---------- Hero ---------- */
-
-    .hero{
-
-        padding:70px 0 60px;
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline{
+        width:100%;
+        justify-content:center;
     }
-
-    /* ---------- Cards ---------- */
 
     .service-card,
     .benefit-card,
@@ -2386,167 +2340,179 @@ footer{
     .commission-card,
     .contact-card,
     .document-list{
-
         padding:20px;
     }
 
-    /* ---------- Legal Gallery ---------- */
-
     .legal-doc img{
-
         width:70px;
         height:110px;
     }
 
-}
+    .floating-wa{
+        width:54px;
+        height:54px;
+        font-size:22px;
+    }
 
-/* =========================================================
-   END OF PART 7 / 8
-========================================================= */
-
-/* =========================================================
+       }
+       /* =========================================================
    PT ASSISTENKU SOLUSI INDONESIA
    PAGE SPECIFIC & FINAL UTILITIES
    Part 8 / 8
-   - Career Page
-   - Legal Page
-   - Image Helper
-   - Helper Classes
-   - Accessibility
-   - Print
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
-   CAREER PAGE
+   PAGE SPECIFIC
 ========================================================= */
 
 .karir-page .card-image{
-
-    height:260px;
-
+    width:100%;
     overflow:hidden;
-
-    border-radius:12px;
-
-    background:#fff;
+    border-radius:16px;
 }
 
 .karir-page .card-image img{
-
     width:100%;
-
-    height:100%;
-
     display:block;
-
-    object-fit:contain;
+    object-fit:cover;
 }
-
-/* =========================================================
-   FOUNDER & LEGAL IMAGE
-========================================================= */
 
 .founder-img,
 .legal-img{
-
     width:100%;
-
-    display:block;
-
-    margin:10px 0;
-
-    border-radius:12px;
-
-    object-fit:contain;
+    border-radius:18px;
+    box-shadow:var(--shadow);
 }
-
-/* =========================================================
-   CARD IMAGE
-========================================================= */
 
 .card-image{
-
-    width:100%;
-
-    height:auto;
-
-    display:block;
-
-    margin-bottom:12px;
-
-    border-radius:12px;
-
-    object-fit:contain;
+    overflow:hidden;
+    border-radius:18px;
 }
 
-.card-image > img{
-
+.card-image img{
     width:100%;
-
-    height:auto;
-
     display:block;
+    transition:transform .35s ease;
+}
 
-    object-fit:contain;
-
-    border-radius:12px;
+.card-image:hover img{
+    transform:scale(1.05);
 }
 
 /* =========================================================
-   APPLY BUTTON GROUP
+   APPLY BUTTON
 ========================================================= */
 
 .apply-box{
-
     display:flex;
-
+    gap:16px;
     flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:10px;
+    margin-top:24px;
 }
 
 .center-btn{
-
     text-align:center;
-
-    margin:20px 0;
 }
 
 /* =========================================================
-   LEGAL CARD
+   IMAGE LOADED
 ========================================================= */
 
-.legal-card{
-
-    padding:10px;
+img{
+    opacity:1;
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
 }
 
-.legal-card-img{
+img.loaded{
+    opacity:1;
+}
 
-    width:100%;
+/* =========================================================
+   RIPPLE EFFECT
+========================================================= */
 
-    height:200px;
+.btn-primary,
+.btn-secondary{
+    position:relative;
+    overflow:hidden;
+}
 
-    background:#F5F5F5;
+.ripple{
+    position:absolute;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    transform:translate(-50%,-50%);
+    animation:ripple .6s linear;
+    pointer-events:none;
+}
 
-    border-radius:8px;
+@keyframes ripple{
 
-    object-fit:contain;
+    from{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(0);
+    }
+
+    to{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(18);
+    }
+
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#backToTop{
+
+    position:fixed;
+
+    right:24px;
+    bottom:100px;
+
+    width:54px;
+    height:54px;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--primary);
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     cursor:pointer;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:999;
+
+    box-shadow:var(--shadow);
+
 }
 
-.legal-caption{
+#backToTop.show{
 
-    margin-top:8px;
+    opacity:1;
+    visibility:visible;
 
-    text-align:center;
+}
 
-    font-size:13px;
+#backToTop:hover{
 
-    color:#555;
+    background:var(--primary-dark);
+    transform:translateY(-3px);
+
 }
 
 /* =========================================================
@@ -2556,30 +2522,35 @@ footer{
 :focus-visible{
 
     outline:3px solid rgba(10,91,216,.35);
+    outline-offset:4px;
 
-    outline-offset:3px;
 }
 
 ::selection{
 
     background:rgba(10,91,216,.18);
 
-    color:var(--text);
 }
 
 /* =========================================================
-   SMOOTH IMAGE EFFECT
+   SCROLLBAR
 ========================================================= */
 
-img{
-
-    transition:transform .3s ease,
-               opacity .3s ease;
+::-webkit-scrollbar{
+    width:10px;
 }
 
-img:hover{
+::-webkit-scrollbar-track{
+    background:#F3F4F6;
+}
 
-    opacity:.98;
+::-webkit-scrollbar-thumb{
+    background:#0A5BD8;
+    border-radius:999px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#0847AA;
 }
 
 /* =========================================================
@@ -2588,62 +2559,31 @@ img:hover{
 
 @media print{
 
+    header,
+    footer,
     .floating-wa,
+    #backToTop,
     .menu-toggle,
-    .top-header,
-    .mobile-nav{
-
+    .mobile-nav,
+    .pwa-install{
         display:none !important;
     }
 
     body{
-
         background:#fff;
-
         color:#000;
     }
 
     section{
-
-        padding:30px 0;
+        padding:24px 0;
     }
 
     .card{
-
         box-shadow:none;
-
-        border:1px solid #ccc;
+        border:1px solid #CCC;
     }
 
 }
-
-/* =========================================================
-   PROJECT INFORMATION
-========================================================= */
-
-/*
-
-PT ASSISTENKU SOLUSI INDONESIA
-
-Version 2.0 Premium
-
-CSS Structure
-
-Part 1 : Foundation
-Part 2 : Header & Navigation
-Part 3 : Hero & About
-Part 4 : Services, Benefits, Commission
-Part 5 : FAQ, Contact, CTA
-Part 6 : Footer, Floating Button, PWA
-Part 7 : Responsive
-Part 8 : Page Specific & Utilities
-
-Primary Color   : #0A5BD8
-Secondary Color : #FFD166
-Background      : #F8FAFC
-Font            : Inter
-
-*/
 
 /* =========================================================
    END OF FILE
