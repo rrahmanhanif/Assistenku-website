@@ -1,34 +1,27 @@
 // ======================================================
 // PT ASSISTENKU SOLUSI INDONESIA
 // Premium Website Script
-// Part 1 / 6
+// Part 1 / 8
 // Core Initialization
+// Header
+// Mobile Menu
+// Smooth Scroll
 // ======================================================
-
-"use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("====================================");
-    console.log("PT ASSISTENKU SOLUSI INDONESIA");
-    console.log("Premium Website Script");
-    console.log("Version : 2.0");
-    console.log("Status  : Initializing...");
-    console.log("====================================");
+    "use strict";
 
-    /* ==========================================
-       GLOBAL SELECTOR
-    ========================================== */
+    // ==================================================
+    // Helper
+    // ==================================================
 
-    const $ = (selector, scope = document) =>
-        scope.querySelector(selector);
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
 
-    const $$ = (selector, scope = document) =>
-        [...scope.querySelectorAll(selector)];
-
-    /* ==========================================
-       HEADER
-    ========================================== */
+    // ==================================================
+    // Header Shadow
+    // ==================================================
 
     const header = $("header");
 
@@ -36,15 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!header) return;
 
-        if (window.scrollY > 30) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        );
 
     }
 
@@ -52,9 +40,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", updateHeader);
 
-    /* ==========================================
-       SMOOTH SCROLL
-    ========================================== */
+    // ==================================================
+    // Mobile Menu
+    // ==================================================
+
+    const menuButton =
+        $("#menuIcon") ||
+        $(".menu-toggle");
+
+    const mobileMenu =
+        $("#mobileMenu") ||
+        $(".mobile-nav");
+
+    if (menuButton && mobileMenu) {
+
+        menuButton.addEventListener("click", () => {
+
+            mobileMenu.classList.toggle("active");
+            menuButton.classList.toggle("active");
+
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.remove("active");
+                menuButton.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+    // ==================================================
+    // Smooth Scroll
+    // ==================================================
 
     $$('a[href^="#"]').forEach(link => {
 
@@ -64,18 +86,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!href || href === "#") return;
 
-            const target = $(href);
+            const target = document.querySelector(href);
 
             if (!target) return;
 
             e.preventDefault();
 
-            const offset = header ? header.offsetHeight + 20 : 0;
+            const offset = header
+                ? header.offsetHeight + 20
+                : 100;
 
             window.scrollTo({
 
                 top: target.offsetTop - offset,
-
                 behavior: "smooth"
 
             });
@@ -84,248 +107,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ==========================================
-       HELPER
-    ========================================== */
+    console.log("Script Part 1 Loaded");
 
-    function isVisible(element, offset = 100) {
+});
 
-        if (!element) return false;
+// ======================================================
+// PT ASSISTENKU SOLUSI INDONESIA
+// Premium Website Script
+// Part 2 / 8
+// Scroll Reveal
+// Counter Animation
+// Floating WhatsApp
+// Back To Top
+// ======================================================
 
-        return element.getBoundingClientRect().top <
-            window.innerHeight - offset;
+    // ==================================================
+    // Scroll Reveal
+    // ==================================================
 
-    }
+    const revealItems = document.querySelectorAll(
+        ".service-card," +
+        ".benefit-card," +
+        ".commission-card," +
+        ".work-card," +
+        ".equipment-card," +
+        ".qualification-grid > div," +
+        ".contact-card," +
+        ".faq-item"
+    );
 
-    function debounce(callback, delay = 100) {
-
-        let timer;
-
-        return (...args) => {
-
-            clearTimeout(timer);
-
-            timer = setTimeout(() => {
-
-                callback.apply(this, args);
-
-            }, delay);
-
-        };
-
-    }
-
-    /* ==========================================
-       GLOBAL EVENTS
-    ========================================== */
-
-    window.addEventListener("pageshow", () => {
-
-        updateHeader();
-
+    revealItems.forEach(item => {
+        item.classList.add("fade-up");
     });
 
-    window.addEventListener("resize", debounce(() => {
+    function revealOnScroll() {
 
-        updateHeader();
+        revealItems.forEach(item => {
 
-    }, 150));
+            const position = item.getBoundingClientRect().top;
 
-    /* ==========================================
-       READY
-    ========================================== */
-
-    console.log("Core Initialization Loaded ✔");
-    
-    /* ==========================================
-       MOBILE MENU
-    ========================================== */
-
-    const menuButton =
-        $("#menuIcon") ||
-        $(".menu-toggle") ||
-        $(".hamburger");
-
-    const mobileMenu =
-        $("#mobileMenu") ||
-        $(".mobile-nav") ||
-        $(".mobile-menu");
-
-    if (menuButton && mobileMenu) {
-
-        menuButton.addEventListener("click", () => {
-
-            mobileMenu.classList.toggle("active");
-            menuButton.classList.toggle("active");
-
-            document.body.classList.toggle(
-                "menu-open",
-                mobileMenu.classList.contains("active")
-            );
-
-        });
-
-        $$("a", mobileMenu).forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                mobileMenu.classList.remove("active");
-                menuButton.classList.remove("active");
-                document.body.classList.remove("menu-open");
-
-            });
-
-        });
-
-        document.addEventListener("click", (e) => {
-
-            if (
-                !mobileMenu.contains(e.target) &&
-                !menuButton.contains(e.target)
-            ) {
-
-                mobileMenu.classList.remove("active");
-                menuButton.classList.remove("active");
-                document.body.classList.remove("menu-open");
-
+            if (position < window.innerHeight - 80) {
+                item.classList.add("show");
             }
 
         });
 
     }
 
-    /* ==========================================
-       ACTIVE NAVIGATION
-    ========================================== */
+    revealOnScroll();
 
-    const sections = $$("section[id]");
-    const navLinks = $$("nav a, .mobile-nav a");
+    window.addEventListener("scroll", revealOnScroll);
 
-    function updateActiveMenu() {
+    // ==================================================
+    // Counter Animation
+    // ==================================================
 
-        let current = "";
-
-        sections.forEach(section => {
-
-            const top = section.offsetTop - 140;
-
-            if (window.scrollY >= top) {
-
-                current = section.id;
-
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            const href = link.getAttribute("href");
-
-            if (href === "#" + current) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-
-    updateActiveMenu();
-
-    window.addEventListener("scroll", updateActiveMenu);
-
-    /* ==========================================
-       BACK TO TOP
-    ========================================== */
-
-    const backTop =
-        $("#backToTop");
-
-    if (backTop) {
-
-        function updateBackTop() {
-
-            if (window.scrollY > 500) {
-
-                backTop.classList.add("show");
-
-            } else {
-
-                backTop.classList.remove("show");
-
-            }
-
-        }
-
-        updateBackTop();
-
-        window.addEventListener("scroll", updateBackTop);
-
-        backTop.addEventListener("click", () => {
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        });
-
-    }
-
-    /* ==========================================
-       FLOATING WHATSAPP
-    ========================================== */
-
-    const floatingWA =
-        $(".floating-wa");
-
-    if (floatingWA) {
-
-        function updateFloatingWA() {
-
-            if (window.scrollY > 200) {
-
-                floatingWA.style.opacity = "1";
-                floatingWA.style.transform =
-                    "translateY(0)";
-
-            } else {
-
-                floatingWA.style.opacity = ".85";
-                floatingWA.style.transform =
-                    "translateY(10px)";
-
-            }
-
-        }
-
-        updateFloatingWA();
-
-        window.addEventListener(
-            "scroll",
-            updateFloatingWA
-        );
-
-    }
-
-    console.log("Navigation Loaded ✔");
-
-
-                              /* ==========================================
-       COUNTER ANIMATION
-    ========================================== */
-
-    let counterPlayed = false;
+    let counterAnimated = false;
 
     function animateCounter() {
 
-        if (counterPlayed) return;
+        if (counterAnimated) return;
 
         const section = document.querySelector(".commission");
 
@@ -335,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (top > window.innerHeight - 120) return;
 
-        counterPlayed = true;
+        counterAnimated = true;
 
         document.querySelectorAll(".commission-card h1").forEach(counter => {
 
@@ -346,22 +187,26 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isNaN(target)) return;
 
             let current = 0;
-            const duration = 1500;
-            const step = Math.ceil(target / (duration / 16));
+
+            const speed = Math.ceil(target / 90);
 
             function update() {
 
-                current += step;
+                current += speed;
 
-                if (current > target) {
+                if (current >= target) {
+
                     current = target;
+
                 }
 
                 counter.textContent =
-                    "Rp" + current.toLocaleString("id-ID");
+                    "Rp " + current.toLocaleString("id-ID");
 
                 if (current < target) {
+
                     requestAnimationFrame(update);
+
                 }
 
             }
@@ -376,9 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", animateCounter);
 
-    /* ==========================================
-       FLOATING WHATSAPP
-    ========================================== */
+    // ==================================================
+    // Floating WhatsApp
+    // ==================================================
 
     const floatingWA = document.querySelector(".floating-wa");
 
@@ -404,64 +249,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", updateFloatingWA);
 
-    /* ==========================================
-       BUTTON HOVER EFFECT
-    ========================================== */
+    // ==================================================
+    // Back To Top
+    // ==================================================
 
-    document.querySelectorAll(
-        ".btn-primary, .btn-secondary"
-    ).forEach(btn => {
+    const backToTop = document.getElementById("backToTop");
 
-        btn.addEventListener("mouseenter", () => {
+    if (backToTop) {
 
-            btn.style.transform = "translateY(-3px)";
+        window.addEventListener("scroll", () => {
+
+            backToTop.classList.toggle(
+                "show",
+                window.scrollY > 500
+            );
 
         });
 
-        btn.addEventListener("mouseleave", () => {
+        backToTop.addEventListener("click", () => {
 
-            btn.style.transform = "translateY(0)";
+            window.scrollTo({
+
+                top: 0,
+                behavior: "smooth"
+
+            });
+
+        });
+
+    }
+
+    console.log("Script Part 2 Loaded");
+
+    // ==================================================
+    // FAQ Accordion
+    // ==================================================
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+
+        const question = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+
+        if (!question || !answer) return;
+
+        question.addEventListener("click", () => {
+
+            faqItems.forEach(other => {
+
+                if (other === item) return;
+
+                other.classList.remove("active");
+
+                const otherAnswer = other.querySelector(".faq-answer");
+
+                if (otherAnswer) {
+                    otherAnswer.style.maxHeight = null;
+                }
+
+            });
+
+            item.classList.toggle("active");
+
+            answer.style.maxHeight = item.classList.contains("active")
+                ? answer.scrollHeight + "px"
+                : null;
 
         });
 
     });
 
-    /* ==========================================
-       RIPPLE EFFECT
-    ========================================== */
+    // ==================================================
+    // Button Hover Effect
+    // ==================================================
 
-    document.querySelectorAll(
-        ".btn-primary, .btn-secondary"
-    ).forEach(button => {
+    document
+        .querySelectorAll(".btn-primary, .btn-secondary, .btn-outline")
+        .forEach(button => {
 
-        button.addEventListener("click", function (e) {
+            button.addEventListener("mouseenter", () => {
 
-            const ripple = document.createElement("span");
+                button.style.transform = "translateY(-3px)";
 
-            ripple.className = "ripple";
+            });
 
-            const rect = this.getBoundingClientRect();
+            button.addEventListener("mouseleave", () => {
 
-            ripple.style.left = (e.clientX - rect.left) + "px";
-            ripple.style.top = (e.clientY - rect.top) + "px";
+                button.style.transform = "";
 
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-
-                ripple.remove();
-
-            }, 600);
+            });
 
         });
 
-    });
+    // ==================================================
+    // Ripple Effect
+    // ==================================================
 
-    /* ==========================================
-       PDF BUTTONS
-    ========================================== */
+    document
+        .querySelectorAll(".btn-primary, .btn-secondary")
+        .forEach(button => {
 
-    function openPDF(id, file) {
+            button.addEventListener("click", function (e) {
+
+                const ripple = document.createElement("span");
+
+                ripple.className = "ripple";
+
+                const rect = this.getBoundingClientRect();
+
+                ripple.style.left = (e.clientX - rect.left) + "px";
+                ripple.style.top = (e.clientY - rect.top) + "px";
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+
+                    ripple.remove();
+
+                }, 600);
+
+            });
+
+        });
+
+    // ==================================================
+    // PDF Buttons
+    // ==================================================
+
+    function bindPDFButton(id, file) {
 
         const button = document.getElementById(id);
 
@@ -475,12 +391,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    openPDF("btnBiayaLayanan", "/penawaran.pdf");
-    openPDF("btnUnduhFormulir", "/formulir.pdf");
+    bindPDFButton("btnBiayaLayanan", "/penawaran.pdf");
+    bindPDFButton("btnUnduhFormulir", "/formulir.pdf");
 
-                              /* ==========================================
-       SERVICE WORKER
-    ========================================== */
+    console.log("Script Part 3 Loaded");
+
+    // ==================================================
+    // Service Worker
+    // ==================================================
 
     if ("serviceWorker" in navigator) {
 
@@ -488,46 +406,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
             navigator.serviceWorker
                 .register("/sw.js")
-                .catch(err => {
-
-                    console.warn("Service Worker:", err);
-
-                });
+                .catch(err => console.warn("Service Worker:", err));
 
         });
 
     }
 
-    /* ==========================================
-       PWA INSTALL
-    ========================================== */
+    // ==================================================
+    // PWA Install
+    // ==================================================
 
     let deferredPrompt = null;
 
-    const installButton =
-        document.getElementById("pwaInstallBtn");
+    const installButton = document.getElementById("pwaInstallBtn");
 
-    function updateInstallButton(enabled) {
+    function setInstallButtonState(enabled) {
 
         if (!installButton) return;
 
         installButton.disabled = !enabled;
         installButton.style.opacity = enabled ? "1" : ".6";
-        installButton.style.cursor = enabled
-            ? "pointer"
-            : "not-allowed";
+        installButton.style.cursor = enabled ? "pointer" : "not-allowed";
 
     }
 
-    updateInstallButton(false);
+    setInstallButtonState(false);
 
-    window.addEventListener("beforeinstallprompt", (e) => {
+    window.addEventListener("beforeinstallprompt", (event) => {
 
-        e.preventDefault();
+        event.preventDefault();
 
-        deferredPrompt = e;
+        deferredPrompt = event;
 
-        updateInstallButton(true);
+        setInstallButtonState(true);
 
     });
 
@@ -543,53 +454,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
             deferredPrompt = null;
 
-            updateInstallButton(false);
+            setInstallButtonState(false);
 
         });
 
     }
 
+    // ==================================================
+    // App Installed
+    // ==================================================
+
     window.addEventListener("appinstalled", () => {
 
         deferredPrompt = null;
 
-        updateInstallButton(false);
-
-        console.log("PWA berhasil diinstal.");
+        setInstallButtonState(false);
 
     });
 
-    /* ==========================================
-       IMAGE MODAL
-    ========================================== */
 
-    const modal =
-        document.getElementById("imageModal");
+    // ==================================================
+    // External Link Security
+    // ==================================================
 
-    const modalImg =
-        document.getElementById("modalImg");
+    document
+        .querySelectorAll('a[target="_blank"]')
+        .forEach(link => {
 
-    const modalClose =
-        document.querySelector(".close");
+            if (!link.hasAttribute("rel")) {
 
-    const images =
-        document.querySelectorAll(".legal-card-img");
+                link.setAttribute(
+                    "rel",
+                    "noopener noreferrer"
+                );
 
-    let zoom = 1;
+            }
 
-    if (modal && modalImg && images.length > 0) {
+        });
 
-        images.forEach(img => {
+    // ==================================================
+    // IMAGE MODAL
+    // ==================================================
 
-            img.addEventListener("click", () => {
+    const imageModal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImg");
+    const modalClose = document.querySelector(".close");
+    const galleryImages = document.querySelectorAll(".legal-card-img");
 
-                modal.style.display = "block";
+    let imageZoom = 1;
 
-                modalImg.src = img.src;
+    if (imageModal && modalImage && galleryImages.length) {
 
-                zoom = 1;
+        galleryImages.forEach(image => {
 
-                modalImg.style.transform = "scale(1)";
+            image.addEventListener("click", () => {
+
+                imageModal.style.display = "block";
+
+                modalImage.src = image.src;
+                modalImage.alt = image.alt || "";
+
+                imageZoom = 1;
+
+                modalImage.style.transform = "scale(1)";
 
             });
 
@@ -597,27 +524,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ==========================================
-       CLOSE MODAL
-    ========================================== */
+    // ==================================================
+    // CLOSE IMAGE MODAL
+    // ==================================================
 
-    if (modalClose && modal) {
+    if (modalClose && imageModal) {
 
         modalClose.addEventListener("click", () => {
 
-            modal.style.display = "none";
+            imageModal.style.display = "none";
 
         });
 
     }
 
-    if (modal && modalImg) {
+    if (imageModal && modalImage) {
 
-        modal.addEventListener("click", (e) => {
+        imageModal.addEventListener("click", (event) => {
 
-            if (e.target !== modalImg) {
+            if (event.target === imageModal) {
 
-                modal.style.display = "none";
+                imageModal.style.display = "none";
 
             }
 
@@ -625,52 +552,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ==========================================
-       IMAGE ZOOM
-    ========================================== */
+    // ==================================================
+    // IMAGE ZOOM
+    // ==================================================
 
-    if (modalImg) {
+    if (modalImage) {
 
-        modalImg.addEventListener("click", () => {
+        modalImage.addEventListener("click", () => {
 
-            zoom = zoom === 1 ? 2 : 1;
+            imageZoom = imageZoom === 1 ? 2 : 1;
 
-            modalImg.style.transform =
-                `scale(${zoom})`;
+            modalImage.style.transform =
+                `scale(${imageZoom})`;
 
         });
 
     }
 
-    /* ==========================================
-       MOUSE WHEEL ZOOM
-    ========================================== */
+    // ==================================================
+    // MOUSE WHEEL ZOOM
+    // ==================================================
 
-    if (modal && modalImg) {
+    if (imageModal && modalImage) {
 
-        modal.addEventListener("wheel", (e) => {
+        imageModal.addEventListener("wheel", (event) => {
 
-            e.preventDefault();
+            event.preventDefault();
 
-            zoom += (e.deltaY < 0)
-                ? 0.2
-                : -0.2;
+            imageZoom += event.deltaY < 0 ? 0.2 : -0.2;
 
-            zoom = Math.min(
-                Math.max(zoom, 1),
+            imageZoom = Math.min(
+                Math.max(imageZoom, 1),
                 5
             );
 
-            modalImg.style.transform =
-                `scale(${zoom})`;
+            modalImage.style.transform =
+                `scale(${imageZoom})`;
 
         });
 
     }
 
-                              /* ==========================================
-       KBLI POPUP
-    ========================================== */
+    // ==================================================
+    // KBLI POPUP
+    // ==================================================
 
     const kbliPopup = document.getElementById("kbliPopup");
     const closeKbli = document.getElementById("closeKbli");
@@ -693,9 +618,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        kbliPopup.addEventListener("click", (e) => {
+        kbliPopup.addEventListener("click", (event) => {
 
-            if (e.target === kbliPopup) {
+            if (event.target === kbliPopup) {
 
                 kbliPopup.style.display = "none";
 
@@ -705,16 +630,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ==========================================
-       PRELOAD IMAGE
-    ========================================== */
+    // ==================================================
+    // PRELOAD IMAGE
+    // ==================================================
 
     document.querySelectorAll("img").forEach(img => {
 
         if (img.complete) {
 
             img.classList.add("loaded");
-
             return;
 
         }
@@ -727,48 +651,125 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ==========================================
-       EXTERNAL LINK SECURITY
-    ========================================== */
+    // ==================================================
+    // WINDOW RESIZE
+    // ==================================================
 
-    document
-        .querySelectorAll('a[target="_blank"]')
-        .forEach(link => {
+    window.addEventListener("resize", () => {
 
-            if (!link.hasAttribute("rel")) {
+        if (typeof revealOnScroll === "function") {
+            revealOnScroll();
+        }
 
-                link.setAttribute(
-                    "rel",
-                    "noopener noreferrer"
-                );
+        if (typeof updateHeader === "function") {
+            updateHeader();
+        }
 
+        if (typeof updateFloatingWA === "function") {
+            updateFloatingWA();
+        }
+
+    });
+
+    // ==================================================
+    // PAGE SHOW
+    // ==================================================
+
+    window.addEventListener("pageshow", () => {
+
+        if (typeof revealOnScroll === "function") {
+            revealOnScroll();
+        }
+
+        if (typeof animateCounter === "function") {
+            animateCounter();
+        }
+
+        if (typeof updateHeader === "function") {
+            updateHeader();
+        }
+
+        if (typeof updateFloatingWA === "function") {
+            updateFloatingWA();
+        }
+
+    });
+
+    // ==================================================
+    // VISIBILITY CHANGE
+    // ==================================================
+
+    document.addEventListener("visibilitychange", () => {
+
+        if (document.hidden) return;
+
+        if (typeof revealOnScroll === "function") {
+            revealOnScroll();
+        }
+
+        if (typeof updateHeader === "function") {
+            updateHeader();
+        }
+
+    });
+
+    // ==================================================
+    // ORIENTATION CHANGE
+    // ==================================================
+
+    window.addEventListener("orientationchange", () => {
+
+        setTimeout(() => {
+
+            if (typeof revealOnScroll === "function") {
+                revealOnScroll();
             }
+
+        }, 300);
+
+    });
+
+    // ==================================================
+    // IMAGE ERROR FALLBACK
+    // ==================================================
+
+    document.querySelectorAll("img").forEach(img => {
+
+        img.addEventListener("error", () => {
+
+            img.classList.add("image-error");
 
         });
 
-    /* ==========================================
-       BACK TO TOP
-    ========================================== */
+    });
 
-    const backTop = document.getElementById("backToTop");
+    // ==================================================
+    // BACK TO TOP
+    // ==================================================
 
-    if (backTop) {
+    const backToTop = document.getElementById("backToTop");
 
-        window.addEventListener("scroll", () => {
+    if (backToTop) {
+
+        function toggleBackToTop() {
 
             if (window.scrollY > 500) {
 
-                backTop.classList.add("show");
+                backToTop.classList.add("show");
 
             } else {
 
-                backTop.classList.remove("show");
+                backToTop.classList.remove("show");
 
             }
 
-        });
+        }
 
-        backTop.addEventListener("click", () => {
+        toggleBackToTop();
+
+        window.addEventListener("scroll", toggleBackToTop);
+
+        backToTop.addEventListener("click", () => {
 
             window.scrollTo({
 
@@ -781,66 +782,129 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ==========================================
-       PAGE VISIBILITY
-    ========================================== */
+    // ==================================================
+    // ESC KEY
+    // ==================================================
 
-    document.addEventListener("visibilitychange", () => {
+    document.addEventListener("keydown", (event) => {
 
-        if (!document.hidden) {
+        if (event.key !== "Escape") return;
 
-            revealOnScroll();
-            animateCounter();
-            updateHeader();
-            updateFloatingWA();
+        if (typeof imageModal !== "undefined" && imageModal) {
+
+            imageModal.style.display = "none";
+
+        }
+
+        if (typeof kbliPopup !== "undefined" && kbliPopup) {
+
+            kbliPopup.style.display = "none";
+
+        }
+
+        if (typeof mobileMenu !== "undefined" && mobileMenu) {
+
+            mobileMenu.classList.remove("active");
 
         }
 
     });
 
-    /* ==========================================
-       WINDOW RESIZE
-    ========================================== */
+    // ==================================================
+    // WINDOW ERROR
+    // ==================================================
 
-    window.addEventListener("resize", () => {
+    window.addEventListener("error", (event) => {
 
-        revealOnScroll();
-
-    });
-
-                              /* ==========================================
-       ERROR SAFETY
-    ========================================== */
-
-    window.addEventListener("error", (e) => {
-
-        console.warn(
-            "Script Warning:",
-            e.message
-        );
+        console.warn("Script Warning:", event.message);
 
     });
 
-    /* ==========================================
-       PERFORMANCE OPTIMIZATION
-    ========================================== */
+    // ==================================================
+    // UNHANDLED PROMISE
+    // ==================================================
 
-    window.addEventListener("pageshow", () => {
+    window.addEventListener("unhandledrejection", (event) => {
 
-        revealOnScroll();
-        animateCounter();
+        console.warn("Unhandled Promise:", event.reason);
+
+    });
+
+    // ==================================================
+    // ONLINE / OFFLINE
+    // ==================================================
+
+    window.addEventListener("online", () => {
+
+        document.body.classList.remove("offline");
+
+    });
+
+    window.addEventListener("offline", () => {
+
+        document.body.classList.add("offline");
+
+    });
+
+    // ==================================================
+    // REDUCE MOTION SUPPORT
+    // ==================================================
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    );
+
+    if (reduceMotion.matches) {
+
+        document.documentElement.style.scrollBehavior = "auto";
+
+    }
+
+    // ==================================================
+    // FINAL INITIALIZATION
+    // ==================================================
+
+    if (typeof updateHeader === "function") {
         updateHeader();
+    }
+
+    if (typeof revealOnScroll === "function") {
+        revealOnScroll();
+    }
+
+    if (typeof animateCounter === "function") {
+        animateCounter();
+    }
+
+    if (typeof updateFloatingWA === "function") {
         updateFloatingWA();
+    }
+
+    // ==================================================
+    // INITIAL STATE
+    // ==================================================
+
+    document.body.classList.add("js-enabled");
+
+    // ==================================================
+    // PERFORMANCE
+    // ==================================================
+
+    requestAnimationFrame(() => {
+
+        if (typeof revealOnScroll === "function") {
+            revealOnScroll();
+        }
 
     });
 
-    /* ==========================================
-       DEBUG MODE
-    ========================================== */
+    // ==================================================
+    // DEBUG INFORMATION
+    // ==================================================
 
     console.log("====================================");
     console.log("PT ASSISTENKU SOLUSI INDONESIA");
-    console.log("Premium Website Script Loaded");
+    console.log("Premium Website Script");
     console.log("Version : 2.0");
     console.log("Status  : Ready");
     console.log("====================================");
