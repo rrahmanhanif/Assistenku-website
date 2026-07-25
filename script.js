@@ -1,173 +1,725 @@
-/* =============================  
-   MOBILE MENU  
-============================= */  
-const menuIcon = document.getElementById("menuIcon");  
-const mobileMenu = document.getElementById("mobileMenu");  
+// ======================================================
+// PT ASSISTENKU SOLUSI INDONESIA
+// Premium Website Script
+// Bagian 1/8
+// Mobile Menu • Header • Smooth Scroll
+// ======================================================
 
-if (menuIcon && mobileMenu) {  
-  menuIcon.addEventListener("click", () => {  
-    mobileMenu.classList.toggle("active");  
-  });  
+document.addEventListener("DOMContentLoaded", () => {
 
-  mobileMenu.querySelectorAll("a").forEach((link) => {  
-    link.addEventListener("click", () => {  
-      mobileMenu.classList.remove("active");  
-    });  
-  });  
-}  
+    /* ==========================================
+       MOBILE MENU
+    ========================================== */
 
+    const menuIcon = document.getElementById("menuIcon");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-/* =============================  
-   SMOOTH SCROLL  
-============================= */  
-document.querySelectorAll('a[href^="#"]').forEach((link) => {  
-  link.addEventListener("click", (e) => {  
-    const href = link.getAttribute("href");  
-    if (!href) return;  
+    if (menuIcon && mobileMenu) {
 
-    const target = document.querySelector(href);  
-    if (target) {  
-      e.preventDefault();  
-      window.scrollTo({  
-        top: target.offsetTop - 120,  
-        behavior: "smooth",  
-      });  
-    }  
-  });  
-});  
+        menuIcon.addEventListener("click", () => {
+            mobileMenu.classList.toggle("active");
+        });
 
+        mobileMenu.querySelectorAll("a").forEach(link => {
 
-/* =============================  
-   PDF BUTTONS  
-============================= */  
-function openPDF(id, file) {  
-  const el = document.getElementById(id);  
-  if (el) el.onclick = () => window.open(file, "_blank");  
-}  
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+            });
 
-openPDF("btnBiayaLayanan", "/penawaran.pdf");  
-openPDF("btnUnduhFormulir", "/formulir.pdf");  
+        });
 
+    }
 
-/* =============================  
-   PWA INSTALL  
-============================= */  
-if ("serviceWorker" in navigator) {  
-  window.addEventListener("load", () => {  
-    navigator.serviceWorker.register("/sw.js").catch(console.warn);  
-  });  
-}  
+    /* ==========================================
+       HEADER SHADOW
+    ========================================== */
 
-let deferredPrompt = null;  
+    const header = document.querySelector("header");
 
-function setInstallButtonState(enabled) {  
-  const btn = document.getElementById("pwaInstallBtn");  
-  if (!btn) return;  
+    function updateHeader() {
 
-  btn.disabled = !enabled;  
-  btn.style.opacity = enabled ? "1" : "0.6";  
-  btn.style.cursor = enabled ? "pointer" : "not-allowed";  
-}  
+        if (!header) return;
 
-document.addEventListener("DOMContentLoaded", () => {  
-  setInstallButtonState(false);  
-});  
+        if (window.scrollY > 30) {
 
-window.addEventListener("beforeinstallprompt", (e) => {  
-  e.preventDefault();  
-  deferredPrompt = e;  
-  setInstallButtonState(true);  
-});  
+            header.classList.add("scrolled");
 
-document.addEventListener("click", async (e) => {  
-  if (e.target?.id !== "pwaInstallBtn") return;  
-  if (!deferredPrompt) return;  
+        } else {
 
-  setInstallButtonState(false);  
+            header.classList.remove("scrolled");
 
-  deferredPrompt.prompt();  
-  await deferredPrompt.userChoice;  
+        }
 
-  deferredPrompt = null;  
-  setInstallButtonState(false);  
-});  
+    }
 
+    updateHeader();
 
-/* =============================  
-   IMAGE MODAL  
-============================= */  
-const modal = document.getElementById("imageModal");  
-const modalImg = document.getElementById("modalImg");  
-const images = document.querySelectorAll(".legal-card-img");  
-const modalCloseBtn = document.querySelector(".close");  
+    window.addEventListener("scroll", updateHeader);
 
-let zoom = 1;  
+    /* ==========================================
+       SMOOTH SCROLL
+    ========================================== */
 
-images.forEach(img => {  
-  img.addEventListener("click", () => {  
-    if (!modal || !modalImg) return;  
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-    modal.style.display = "block";  
-    modalImg.src = img.src;  
-    zoom = 1;  
-    modalImg.style.transform = "scale(1)";  
-  });  
-});  
+        link.addEventListener("click", function (e) {
 
-if (modalCloseBtn && modal) {  
-  modalCloseBtn.onclick = () => modal.style.display = "none";  
-}  
+            const target = document.querySelector(this.getAttribute("href"));
 
-if (modal && modalImg) {  
-  modal.onclick = (e) => {  
-    if (e.target !== modalImg) {  
-      modal.style.display = "none";  
-    }  
-  };  
-}  
+            if (!target) return;
 
-if (modalImg) {  
-  modalImg.onclick = () => {  
-    zoom = zoom === 1 ? 2 : 1;  
-    modalImg.style.transform = `scale(${zoom})`;  
-  };  
-}  
+            e.preventDefault();
 
-if (modal && modalImg) {  
-  modal.addEventListener("wheel", (e) => {  
-    e.preventDefault();  
+            window.scrollTo({
 
-    zoom += e.deltaY < 0 ? 0.2 : -0.2;  
-    zoom = Math.min(Math.max(zoom, 1), 5);  
+                top: target.offsetTop - 100,
+                behavior: "smooth"
 
-    modalImg.style.transform = `scale(${zoom})`;  
-  });  
-}  
+            });
 
+        });
 
-/* =============================  
-   KBLI POPUP (FULLSCREEN)  
-============================= */  
-window.addEventListener("load", () => {  
-  const popup = document.getElementById("kbliPopup");  
-  const closePopupBtn = document.getElementById("closeKbli");  
+    });
+       /* ==========================================
+       FAQ ACCORDION
+    ========================================== */
 
-  if (!popup) return;  
+    const faqItems = document.querySelectorAll(".faq-item");
 
-  // Tampilkan popup  
-  popup.style.display = "flex";  
+    faqItems.forEach(item => {
 
-  // Tombol close  
-  if (closePopupBtn) {  
-    closePopupBtn.addEventListener("click", () => {  
-      popup.style.display = "none";  
-    });  
-  }  
+        const question = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
 
-  // Klik luar = close  
-  popup.addEventListener("click", (e) => {  
-    if (e.target === popup) {  
-      popup.style.display = "none";  
-    }  
-  });  
+        if (!question || !answer) return;
+
+        question.addEventListener("click", () => {
+
+            faqItems.forEach(other => {
+
+                if (other !== item) {
+
+                    other.classList.remove("active");
+
+                    const otherAnswer = other.querySelector(".faq-answer");
+
+                    if (otherAnswer) {
+                        otherAnswer.style.maxHeight = null;
+                    }
+
+                }
+
+            });
+
+            item.classList.toggle("active");
+
+            if (item.classList.contains("active")) {
+
+                answer.style.maxHeight = answer.scrollHeight + "px";
+
+            } else {
+
+                answer.style.maxHeight = null;
+
+            }
+
+        });
+
+    });
+
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
+
+    const reveals = document.querySelectorAll(
+
+        ".service-card," +
+        ".benefit-card," +
+        ".commission-card," +
+        ".work-card," +
+        ".equipment-card," +
+        ".qualification-grid div," +
+        ".contact-card," +
+        ".faq-item"
+
+    );
+
+    function revealOnScroll() {
+
+        reveals.forEach(el => {
+
+            const top = el.getBoundingClientRect().top;
+
+            if (top < window.innerHeight - 80) {
+
+                el.classList.add("show");
+
+            }
+
+        });
+
+    }
+
+    revealOnScroll();
+
+    window.addEventListener("scroll", revealOnScroll);
+       /* ==========================================
+       COUNTER ANIMATION
+    ========================================== */
+
+    let counterPlayed = false;
+
+    function animateCounter() {
+
+        if (counterPlayed) return;
+
+        const section = document.querySelector(".commission");
+
+        if (!section) return;
+
+        const top = section.getBoundingClientRect().top;
+
+        if (top > window.innerHeight - 120) return;
+
+        counterPlayed = true;
+
+        document.querySelectorAll(".commission-card h1").forEach(counter => {
+
+            const text = counter.textContent.replace(/[^\d]/g, "");
+            const target = parseInt(text);
+
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const duration = 1500;
+            const increment = Math.ceil(target / (duration / 16));
+
+            function updateCounter() {
+
+                current += increment;
+
+                if (current > target) current = target;
+
+                counter.textContent = "Rp" + current.toLocaleString("id-ID");
+
+                if (current < target) {
+
+                    requestAnimationFrame(updateCounter);
+
+                }
+
+            }
+
+            updateCounter();
+
+        });
+
+    }
+
+    animateCounter();
+
+    window.addEventListener("scroll", animateCounter);
+
+    /* ==========================================
+       FLOATING WHATSAPP
+    ========================================== */
+
+    const floatingWA = document.querySelector(".floating-wa");
+
+    function updateFloatingWA() {
+
+        if (!floatingWA) return;
+
+        if (window.scrollY > 200) {
+
+            floatingWA.style.opacity = "1";
+            floatingWA.style.transform = "translateY(0)";
+
+        } else {
+
+            floatingWA.style.opacity = ".85";
+            floatingWA.style.transform = "translateY(10px)";
+
+        }
+
+    }
+
+    updateFloatingWA();
+
+    window.addEventListener("scroll", updateFloatingWA);
+
+    /* ==========================================
+       COUNTER ANIMATION
+    ========================================== */
+
+    let counterPlayed = false;
+
+    function animateCounter() {
+
+        if (counterPlayed) return;
+
+        const section = document.querySelector(".commission");
+
+        if (!section) return;
+
+        const top = section.getBoundingClientRect().top;
+
+        if (top > window.innerHeight - 120) return;
+
+        counterPlayed = true;
+
+        document.querySelectorAll(".commission-card h1").forEach(counter => {
+
+            const text = counter.textContent.replace(/[^\d]/g, "");
+            const target = parseInt(text);
+
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const duration = 1500;
+            const increment = Math.ceil(target / (duration / 16));
+
+            function updateCounter() {
+
+                current += increment;
+
+                if (current > target) current = target;
+
+                counter.textContent = "Rp" + current.toLocaleString("id-ID");
+
+                if (current < target) {
+
+                    requestAnimationFrame(updateCounter);
+
+                }
+
+            }
+
+            updateCounter();
+
+        });
+
+    }
+
+    animateCounter();
+
+    window.addEventListener("scroll", animateCounter);
+
+    /* ==========================================
+       FLOATING WHATSAPP
+    ========================================== */
+
+    const floatingWA = document.querySelector(".floating-wa");
+
+    function updateFloatingWA() {
+
+        if (!floatingWA) return;
+
+        if (window.scrollY > 200) {
+
+            floatingWA.style.opacity = "1";
+            floatingWA.style.transform = "translateY(0)";
+
+        } else {
+
+            floatingWA.style.opacity = ".85";
+            floatingWA.style.transform = "translateY(10px)";
+
+        }
+
+    }
+
+    updateFloatingWA();
+
+    window.addEventListener("scroll", updateFloatingWA);
+
+                              /* ==========================================
+       BUTTON HOVER EFFECT
+    ========================================== */
+
+    document.querySelectorAll(".btn-primary, .btn-secondary").forEach(btn => {
+
+        btn.addEventListener("mouseenter", () => {
+
+            btn.style.transform = "translateY(-3px)";
+
+        });
+
+        btn.addEventListener("mouseleave", () => {
+
+            btn.style.transform = "translateY(0)";
+
+        });
+
+    });
+
+    /* ==========================================
+       RIPPLE EFFECT
+    ========================================== */
+
+    document.querySelectorAll(".btn-primary, .btn-secondary").forEach(button => {
+
+        button.addEventListener("click", function (e) {
+
+            const ripple = document.createElement("span");
+
+            ripple.className = "ripple";
+
+            const rect = this.getBoundingClientRect();
+
+            ripple.style.left = (e.clientX - rect.left) + "px";
+            ripple.style.top = (e.clientY - rect.top) + "px";
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+
+                ripple.remove();
+
+            }, 600);
+
+        });
+
+    });
+
+    /* ==========================================
+       PDF BUTTONS
+    ========================================== */
+
+    function openPDF(id, file) {
+
+        const button = document.getElementById(id);
+
+        if (!button) return;
+
+        button.addEventListener("click", () => {
+
+            window.open(file, "_blank");
+
+        });
+
+    }
+
+    openPDF("btnBiayaLayanan", "/penawaran.pdf");
+    openPDF("btnUnduhFormulir", "/formulir.pdf");
+
+                      /* ==========================================
+       SERVICE WORKER
+    ========================================== */
+
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener("load", () => {
+
+            navigator.serviceWorker
+                .register("/sw.js")
+                .catch(err => console.warn("Service Worker:", err));
+
+        });
+
+    }
+
+    /* ==========================================
+       PWA INSTALL
+    ========================================== */
+
+    let deferredPrompt = null;
+
+    const installButton = document.getElementById("pwaInstallBtn");
+
+    function updateInstallButton(enabled) {
+
+        if (!installButton) return;
+
+        installButton.disabled = !enabled;
+        installButton.style.opacity = enabled ? "1" : ".6";
+        installButton.style.cursor = enabled ? "pointer" : "not-allowed";
+
+    }
+
+    updateInstallButton(false);
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+
+        e.preventDefault();
+
+        deferredPrompt = e;
+
+        updateInstallButton(true);
+
+    });
+
+    if (installButton) {
+
+        installButton.addEventListener("click", async () => {
+
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+
+            await deferredPrompt.userChoice;
+
+            deferredPrompt = null;
+
+            updateInstallButton(false);
+
+        });
+
+    }
+
+    window.addEventListener("appinstalled", () => {
+
+        deferredPrompt = null;
+
+        updateInstallButton(false);
+
+        console.log("PWA berhasil diinstal.");
+
+    });
+
+                              /* ==========================================
+       IMAGE MODAL
+    ========================================== */
+
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.querySelector(".close");
+    const images = document.querySelectorAll(".legal-card-img");
+
+    let zoom = 1;
+
+    if (modal && modalImg && images.length > 0) {
+
+        images.forEach(img => {
+
+            img.addEventListener("click", () => {
+
+                modal.style.display = "block";
+                modalImg.src = img.src;
+
+                zoom = 1;
+                modalImg.style.transform = "scale(1)";
+
+            });
+
+        });
+
+    }
+
+    /* ==========================================
+       CLOSE MODAL
+    ========================================== */
+
+    if (modalClose && modal) {
+
+        modalClose.addEventListener("click", () => {
+
+            modal.style.display = "none";
+
+        });
+
+    }
+
+    if (modal && modalImg) {
+
+        modal.addEventListener("click", (e) => {
+
+            if (e.target !== modalImg) {
+
+                modal.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+    /* ==========================================
+       IMAGE ZOOM
+    ========================================== */
+
+    if (modalImg) {
+
+        modalImg.addEventListener("click", () => {
+
+            zoom = zoom === 1 ? 2 : 1;
+
+            modalImg.style.transform = `scale(${zoom})`;
+
+        });
+
+    }
+
+    /* ==========================================
+       MOUSE WHEEL ZOOM
+    ========================================== */
+
+    if (modal && modalImg) {
+
+        modal.addEventListener("wheel", (e) => {
+
+            e.preventDefault();
+
+            zoom += (e.deltaY < 0) ? 0.2 : -0.2;
+
+            zoom = Math.min(Math.max(zoom, 1), 5);
+
+            modalImg.style.transform = `scale(${zoom})`;
+
+        });
+
+    }
+
+                              /* ==========================================
+       KBLI POPUP
+    ========================================== */
+
+    const kbliPopup = document.getElementById("kbliPopup");
+    const closeKbli = document.getElementById("closeKbli");
+
+    if (kbliPopup) {
+
+        window.addEventListener("load", () => {
+
+            kbliPopup.style.display = "flex";
+
+        });
+
+        if (closeKbli) {
+
+            closeKbli.addEventListener("click", () => {
+
+                kbliPopup.style.display = "none";
+
+            });
+
+        }
+
+        kbliPopup.addEventListener("click", (e) => {
+
+            if (e.target === kbliPopup) {
+
+                kbliPopup.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+    /* ==========================================
+       PRELOAD IMAGE
+    ========================================== */
+
+    document.querySelectorAll("img").forEach(img => {
+
+        if (img.complete) return;
+
+        img.addEventListener("load", () => {
+
+            img.classList.add("loaded");
+
+        });
+
+    });
+
+    /* ==========================================
+       EXTERNAL LINK
+    ========================================== */
+
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+
+        if (!link.hasAttribute("rel")) {
+
+            link.setAttribute("rel", "noopener noreferrer");
+
+        }
+
+    });
+
+    /* ==========================================
+       BACK TO TOP (AUTO)
+    ========================================== */
+
+    const backTop = document.getElementById("backToTop");
+
+    if (backTop) {
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                backTop.classList.add("show");
+
+            } else {
+
+                backTop.classList.remove("show");
+
+            }
+
+        });
+
+        backTop.addEventListener("click", () => {
+
+            window.scrollTo({
+
+                top: 0,
+                behavior: "smooth"
+
+            });
+
+        });
+
+    }
+
+    /* ==========================================
+       DEBUG MODE
+    ========================================== */
+
+    console.log("Assistenku Premium Script Loaded ✔");
+
+                              /* ==========================================
+       PERFORMANCE OPTIMIZATION
+    ========================================== */
+
+    window.addEventListener("pageshow", () => {
+
+        revealOnScroll();
+        animateCounter();
+        updateHeader();
+        updateFloatingWA();
+
+    });
+
+    /* ==========================================
+       WINDOW RESIZE
+    ========================================== */
+
+    window.addEventListener("resize", () => {
+
+        revealOnScroll();
+
+    });
+
+    /* ==========================================
+       ERROR SAFETY
+    ========================================== */
+
+    window.addEventListener("error", (e) => {
+
+        console.warn("Script Warning:", e.message);
+
+    });
+
+    /* ==========================================
+       FINAL INITIALIZATION
+    ========================================== */
+
+    console.log("====================================");
+    console.log("PT ASSISTENKU SOLUSI INDONESIA");
+    console.log("Premium Website Script Loaded");
+    console.log("Version : 1.0");
+    console.log("Status  : Ready");
+    console.log("====================================");
+
 });
