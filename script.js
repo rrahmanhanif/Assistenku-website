@@ -44,21 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mobile Menu
     // ==================================================
 
-    const menuButton = document.getElementById("menuIcon");
+    const menuButton = document.getElementById("menuButton");
 const mobileMenu = document.getElementById("mobileMenu");
 
-if (menuButton && mobileMenu) {
+if(menuButton && mobileMenu){
 
-    menuButton.addEventListener("click", function () {
+    menuButton.addEventListener("click",()=>{
 
         mobileMenu.classList.toggle("active");
+
         menuButton.classList.toggle("active");
 
     });
 
-    mobileMenu.querySelectorAll("a").forEach(link => {
+    mobileMenu.querySelectorAll("a").forEach(link=>{
 
-        link.addEventListener("click", function () {
+        link.addEventListener("click",()=>{
 
             mobileMenu.classList.remove("active");
             menuButton.classList.remove("active");
