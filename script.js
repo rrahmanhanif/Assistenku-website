@@ -589,14 +589,19 @@ if(menuButton && mobileMenu){
    KBLI POPUP
 ========================================================= */
 
-const kbliPopup = document.getElementById("kbliPopup");
-const closeKbli = document.getElementById("closeKbli");
+if (window.location.pathname === "/layanan" ||
+    window.location.pathname === "/layanan.html") {
 
-if (kbliPopup && closeKbli) {
+    const kbliPopup = document.getElementById("kbliPopup");
+    const closeKbli = document.getElementById("closeKbli");
 
-    closeKbli.addEventListener("click", function () {
-        kbliPopup.style.display = "none";
-    });
+    if (kbliPopup && closeKbli) {
+
+        closeKbli.addEventListener("click", function () {
+            kbliPopup.style.display = "none";
+        });
+
+    }
 
 }
     // ==================================================
