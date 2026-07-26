@@ -1971,43 +1971,47 @@ footer{
 
 .kbli-popup{
     position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.75);
     z-index:99999;
 }
 
 .kbli-popup-content{
     position:relative;
-    max-width:90%;
-    max-height:90%;
+    display:inline-block;
 }
 
 .kbli-image{
     display:block;
-    max-width:100%;
+    max-width:90vw;
     max-height:90vh;
     border-radius:12px;
 }
 
 .kbli-close{
     position:absolute;
-    top:-14px;
-    right:-14px;
-    width:38px;
-    height:38px;
+    top:8px;
+    right:8px;
+    width:42px;
+    height:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffffff;
+    color:#000000;
     border:none;
     border-radius:50%;
-    background:#fff;
-    color:#000;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
     cursor:pointer;
-    line-height:1;
+    z-index:100000;
 }
-
 /* =========================
    SCROLL REVEAL
 ========================= */
