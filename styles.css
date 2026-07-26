@@ -151,6 +151,7 @@ h1{
     font-size:clamp(2.5rem,5vw,4.5rem);
     line-height:1.1;
     font-weight:900;
+    text-align:center;
 
 }
 
@@ -158,6 +159,7 @@ h2{
 
     font-size:clamp(2rem,4vw,3rem);
     font-weight:800;
+    text-align:center;
 
 }
 
@@ -165,12 +167,25 @@ h3{
 
     font-size:1.25rem;
     font-weight:700;
+    text-align:justify;
 
 }
 
 p{
 
     color:var(--text-light);
+    font-weight:400;
+    text-align:justify;
+    line-height:1.8;
+
+}
+
+li{
+
+    color:var(--text-light);
+    font-weight:400;
+    text-align:justify;
+    line-height:1.8;
 
 }
 
