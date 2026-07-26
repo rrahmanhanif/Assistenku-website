@@ -754,6 +754,33 @@ if (kbliPopup && closeKbli) {
 
     }
 
+// ==================================================
+    // ESC KEY
+    // ==================================================
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key !== "Escape") return;
+
+        if (typeof imageModal !== "undefined" && imageModal) {
+
+            imageModal.style.display = "none";
+
+        }
+
+        if (typeof kbliPopup !== "undefined" && kbliPopup) {
+
+            kbliPopup.style.display = "none";
+
+        }
+
+        if (typeof mobileMenu !== "undefined" && mobileMenu) {
+
+            mobileMenu.classList.remove("active");
+
+        }
+
+    });
 
     // ==================================================
     // WINDOW ERROR
