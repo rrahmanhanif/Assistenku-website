@@ -1050,14 +1050,20 @@ Website ini memerlukan JavaScript agar seluruh fitur dapat berjalan dengan baik.
 <!-- KbLI POPUP -->
 <!-- ========================================================= -->
 <script>
-const kbliPopup = document.getElementById("kbliPopup");
-const closeKbli = document.getElementById("closeKbli");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (kbliPopup && closeKbli) {
-    closeKbli.addEventListener("click", function () {
-        kbliPopup.style.display = "none";
-    });
-}
+    const closeKbli = document.getElementById("closeKbli");
+    const kbliPopup = document.getElementById("kbliPopup");
+
+    if (closeKbli && kbliPopup) {
+
+        closeKbli.addEventListener("click", function () {
+            kbliPopup.style.display = "none";
+        });
+
+    }
+
+});
 </script>
       
 </body>
