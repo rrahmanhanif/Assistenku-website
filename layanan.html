@@ -1045,6 +1045,20 @@ Website ini memerlukan JavaScript agar seluruh fitur dapat berjalan dengan baik.
 <!-- ========================================================= -->
 
 <script src="/script.js"></script>
+
+      <!-- ========================================================= -->
+<!-- KbLI POPUP -->
+<!-- ========================================================= -->
+<script>
+const kbliPopup = document.getElementById("kbliPopup");
+const closeKbli = document.getElementById("closeKbli");
+
+if (kbliPopup && closeKbli) {
+    closeKbli.addEventListener("click", function () {
+        kbliPopup.style.display = "none";
+    });
+}
+</script>
       
 </body>
 </html>
