@@ -588,43 +588,20 @@ if(menuButton && mobileMenu){
 
     }
 
-    // ==================================================
-    // KBLI POPUP
-    // ==================================================
+/* =========================================================
+   KBLI POPUP
+========================================================= */
 
-    const kbliPopup = document.getElementById("kbliPopup");
-    const closeKbli = document.getElementById("closeKbli");
+const kbliPopup = document.getElementById("kbliPopup");
+const closeKbli = document.getElementById("closeKbli");
 
-    if (kbliPopup) {
+if (kbliPopup && closeKbli) {
 
-        window.addEventListener("load", () => {
+    closeKbli.addEventListener("click", () => {
+        kbliPopup.style.display = "none";
+    });
 
-            kbliPopup.style.display = "flex";
-
-        });
-
-        if (closeKbli) {
-
-            closeKbli.addEventListener("click", () => {
-
-                kbliPopup.style.display = "none";
-
-            });
-
-        }
-
-        kbliPopup.addEventListener("click", (event) => {
-
-            if (event.target === kbliPopup) {
-
-                kbliPopup.style.display = "none";
-
-            }
-
-        });
-
-    }
-
+}
     // ==================================================
     // PRELOAD IMAGE
     // ==================================================
