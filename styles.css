@@ -306,6 +306,19 @@ li{
 
 }
 
+.service-card{
+    display:flex;
+    flex-direction:column;
+}
+
+.service-card p{
+    flex:1;
+}
+
+.apply-box{
+    margin-top:auto;
+}
+
 /* =========================
    GRID
 ========================= */
