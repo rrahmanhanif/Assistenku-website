@@ -592,11 +592,11 @@ if(menuButton && mobileMenu){
 const kbliPopup = document.getElementById("kbliPopup");
 const closeKbli = document.getElementById("closeKbli");
 
-if (closeKbli) {
+if (kbliPopup && closeKbli) {
 
-    closeKbli.onclick = function () {
-        document.getElementById("kbliPopup").style.display = "none";
-    };
+    closeKbli.addEventListener("click", function () {
+        kbliPopup.style.display = "none";
+    });
 
 }
     // ==================================================
