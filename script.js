@@ -103,9 +103,6 @@ if(menuButton && mobileMenu){
     });
 
     console.log("Script Part 1 Loaded");
-
-});
-
 // ======================================================
 // PT ASSISTENKU SOLUSI INDONESIA
 // Premium Website Script
