@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mobile Menu
     // ==================================================
 
-    const menuButton = document.getElementById("menuButton");
+const menuButton = document.getElementById("menuIcon");
 const mobileMenu = document.getElementById("mobileMenu");
 
 if(menuButton && mobileMenu){
